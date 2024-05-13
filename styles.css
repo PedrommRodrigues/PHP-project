@@ -1,0 +1,87 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-image: url("images/background.jpg");
+  font-family: "Poppins", sans-serif;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  max-width: 700px;
+  width: 70%;
+  padding: 30px;
+  display: flex;
+  height: 350px;
+  background-color: rgba(240, 248, 255, 0.7);
+  border-radius: 30px;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Left half                                 */
+/* -------------------------------------------------------------------------- */
+
+.left-half {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 60px;
+}
+
+.logo {
+  align-self: flex-start;
+  width: 30%;
+}
+
+.loggin-img {
+  width: 70%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Right Half                                 */
+/* -------------------------------------------------------------------------- */
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+form h1 {
+  color: #0f2027;
+  text-align: center;
+  margin: 50px 0 50px;
+}
+
+.input-control input {
+  border: 2px solid #f0f0f0;
+  border-radius: 4px;
+  display: block;
+  font-size: 12px;
+  width: 100%;
+  padding: 10px;
+}
+
+.input-control input:focus {
+  outline: 0;
+}
+
+.input-control.error input {
+  border-color: #ff3860;
+}
+
+.input-control .error {
+  color: #ff3860;
+  font-size: 12px;
+  height: 13px;
+  margin-bottom: 10px;
+}
