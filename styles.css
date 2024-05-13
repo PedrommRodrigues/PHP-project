@@ -108,4 +108,9 @@ form h1 {
   cursor: pointer;
   border: none;
   font-family: "Poppins", sans-serif;
+  transition: all 0.1s ease-in;
+}
+
+.btn-blue:hover {
+  background-color: #2478f6;
 }
