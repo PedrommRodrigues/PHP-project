@@ -38,15 +38,19 @@ body {
   align-items: center;
 }
 
-.loggin-img {
+.login-img {
   width: 80%;
+}
+
+.left-half p {
+  font-size: 14px;
 }
 
 /* -------------------------------------------------------------------------- */
 /*                                 Right Half                                 */
 /* -------------------------------------------------------------------------- */
 
-#loggin-form {
+#login-form {
   display: flex;
   flex-direction: column;
 }
@@ -99,7 +103,7 @@ form h1 {
 /* -------------------------------------------------------------------------- */
 
 .btn-blue {
-  padding: 12px 18px;
+  padding: 13px 30px;
   background-color: #3783f5;
   color: #fff;
   font-weight: 500;
