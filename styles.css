@@ -22,7 +22,7 @@ body {
   padding: 30px;
   display: flex;
   height: 450px;
-  background-color: rgba(240, 248, 255, 0.7);
+  background-color: rgba(240, 248, 255, 0.6);
   border-radius: 30px;
 }
 
@@ -78,7 +78,7 @@ form h1 {
 }
 
 .input-control input:focus {
-  outline: 0;
+  outline: 2px solid rgb(200, 220, 255);
 }
 
 .input-control.error input {
