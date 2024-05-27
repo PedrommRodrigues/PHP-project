@@ -14,38 +14,51 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 
+
+    <!-- ---------------------------- font awesome ----------------------------- -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
     <div class="wrapper">
         <div class="left-half">
-            <img class="login-img" src="images/loggin-img.png" alt="Image ilustrativa de Iniciar sessão"
-                title="Iniciar sessão">
-            <p>Não tens uma conta? <a href="">Regista-te!</a></p>
-        </div>
-        <div class=" righ-half">
-            <form id="login-form" action="/">
+            <form id="login-form" action="/" onsubmit="return validacaoForm()">
                 <img class="logo" src="images/company-logo.svg" alt="Logotipo" title="Logotipo connected clinic">
                 <h1>Iniciar sessão</h1>
                 <div class="input-control">
-                    <label for="username">Utilizador</label>
-                    <input type="text" name="utilizador">
+                    <div onchange="inputActive('utilizador', 'userLabel')" class="input-section">
+                        <input class="test_input" type="text" id="utilizador" name="utilizador" title="utilizador"> <i
+                            class="fa-solid fa-user"></i>
+                    </div>
+                    <label for="utilizador" id="userLabel" class="test_label">Utilizador</label>
                     <div class="error"></div>
-                    <! -- Este div serve para fazer mensagem de erro -->
                 </div>
                 <div class="input-control">
-                    <label for="username">Palavra-Passe</label>
-                    <input type="password" name="password">
+                    <div onchange="inputActive('password', 'passLabel')" class="input-section">
+                        <input class="test_input" type="password" name="password" id="password"
+                            onchange="inputActive(this,'test_label')" title="password">
+                        <i class="fa-solid fa-lock"></i>
+                    </div>
+                    <label for="username" id="passLabel" class="test_label">Palavra-Passe</label>
                     <div class="error"></div>
                 </div>
                 <div class="btn-section">
-                    <button class="btn-blue" type="submit">Entrar</button>
-                    <!-- <button class="btn-blue">Registar</button> -->
+                    <button class="btn-blue" onclick="testFunction()">Entrar</button>
                 </div>
             </form>
         </div>
-
+        <div class="right-half">
+            <img class="login-img" src="images/loggin-img.png" alt="Image ilustrativa de Iniciar sessão"
+                title="Iniciar sessão">
+            <p class="testcolor">Não tens uma conta? <a href="">Regista-te!</a></p>
+        </div>
     </div>
+
+    <script src="funcoes.js"></script>
 </body>
 
 </html>
