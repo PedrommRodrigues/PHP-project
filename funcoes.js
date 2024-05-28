@@ -4,20 +4,20 @@ const validacaoForm = () => {
 
   // Verifica se campos estão vazios
   if (username.value === "") {
-    username.classList.add("input-error");
+    // username.classList.add("input-error"); era a classe para adicionar border
     setError(username, "Este campo não pode estar vazio.");
     return false;
   } else {
-    username.classList.remove("input-error");
+    // username.classList.remove("input-error");
     setError(username, "");
   }
 
   if (pass.value === "") {
-    pass.classList.add("input-error");
+    // pass.classList.add("input-error");
     setError(pass, "Escreva a sua palavra-passe.");
     return false;
   } else {
-    password.classList.remove("input-error");
+    // password.classList.remove("input-error");
     setError(pass, "");
   }
   return true;
@@ -35,9 +35,9 @@ const setError = (element, message) => {
 
 const inputActive = (target, labelID) => {
   const label = document.getElementById(labelID);
-  const inputName = document.getElementById(target);
+  const inputName = document.getElementById(target).value;
 
-  if (inputName.value !== "") {
+  if (inputName.trim() !== "") {
     label.classList.add("force_top_label");
   } else {
     label.classList.remove("force_top_label");
