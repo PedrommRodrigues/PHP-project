@@ -10,24 +10,6 @@
   width: 100%;
 }
 
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 39px;
-  color: #a1acb1;
-}
-
-.menu div {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  cursor: pointer;
-  color: #a1acb1;
-}
-
-.menu div:hover {
-  color: #06a689;
-}
 
 /* card branco onde ficam as tabelas  */
 
@@ -41,3 +23,40 @@
 }
 
 /* ---------------------------- Fim de Container ---------------------------- */
+
+/* --------------------------- Div acima da tabela -------------------------- */
+
+.table-header {
+  display: flex;
+  align-items: center;
+}
+
+.header-container {
+  align-items: right;
+  margin-left: auto;
+}
+
+.header-menu {
+  display: flex;
+  gap: 30px;
+  padding-right: 26px;
+  position: relative;
+}
+
+.menu {
+  background-color: #f7f8fc;
+  display: flex;
+  border-radius: 50px;
+  padding: 6px 8.6px 4px 16px;
+  gap: 45px;
+  cursor: pointer;
+}
+
+.search-container {
+  width: 160px;
+  height: 34px;
+  background-color: #f7f8fc;
+  display: flex;
+  border-radius: 50px;
+  align-items: center;
+}
