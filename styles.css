@@ -1,170 +1,155 @@
-@charset "utf-8";
-/* CSS Document */
+/* -------------------------------------------------------------------------- */
+/*                               Estilos gerais                               */
+/* -------------------------------------------------------------------------- */
 
 * {
   margin: 0;
   padding: 0;
-}
-
-body {
-  background-image: url("images/background.jpg");
   font-family: "Poppins", sans-serif;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.wrapper {
-  max-width: 700px;
-  width: 70%;
-  padding: 30px;
-  display: flex;
-  height: 350px;
-  background-color: rgba(240, 248, 255, 0.6);
-  border-radius: 30px;
-}
-
-/* -------------------------------------------------------------------------- */
-/*                                  Left half                                 */
-/* -------------------------------------------------------------------------- */
-
-.left-half {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-}
-
-#login-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.logo {
-  width: 50%;
-  margin: auto;
-}
-
-form h1 {
-  color: #0f2027;
-  font-size: 20px;
-  font-weight: 500;
-  margin: 10px 0;
-  text-align: center;
-}
-
-.input-control {
-  position: relative;
-  width: 100%;
-}
-
-.test_label {
-  position: absolute;
-  font-size: 16px;
-  top: 15px;
-  left: 5px;
-  transition: top 0.3s, font-size 0.3s;
-}
-
-input {
-  border: none;
-  background-color: transparent;
-  font-size: 14px;
-  width: 80%;
-  padding: 15px 15px 7px 5px;
-  position: relative;
-  z-index: 1;
-  outline: 0;
-}
-
-.input-section:focus-within ~ .test_label,
-.input-section:active ~ .test_label {
-  top: -5px;
-  font-size: 14px;
-  color: #3b3b3b;
-}
-
-.force_top_label {
-  top: -5px;
-  font-size: 14px;
-  color: #3b3b3b;
-}
-
-.input-control .error {
-  color: #ff3860;
-  font-size: 12px;
-  height: 13px;
-  margin-bottom: 10px;
-  border-top: 1px solid #3b3b3b;
-  width: 95%;
-}
-
-.btn-section {
-  margin-top: 10px;
-}
-
-/* -------------------------------------------------------------------------- */
-/*                                 Right Half                                 */
-/* -------------------------------------------------------------------------- */
-.right-half {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  /* text-align: center; */
-}
-
-.login-img {
-  width: 100%;
-}
-
-.right-half p {
-  font-size: 17px;
-  margin-left: 50px;
-}
-
-/* -------------------------------------------------------------------------- */
-/*                                   buttons                                  */
-/* -------------------------------------------------------------------------- */
-
-.btn-blue {
-  padding: 13px 30px;
-  background-color: #3783f5;
-  color: #fff;
-  font-weight: 500;
-  font-size: 14px;
-  border-radius: 10px;
+button {
   cursor: pointer;
+}
+
+.container {
+  background-color: #f7f8fc;
+  position: absolute;
+  width: 100%;
+  display: flex;
+}
+
+/* Text */
+
+.text-main {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: #70797e;
+}
+
+.text-medium {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.text-semibold {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: #70797e;
+}
+
+.text-h2 {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 33px;
+}
+
+.text-h3 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+}
+
+.text-h4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #202123;
+}
+
+.text-h4-regular {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* Buttons */
+
+.btn-cancel {
+  border-radius: 10px;
+  outline: none;
   border: none;
-  font-family: "Poppins", sans-serif;
-  transition: all 0.1s ease-in;
+  padding: 12px 60px;
+  color: #70797e;
+  transition: background-color 0.3s ease;
 }
 
-.btn-blue:hover {
-  background-color: #2478f6;
+.btn-cancel:hover {
+  background-color: #aebec8;
+  color: #fff;
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                    Media                                   */
-/* -------------------------------------------------------------------------- */
-
-@media screen and (max-width: 700px) {
-  .right-half {
-    display: none;
-  }
-
-  .left-half {
-    width: 100%;
-  }
+.btn-accept {
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: #3783f5;
+  padding: 12px 19px;
+  color: #fff;
+  width: 200px;
+  transition: background-color 0.3s ease;
 }
 
-/* to remove autofill styles in inputs */
+.btn-accept:hover {
+  background-color: #1e63d8;
+}
 
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
-  transition: background-color 5000s ease-in-out 0s;
+.btn-cancel-sm {
+  color: #a1acb1;
+  width: 85px;
+  height: 44px;
+  background-color: rgba(0.631, 0.675, 0.694, 0.07);
+  border-radius: 10px;
+  border: 0;
+  transition: background-color 0.3s ease;
+}
+
+.btn-cancel-sm:hover {
+  background-color: rgba(0.631, 0.675, 0.694, 0.2);
+  color: #fff;
+}
+
+.btn-accept-sm {
+  width: 120px;
+  height: 44px;
+  color: #3783f5;
+  background-color: rgba(55, 131, 245, 0.07);
+  border-radius: 10px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-accept-sm:hover {
+  background-color: rgba(55, 131, 245, 0.2);
+}
+
+.btn-disabled {
+  color: #70797e;
+  cursor: not-allowed;
+}
+
+.btn-accept.disabled {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* Card */
+.bg-gray {
+  background-color: #a1acb1;
+  opacity: 0.85;
+  filter: blur(1px);
+}
+
+.right-part {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-right {
+  padding: 30px;
+  /* width: 100%; */
 }
