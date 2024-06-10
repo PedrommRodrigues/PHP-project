@@ -134,7 +134,7 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
                                         <img src="../images/icons/chevron.svg" />
                                     </div>
                                     <div class="menu">
-                                        <p class="text-main">Pesquisar</p>
+                                        <input class="text-main search-input" onchange="seachFunction()" type="text" placeholder="Pesquisa">
                                         <img src="../images/icons/lupe.svg" />
                                     </div>
                                 </div>
@@ -193,8 +193,8 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td style="color:#06A689">
-                                                Covid
+                                            <td>
+                                                <p class="covid"><?php echo $covid; ?></p>
                                             </td>
                                             <td class="actions">
                                                 <button class="call-blue text-medium">
@@ -217,7 +217,6 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
                                             </td>
                                         </tr>
                                     <?php } ?>
-
                                 </tbody>
                             </table>
                         </div>
@@ -227,56 +226,8 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
             <!-- ---------------------------- Fim de Appointments ----------------------------- -->
 
         </div>
+
+        <script src="func-styles.js"></script>
 </body>
 
 </html>
-
-
-<!-- <tr class="border">
-    <th>
-        <div class="united">
-            <h4 class="text-h4">Pedro</h4>
-            <img src="../Images/icons/check-one.svg" />
-        </div>
-        <div class="united">
-            <img src="../Images/icons/United.svg" />
-            <p class="text-medium" style="color: #A1ACB1">
-                United Healthcare
-            </p>
-        </div>
-    </th>
-    <td>Teste de assunto de consulta</td>
-    <td class="center">
-        <div class="type">
-        </div>
-        <div class="centered">
-            <div> Data</div>
-            <div>
-                <p class="bold">
-                </p>
-            </div>
-        </div>
-    </td>
-    <td style="color:#06A689">
-        Covid
-    </td>
-    <td class="actions">
-        <button class="call-blue text-medium">
-            Check In
-        </button>
-        <button class="call-green text-medium"> Chamar </button>
-    </td>
-    <td>
-        <button class="details">
-            <div class="img">
-                <img src="../Images/icons/document.svg" />
-            </div>
-        </button>
-        <button class="message call-blue">
-            <div class="img">
-                <img src="../Images/icons/chat.svg" />
-            </div>
-        </button>
-        <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
-    </td>
-</tr> -->

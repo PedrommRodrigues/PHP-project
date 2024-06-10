@@ -59,6 +59,14 @@ tbody th:nth-child(1) {
   align-items: center;
 }
 
+/* --------------------------- Inputs de filtragem -------------------------- */
+
+.search-input{
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
 /* --------------------- Secção de submenu de cada linha -------------------- */
 
 .details {
@@ -97,4 +105,15 @@ tbody th:nth-child(1) {
 .united {
   display: flex;
   gap: 5px;
+}
+
+
+/* ------------------------------ Covid styles ------------------------------ */
+
+.red-text {
+  color: #DE2B13;
+}
+
+.green-text {
+  color: #06A689;
 }
