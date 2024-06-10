@@ -1,0 +1,100 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  position: sticky;
+  background-color: white;
+  z-index: 100;
+}
+
+table th {
+  text-align: left;
+}
+
+th {
+  padding: 20px 0px;
+}
+
+thead th:nth-child(1) {
+  padding-left: 27px;
+  width: 25%;
+}
+
+thead th:nth-child(2) {
+  width: 20%;
+}
+
+thead th:nth-child(3) {
+  width: 10%;
+}
+
+thead th:nth-child(4) {
+  width: 15%;
+}
+
+thead th:nth-child(5) {
+  width: 15%;
+}
+
+thead th:nth-child(6) {
+  width: 10%;
+}
+
+tr {
+  border-bottom: solid 1px #e2eaec;
+}
+
+tr:first-child {
+  border-top: none;
+}
+
+tbody th:nth-child(1) {
+  padding-left: 27px;
+}
+
+.table-header {
+  display: flex;
+  align-items: center;
+}
+
+/* --------------------- Secção de submenu de cada linha -------------------- */
+
+.details {
+  color: #06a689;
+  background-color: rgba(6, 166, 137, 0.07);
+  border: none;
+  padding: 11px;
+  border-radius: 10px;
+  margin-right: 18px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.details:hover {
+  color: #1e824c;
+  background-color: #abebc6;
+}
+
+/* ------------- border bottom quanto abrimos submenu numa linha ------------ */
+
+.border {
+  border-radius: 0px 0px 10px 10px;
+  border-bottom: none;
+  box-shadow: 0px 4px 4px 0px rgba(100, 100, 100, 0.12);
+}
+
+/* ------------------------- Ultimos botoes da linha ------------------------ */
+
+.details,
+.message {
+  padding: 12px 12px;
+  align-items: center;
+}
+
+/* ---------------------- primeira celula de cada linha --------------------- */
+
+.united {
+  display: flex;
+  gap: 5px;
+}

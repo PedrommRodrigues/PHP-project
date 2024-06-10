@@ -1,3 +1,15 @@
+<?php
+include('../funcoes.php');
+$conexao = conexao();
+
+verificarLogin();
+
+$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE pessoas.id_pessoa = consultas.id_pessoa;");
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,32 +36,34 @@
                 <div class="selectedId ">
                     <span class="bar active"></span>
                     <i class="bar"></i>
-                    <img src="/images/icons/appointments.svg" alt="Marcações">
+                    <img src="../images/icons/appointments.svg" alt="Marcações">
                     <p>Appointments</p>
                 </div>
                 <div>
                     <span class="bar"></span>
                     <i class="bar"></i>
-                    <img src="/images/icons/patients.svg" alt="Pacientes">
+                    <img src="../images/icons/patients.svg" alt="Pacientes">
                     <p>Patients</p>
                 </div>
                 <div>
                     <span class="bar"></span>
-                    <img src="/images/icons/dashboard.svg" alt="Dashboard">
+                    <img src="../images/icons/dashboard.svg" alt="Dashboard">
                     <i class="bar"></i>
                     <p>Dashboard</p>
                 </div>
                 <div>
                     <span class="bar"></span>
                     <i class="bar"></i>
-                    <img src="/images/icons/requests.svg" alt="">
+                    <img src="../images/icons/requests.svg" alt="">
                     <p>Requests</p>
                 </div>
             </div>
             <div class="logout text-medium">
-                <span class="bar"></span>
-                <img src="/images/icons/log-out.svg" alt="">
-                <p>Log Out</p>
+                <a href="../logout.php">
+                    <span class="bar"></span>
+                    <img src="../images/icons/log-out.svg" alt="">
+                    <p>Log Out</p>
+                </a>
             </div>
         </div>
 
@@ -60,15 +74,15 @@
         <div class="right-part">
             <div class="header">
                 <div class="hospital text-main">
-                    <img src="/images/icons/home.svg" alt="" style="color: #A1ACB1;">
+                    <img src="../images/icons/home.svg" alt="" style="color: #A1ACB1;">
                     <p>Kansas City Family Medical Care</p>
                     <button>
                         <img src="../images/icons/chevron.svg" alt="" />
                     </button>
                 </div>
                 <div class="user">
-                    <img src="/Images/icons/Bell.svg" alt="sino" />
-                    <img class="picture" src="/Images/doctor.svg" alt="imagem do utilizador" />
+                    <img src="../Images/icons/Bell.svg" alt="sino" />
+                    <img class="picture" src="../Images/doctor.svg" alt="imagem do utilizador" />
                     <div class="user-info">
                         <p class="text-main">Margaret Lim</p>
                         <p class="spec">Cardiologist</p>
@@ -142,70 +156,65 @@
                                 </thead>
                                 <tbody>
 
-                                    <tr class="border">
-                                        <th>
-                                            <div class="united">
-                                                <h4 class="text-h4">Pedro</h4>
-                                                <img src="/Images/icons/check-one.svg" />
-                                            </div>
-                                            <div class="united">
-                                                <img src="/Images/icons/United.svg" />
-                                                <p class="text-medium" style="color: #A1ACB1">
-                                                    United Healthcare
-                                                </p>
-                                            </div>
-                                        </th>
-                                        <td>Teste de assunto de consulta</td>
-                                        <td class="center">
-                                            <div class="type">
+                                    <!--  ----------------- Line with each line of data on the list ----------------  -->
 
-                                            </div>
-                                            <div class="centered">
-                                                <div> Data</div>
-                                                <div>
-                                                    <p class="bold">
+                                    <?php
+                                    while ($linha = mysqli_fetch_assoc($consulta_sql)) {
+                                        $nome = $linha['nome'];
+                                        $assunto = $linha['assunto'];
+                                        $data = $linha['data'];
+                                        $covid = $linha['covid'];
 
+                                    ?>
+                                        <tr class="border">
+                                            <th>
+                                                <div class="united">
+                                                    <h4 class="text-h4"><?php echo $nome; ?></h4>
+                                                    <img src="../Images/icons/check-one.svg" />
+                                                </div>
+                                                <div class="united">
+                                                    <img src="../Images/icons/United.svg" />
+                                                    <p class="text-medium" style="color: #A1ACB1">
+                                                        United Healthcare
                                                     </p>
                                                 </div>
-                                            </div>
-                                        </td>
-
-                                        <td style="color:#06A689">
-                                            Covid
-                                        </td>
-                                        <td class="actions">
-                                            <button class="call-blue text-medium">
-                                                Check In
-                                            </button>
-                                            <button class="call-green text-medium"> Chamar </button>
-                                        </td>
-                                        <td>
-                                            <button class="details">
-                                                <div class="img">
-                                                    <img src="/Images/icons/document.svg" />
+                                            </th>
+                                            <td>Teste de assunto de consulta</td>
+                                            <td class="center">
+                                                <div class="type">
                                                 </div>
-                                            </button>
-                                            <button class="message call-blue">
-                                                <div class="img">
-                                                    <img src="/Images/icons/chat.svg" />
+                                                <div class="centered">
+                                                    <div> Data</div>
+                                                    <div>
+                                                        <p class="bold">
+                                                        </p>
+                                                    </div>
                                                 </div>
-                                            </button>
-                                            <!-- <img onClick={()=> openDetails(appt.id)}
-                                            style={{
-                                            transform: `rotate(${
-                                            details[appt.id] ? 180 : 0
-                                            }deg)`,
-                                            transition: "all .25s",
-                                            marginRight: "18px",
-                                            cursor: "pointer",
-                                            }}
-                                            className={classes.expand}
-                                            src="/Images/icons/chevron.svg"
-                                            alt="expand"
-                                            /> -->
-                                        </td>
-                                    </tr>
-
+                                            </td>
+                                            <td style="color:#06A689">
+                                                Covid
+                                            </td>
+                                            <td class="actions">
+                                                <button class="call-blue text-medium">
+                                                    Check In
+                                                </button>
+                                                <button class="call-green text-medium"> Chamar </button>
+                                            </td>
+                                            <td>
+                                                <button class="details">
+                                                    <div class="img">
+                                                        <img src="../Images/icons/document.svg" />
+                                                    </div>
+                                                </button>
+                                                <button class="message call-blue">
+                                                    <div class="img">
+                                                        <img src="../Images/icons/chat.svg" />
+                                                    </div>
+                                                </button>
+                                                <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
 
                                 </tbody>
                             </table>
@@ -219,3 +228,53 @@
 </body>
 
 </html>
+
+
+<!-- <tr class="border">
+    <th>
+        <div class="united">
+            <h4 class="text-h4">Pedro</h4>
+            <img src="../Images/icons/check-one.svg" />
+        </div>
+        <div class="united">
+            <img src="../Images/icons/United.svg" />
+            <p class="text-medium" style="color: #A1ACB1">
+                United Healthcare
+            </p>
+        </div>
+    </th>
+    <td>Teste de assunto de consulta</td>
+    <td class="center">
+        <div class="type">
+        </div>
+        <div class="centered">
+            <div> Data</div>
+            <div>
+                <p class="bold">
+                </p>
+            </div>
+        </div>
+    </td>
+    <td style="color:#06A689">
+        Covid
+    </td>
+    <td class="actions">
+        <button class="call-blue text-medium">
+            Check In
+        </button>
+        <button class="call-green text-medium"> Chamar </button>
+    </td>
+    <td>
+        <button class="details">
+            <div class="img">
+                <img src="../Images/icons/document.svg" />
+            </div>
+        </button>
+        <button class="message call-blue">
+            <div class="img">
+                <img src="../Images/icons/chat.svg" />
+            </div>
+        </button>
+        <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
+    </td>
+</tr> -->

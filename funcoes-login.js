@@ -1,11 +1,11 @@
 const validacaoLoginForm = () => {
-  const username = document.getElementById("utilizador");
+  const email = document.getElementById("email");
   const pass = document.getElementById("password");
 
   // Verifica se campos estão vazios
-  if (username.value === "") {
+  if (email.value === "") {
     setError(userLabel, "Este campo não pode estar vazio.");
-    username.focus();
+    email.focus();
     return false;
   } else {
     setError(userLabel, "");
@@ -22,14 +22,14 @@ const validacaoLoginForm = () => {
 };
 
 const validacaoSinginForm = () => {
-  const username = document.getElementById("new-utilizador");
+  const email = document.getElementById("new-email");
   const pass = document.getElementById("new-password");
   const repeatPass = document.getElementById("repeat-password");
 
   // Verifica se campos estão vazios
-  if (username.value === "") {
+  if (email.value === "") {
     setError(registerUserLabel, "Este campo não pode estar vazio.");
-    username.focus();
+    email.focus();
     return false;
   } else {
     setError(registerUserLabel, "");
@@ -55,7 +55,6 @@ const validacaoSinginForm = () => {
   } else {
     setError(repeatPassLabel, "");
   }
-
   return true;
 };
 
@@ -91,10 +90,8 @@ const changeDisplay = () => {
   if (login.classList.contains("disabled")) {
     haveAccountText.innerHTML =
       '<p id="registar">Já tens uma conta? <a href="#" onclick="changeDisplay()">Faz o login.</a></p>';
-    console.log("com disabled");
   } else {
     haveAccountText.innerHTML =
       '<p id="registar">Não tens uma conta? <a href="#" onclick="changeDisplay()">Regista-te!</a></p>';
-    console.log("sem disabled");
   }
 };

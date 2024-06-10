@@ -12,28 +12,28 @@ const Appointments = () => {
   const tableHeader = [
     {
       id: 1,
-      label: "Patient",
+      label: "Patient"
     },
     {
       id: 2,
-      label: "Reason",
+      label: "Reason"
     },
     {
       id: 3,
-      label: "Appointment",
+      label: "Appointment"
     },
     {
       id: 4,
-      label: "COVID Status",
+      label: "COVID Status"
     },
     {
       id: 5,
-      label: "Actions",
+      label: "Actions"
     },
     {
       id: 6,
-      label: "",
-    },
+      label: ""
+    }
   ];
 
   const patientCtx = useContext(PatientContext);
@@ -91,7 +91,7 @@ const Appointments = () => {
   const openDetails = (id) => {
     setDetails((prevState) => ({
       ...prevState,
-      [id]: !prevState[id],
+      [id]: !prevState[id]
     }));
   };
 
@@ -124,14 +124,14 @@ const Appointments = () => {
   const checkIn = (id) => {
     setCheck((prevState) => ({
       ...prevState,
-      [id]: !prevState[id],
+      [id]: !prevState[id]
     }));
   };
 
   const callIn = (id) => {
     setCall((prevState) => ({
       ...prevState,
-      [id]: !prevState[id],
+      [id]: !prevState[id]
     }));
   };
 
@@ -268,7 +268,7 @@ const Appointments = () => {
                   <img
                     style={{
                       transform: `rotate(${isTypeMenuOpen ? 180 : 0}deg)`,
-                      transition: "all .25s",
+                      transition: "all .25s"
                     }}
                     src="./Images/icons/chevron.svg"
                   />
@@ -292,7 +292,7 @@ const Appointments = () => {
                   <img
                     style={{
                       transform: `rotate(${isEligibleMenuOpen ? 180 : 0}deg)`,
-                      transition: "all .25s",
+                      transition: "all .25s"
                     }}
                     src="./Images/icons/chevron.svg"
                   />
@@ -349,7 +349,7 @@ const Appointments = () => {
                   const dateObj = new Date(date);
                   const day = dateObj.getDate();
                   const monthLong = dateObj.toLocaleString("en-US", {
-                    month: "long",
+                    month: "long"
                   });
                   const monthShort = monthLong.slice(0, 3);
                   return `${day} ${monthShort}`;
@@ -405,7 +405,7 @@ const Appointments = () => {
                           color:
                             appt.covidStatus === "No Covid"
                               ? "#06A689"
-                              : "#DE2B13",
+                              : "#DE2B13"
                         }}
                       >
                         {appt.covidStatus}
@@ -416,7 +416,7 @@ const Appointments = () => {
                           onClick={() => callIn(appt.id)}
                           style={{
                             opacity: call[appt.id] ? 0 : 1,
-                            cursor: check[appt.id] ? "default" : "pointer",
+                            cursor: check[appt.id] ? "default" : "pointer"
                           }}
                         >
                           Call
@@ -426,7 +426,7 @@ const Appointments = () => {
                           onClick={() => checkIn(appt.id)}
                           style={{
                             opacity: check[appt.id] ? 0 : 1,
-                            cursor: check[appt.id] ? "default" : "pointer",
+                            cursor: check[appt.id] ? "default" : "pointer"
                           }}
                           disabled={!call[appt.id]}
                         >
@@ -452,7 +452,7 @@ const Appointments = () => {
                             }deg)`,
                             transition: "all .25s",
                             marginRight: "18px",
-                            cursor: "pointer",
+                            cursor: "pointer"
                           }}
                           className={classes.expand}
                           src="/Images/icons/chevron.svg"

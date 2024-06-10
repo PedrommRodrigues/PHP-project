@@ -40,7 +40,7 @@
 }
 
 .sb-menu div:hover,
-.logout:hover {
+.logout:hover a {
   background: rgba(55, 131, 245, 7%);
   opacity: 1;
   color: #3783f5;
@@ -61,18 +61,18 @@
   opacity: 1;
 }
 
-.logout {
+.logout a {
   width: 122px;
   height: 74px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* gap: 15px; */
   box-sizing: border-box;
-  /* padding-top: 25px; */
   cursor: pointer;
   position: absolute;
   bottom: 0px;
   color: #a1acb1;
+  text-decoration: none;
 }
+

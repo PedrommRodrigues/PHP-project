@@ -1,23 +1,19 @@
 const validacaoForm = () => {
-  const username = document.getElementById("utilizador");
+  const email = document.getElementById("email");
   const pass = document.getElementById("password");
 
   // Verifica se campos estão vazios
   if (username.value === "") {
-    // username.classList.add("input-error"); era a classe para adicionar border
-    setError(username, "Este campo não pode estar vazio.");
+    setError(email, "Este campo não pode estar vazio.");
     return false;
   } else {
-    // username.classList.remove("input-error");
-    setError(username, "");
+    setError(email, "");
   }
 
   if (pass.value === "") {
-    // pass.classList.add("input-error");
     setError(pass, "Escreva a sua palavra-passe.");
     return false;
   } else {
-    // password.classList.remove("input-error");
     setError(pass, "");
   }
   return true;
