@@ -6,9 +6,18 @@ verificarLogin();
 
 $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE pessoas.id_pessoa = consultas.id_pessoa;");
 
+// Calculating the number of lines on patients table 
+
+$count = mysqli_query($conexao, "SELECT COUNT(*) AS count FROM pessoas;");
+
+if ($count) {
+    // Fetch the result as an associative array
+    $row = mysqli_fetch_assoc($count);
+} else {
+    echo "Error: " . mysqli_error($conexao);
+}
+
 ?>
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,31 +42,31 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
         <div class="side-bar">
             <img src="../Images/logo-icon-trans 1.svg" alt="connected clinic" class="logo" />
             <div class="sb-menu text-medium">
+                <div>
+                    <a href="../Consultas/">
+                        <span class="bar "></span>
+
+                        <img src="../images/icons/appointments.svg" alt="Marcações">
+                        <p>Consultas</p>
+                    </a>
+                </div>
                 <div class="clicked">
                     <span class="bar active"></span>
-
-                    <img src="../images/icons/appointments.svg" alt="Marcações">
-                    <p>Consultas</p>
-                </div>
-                <div>
-                    <a href="../Pacientes/">
-                        <span class="bar"></span>
-
-                        <img src="../images/icons/patients.svg" alt="Pacientes">
-                        <p>Pacientes</p>
-                    </a>
+                    <!-- <i class="bar active"></i> -->
+                    <img src="../images/icons/patients.svg" alt="Pacientes">
+                    <p>Pacientes</p>
                 </div>
                 <div>
                     <span class="bar"></span>
                     <img src="../images/icons/dashboard.svg" alt="Dashboard">
-
+                    <i class="bar"></i>
                     <p>Dashboard</p>
                 </div>
                 <div>
                     <span class="bar"></span>
                     <i class="bar"></i>
                     <img src="../images/icons/requests.svg" alt="">
-                    <p>Definições</p>
+                    <p>Requests</p>
                 </div>
             </div>
             <div class="logout text-medium">
@@ -94,27 +103,27 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
 
             <!-- ---------------------------- Fim de header ---------------------------- -->
 
-            <!-- ---------------------------- Appointments ----------------------------- -->
+            <!-- ---------------------------- Patients ----------------------------- -->
             <div class="bottom-right">
                 <div class="section">
 
                     <!-- ----------------------- Content on top of table ----------------------- -->
 
                     <div class="section-header">
-                        <h1 class="text-h2">Consultas</h1>
+                        <h1 class="text-h2">Pacientes</h1>
                         <div class="menu">
 
                         </div>
                     </div>
 
 
-                    <!-- ------------------------------ container ------------------------------ -->
+                    <!-- ------------------------------ Container ------------------------------ -->
                     <div class="card-section">
                         <div class="table-header">
                             <p class="counter text-h4">
-                                6 Consultas
-                                <span style="font-weight: 400;">no dia</span>
-                                <strong style="color: #3783F5;">20.05.2024</strong>
+                                <?php echo $row['count'] ?>
+                                <span style="font-weight: 400;">pacientes no total</span>
+
                             </p>
 
                             <!-- ------------------------- Trocar para select -------------------------- -->
@@ -150,10 +159,10 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
                             <table>
                                 <thead class="text-semibold">
                                     <tr>
-                                        <th>Paciente</th>
-                                        <th>Assunto</th>
-                                        <th>Data</th>
-                                        <th>Estado de COVID</th>
+                                        <th>Nome</th>
+                                        <th>Médico</th>
+                                        <th>Consulta</th>
+                                        <th>Eligivel</th>
                                     </tr>
                                 </thead>
                                 <tbody>

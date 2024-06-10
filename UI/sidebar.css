@@ -10,7 +10,8 @@
   margin: 21px 15px;
 }
 
-.sb-menu div {
+.sb-menu div,
+a  {
   width: 122px;
   height: 74px;
   display: flex;
@@ -21,7 +22,9 @@
   cursor: pointer;
   position: relative;
   color: #a1acb1;
+  text-decoration: none;
 }
+
 
 .bar {
   width: 3px;
