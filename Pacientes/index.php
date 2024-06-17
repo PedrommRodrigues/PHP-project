@@ -4,7 +4,7 @@ $conexao = conexao();
 
 verificarLogin();
 
-$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE pessoas.id_pessoa = consultas.id_pessoa;");
+$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas;");
 
 // Calculating the number of lines on patients table 
 
@@ -175,10 +175,9 @@ if ($count) {
                                     <?php
                                     while ($linha = mysqli_fetch_assoc($consulta_sql)) {
                                         $nome = $linha['nome'];
-                                        $assunto = $linha['assunto'];
-                                        $data = $linha['data'];
-                                        $covid = $linha['covid'];
 
+
+                                        $covid = $linha['covid'];
                                     ?>
                                         <tr>
                                             <th>
@@ -192,12 +191,12 @@ if ($count) {
                                                     </p>
                                                 </div>
                                             </th>
-                                            <td><?php echo $assunto ?></td>
+                                            <td>Sem medico</td>
                                             <td class="center">
                                                 <div class="type">
                                                 </div>
                                                 <div class="centered">
-                                                    <div><?php echo $data; ?></div>
+                                                    <button class="details">Marcar Consulta</button>
                                                     <div>
                                                         <p class="bold">
                                                         </p>
@@ -235,10 +234,9 @@ if ($count) {
         </div>
 
 
-        <!--  ------------------------------- teste modal ------------------------------  -->
+        <!--  ------------------------------- create patient modal ------------------------------  -->
 
         <dialog id="dialog1">
-
             <div class="add-card">
                 <div class="card-header">
                     <h2>Criar novo cliente</h2>
