@@ -26,12 +26,15 @@ if ($count) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connected</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="menu.css">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../UI/header.css">
     <link rel="stylesheet" href="../UI/sidebar.css">
     <link rel="stylesheet" href="../UI/content-card.css">
     <link rel="stylesheet" href="../UI/table.css">
-    <!-- <link rel="stylesheet" href="../UI/search-menu.css"> -->
+
 
 
 </head>
@@ -45,14 +48,12 @@ if ($count) {
                 <div>
                     <a href="../Consultas/">
                         <span class="bar "></span>
-
                         <img src="../images/icons/appointments.svg" alt="Marcações">
                         <p>Consultas</p>
                     </a>
                 </div>
                 <div class="clicked">
                     <span class="bar active"></span>
-                    <!-- <i class="bar active"></i> -->
                     <img src="../images/icons/patients.svg" alt="Pacientes">
                     <p>Pacientes</p>
                 </div>
@@ -111,9 +112,11 @@ if ($count) {
 
                     <div class="section-header">
                         <h1 class="text-h2">Pacientes</h1>
-                        <div class="menu">
-
+                        <div id="openDialog1" class="add-menu">
+                            <img class="add-btn" src="../images/icons/add.svg" alt="Adicionr" title="adicionar novo paciente">
+                            <p class="add-text">Adicionar novo paciente</p>
                         </div>
+
                     </div>
 
 
@@ -143,7 +146,7 @@ if ($count) {
                                         <img src="../images/icons/chevron.svg" />
                                     </div>
                                     <div class="menu">
-                                        <p class="text-main">Pesquisar</p>
+                                        <input class="text-main search-input"" type=" text" placeholder="Pesquisa">
                                         <img src="../images/icons/lupe.svg" />
                                     </div>
                                 </div>
@@ -161,7 +164,7 @@ if ($count) {
                                     <tr>
                                         <th>Nome</th>
                                         <th>Médico</th>
-                                        <th>Consulta</th>
+                                        <th>Marcar consulta</th>
                                         <th>Eligivel</th>
                                     </tr>
                                 </thead>
@@ -177,11 +180,10 @@ if ($count) {
                                         $covid = $linha['covid'];
 
                                     ?>
-                                        <tr class="border">
+                                        <tr>
                                             <th>
                                                 <div class="united">
                                                     <h4 class="text-h4"><?php echo $nome; ?></h4>
-                                                    <img src="../Images/icons/check-one.svg" />
                                                 </div>
                                                 <div class="united">
                                                     <img src="../Images/icons/United.svg" />
@@ -206,10 +208,6 @@ if ($count) {
                                                 Covid
                                             </td>
                                             <td class="actions">
-                                                <button class="call-blue text-medium">
-                                                    Check In
-                                                </button>
-                                                <button class="call-green text-medium"> Chamar </button>
                                             </td>
                                             <td>
                                                 <button class="details">
@@ -222,7 +220,6 @@ if ($count) {
                                                         <img src="../Images/icons/chat.svg" />
                                                     </div>
                                                 </button>
-                                                <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -236,56 +233,61 @@ if ($count) {
             <!-- ---------------------------- Fim de Appointments ----------------------------- -->
 
         </div>
+
+
+        <!--  ------------------------------- teste modal ------------------------------  -->
+
+        <dialog id="dialog1">
+
+            <label style="margin-top: 15px">Name </label>
+            <div class="select-wrapper">
+                <input class="input" name="name" type="text" required />
+            </div>
+            <label>Birthday</label>
+            <input class="input" name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" required />
+            <label>Address</label>
+            <input class="input" name="address" type="text" value="" required />
+            <label>Contact</label>
+            <input class="input" name="contact" type="tel" value="" />
+
+
+            <label>Email</label>
+            <input class="input" name="email" type="email" required />
+            <label>Select provider</label>
+            <select class="selected" name="provider">
+                <option>Dr Margaret Lim</option>
+                <option>Dr Antoine Brown</option>
+                <option>Dr Arlene Brown</option>
+                <option>Dr Kristin Watson</option>
+                <option>Dr Eleanor Pena</option>
+            </select>
+            <div class="nc-checkbox">
+                <div class="pointer">
+                    <input class="input" type="checkbox" id="Wellness"></input>
+                    <label>Wellness Screen</label>
+                </div>
+                <div>
+                    <input class="input" type="checkbox" id="CCM"></input>
+                    <label htmlFor="CCM">CCM</label>
+                </div>
+                <div>
+                    <input class="input" type="checkbox" id="RPM"></input>
+                    <label htmlFor="RPM">RPM</label>
+                </div>
+            </div>
+            <div class="submit-section">
+                <button className="btn-cancel text-medium">
+                    Cancel
+                </button>
+                <button className="btn-accept text-medium ">
+                    Create new client
+                </button>
+            </div>
+
+        </dialog>
+
+
+        <script src="functions.js"></script>
 </body>
 
 </html>
-
-
-<!-- <tr class="border">
-    <th>
-        <div class="united">
-            <h4 class="text-h4">Pedro</h4>
-            <img src="../Images/icons/check-one.svg" />
-        </div>
-        <div class="united">
-            <img src="../Images/icons/United.svg" />
-            <p class="text-medium" style="color: #A1ACB1">
-                United Healthcare
-            </p>
-        </div>
-    </th>
-    <td>Teste de assunto de consulta</td>
-    <td class="center">
-        <div class="type">
-        </div>
-        <div class="centered">
-            <div> Data</div>
-            <div>
-                <p class="bold">
-                </p>
-            </div>
-        </div>
-    </td>
-    <td style="color:#06A689">
-        Covid
-    </td>
-    <td class="actions">
-        <button class="call-blue text-medium">
-            Check In
-        </button>
-        <button class="call-green text-medium"> Chamar </button>
-    </td>
-    <td>
-        <button class="details">
-            <div class="img">
-                <img src="../Images/icons/document.svg" />
-            </div>
-        </button>
-        <button class="message call-blue">
-            <div class="img">
-                <img src="../Images/icons/chat.svg" />
-            </div>
-        </button>
-        <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
-    </td>
-</tr> -->

@@ -86,34 +86,50 @@ tbody th:nth-child(1) {
 
 /* ------------- border bottom quanto abrimos submenu numa linha ------------ */
 
+.expand{
+  cursor: pointer;
+}
+
+.hide-row{
+  display: none;
+}
+
+
 .border {
   border-radius: 0px 0px 10px 10px;
   border-bottom: none;
   box-shadow: 0px 4px 4px 0px rgba(100, 100, 100, 0.12);
+  padding: 27px;
+  height: 80px;
 }
 
-/* ------------------------- Ultimos botoes da linha ------------------------ */
+ img.expand {
+  transition: all 0.25s;  
+  cursor: pointer;
+} 
 
-.details,
-.message {
-  padding: 12px 12px;
-  align-items: center;
+/* ---------------------------------- test ---------------------------------- */
+
+.hide-row {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.25s ease;
 }
 
-/* ---------------------- primeira celula de cada linha --------------------- */
+.show-row {
+  max-height: 100px; 
+  opacity: 1;
+}
+
+.exams {
+  display: flex;
+  gap: 50px;
+  padding-left: 27px;
+} 
+
 
 .united {
   display: flex;
   gap: 5px;
-}
-
-
-/* ------------------------------ Covid styles ------------------------------ */
-
-.red-text {
-  color: #DE2B13;
-}
-
-.green-text {
-  color: #06A689;
 }

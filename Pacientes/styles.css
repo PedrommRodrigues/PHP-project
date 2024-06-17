@@ -1,0 +1,17 @@
+/* ---------------------- Botao para adicionar pessoas ---------------------- */
+
+.add-btn{
+    border-radius: 50%;
+    background-color: #3783F5;
+}
+
+.add-text{
+    color: #3783F5;
+    font-size: 16px;
+}
+
+.add-menu{
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+}

@@ -22,6 +22,7 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
     <link rel="stylesheet" href="../UI/sidebar.css">
     <link rel="stylesheet" href="../UI/content-card.css">
     <link rel="stylesheet" href="../UI/table.css">
+    <link rel="stylesheet" href="styles.css">
     <!-- <link rel="stylesheet" href="../UI/search-menu.css"> -->
 
 
@@ -113,8 +114,7 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
                         <div class="table-header">
                             <p class="counter text-h4">
                                 6 Consultas
-                                <span style="font-weight: 400;">no dia</span>
-                                <strong style="color: #3783F5;">20.05.2024</strong>
+
                             </p>
 
                             <!-- ------------------------- Trocar para select -------------------------- -->
@@ -134,7 +134,7 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
                                         <img src="../images/icons/chevron.svg" />
                                     </div>
                                     <div class="menu">
-                                        <input class="text-main search-input" onchange="seachFunction()" type="text" placeholder="Pesquisa">
+                                        <input class="text-main search-input"" type=" text" placeholder="Pesquisa">
                                         <img src="../images/icons/lupe.svg" />
                                     </div>
                                 </div>
@@ -168,11 +168,12 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
                                         $covid = $linha['covid'];
 
                                     ?>
-                                        <tr class="border">
+                                        <tr class=" click-event">
                                             <th>
                                                 <div class="united">
                                                     <h4 class="text-h4"><?php echo $nome; ?></h4>
-                                                    <img src="../Images/icons/check-one.svg" />
+                                                    <img class="hide check" src="../Images/icons/check-one.svg" />
+                                                    <img class="hide double" src="../Images/icons/check-double.svg" />
                                                 </div>
                                                 <div class="united">
                                                     <img src="../Images/icons/United.svg" />
@@ -197,23 +198,44 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
                                                 <p class="covid"><?php echo $covid; ?></p>
                                             </td>
                                             <td class="actions">
-                                                <button class="call-blue text-medium">
+                                                <button onclick="checkIn(this)" class="call-blue text-medium check-btn">
                                                     Check In
                                                 </button>
-                                                <button class="call-green text-medium"> Chamar </button>
+                                                <button onclick="chamar(this)" class="call-green text-medium double-btn"> Chamar </button>
                                             </td>
                                             <td>
-                                                <button class="details">
-                                                    <div class="img">
-                                                        <img src="../Images/icons/document.svg" />
-                                                    </div>
-                                                </button>
-                                                <button class="message call-blue">
-                                                    <div class="img">
-                                                        <img src="../Images/icons/chat.svg" />
-                                                    </div>
-                                                </button>
-                                                <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
+                                                <div class="cancel-td">
+                                                    <button class="details">
+                                                        <div class="img">
+                                                            <img src="../Images/icons/document.svg" />
+                                                        </div>
+                                                    </button>
+                                                    <button class="message call-blue">
+                                                        <div class="img">
+                                                            <img src="../Images/icons/chat.svg" />
+                                                        </div>
+                                                    </button>
+                                                    <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="hidden hide-row  border">
+                                            <td class="hidden-line">
+                                                <div class="exams">
+                                                    <p>Consulta bem estar</p>
+                                                    <p>RCP</p>
+                                                    <p>CCM</p>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                                <div class="cancel-td">
+                                                    <img class="cancelar-round-btn" src="../images/icons/close.svg" alt="Calcelar consulta" title="Cancelar consulta">
+                                                    <p class="text-semibold">Cancelar consulta</p>
+                                                </div>
                                             </td>
                                         </tr>
                                     <?php } ?>
