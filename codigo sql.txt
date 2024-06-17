@@ -1,0 +1,12 @@
+INSERT INTO pessoas (nome, morada, localidade, cod_postal, telefone, email, data_nascimento)
+VALUES
+    ('Ana Silva', 'Rua das Flores, 123', 'Lisboa', '1000-001', '912345678', 'ana.silva@email.com', '1990-05-15'),
+    ('Pedro Santos', 'Avenida Central, 456', 'Porto', '4000-002', '923456789', 'pedro.santos@email.com', '1985-09-20'),
+    ('Marta Almeida', 'Praça da Liberdade, 789', 'Braga', '4700-003', '934567890', 'marta.almeida@email.com', '1998-03-10'),
+    ('João Oliveira', 'Travessa dos Amigos, 10', 'Coimbra', '3000-004', '945678901', 'joao.oliveira@email.com', '2000-11-05'),
+    ('Sofia Pereira', 'Rua das Estrelas, 22', 'Funchal', '9000-005', '956789012', 'sofia.pereira@email.com', '1992-07-25'),
+    ('Rui Costa', 'Avenida dos Sonhos, 7', 'Évora', '7000-006', '967890123', 'rui.costa@email.com', '1980-12-01'),
+    ('Inês Ferreira', 'Largo da Paz, 15', 'Viseu', '3500-007', '978901234', 'ines.ferreira@email.com', '1995-04-18'),
+    ('Hugo Ramos', 'Praça da Alegria, 30', 'Guarda', '6300-008', '989012345', 'hugo.ramos@email.com', '1987-08-12'),
+    ('Carla Sousa', 'Rua das Oliveiras, 5', 'Aveiro', '3800-009', '990123456', 'carla.sousa@email.com', '1993-02-28'),
+    ('António Silva', 'Avenida dos Amantes, 12', 'Portimão', '8500-010', '901234567', 'antonio.silva@email.com', '1983-06-08');

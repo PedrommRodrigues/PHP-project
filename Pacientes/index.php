@@ -165,7 +165,7 @@ if ($count) {
                                         <th>Nome</th>
                                         <th>Médico</th>
                                         <th>Marcar consulta</th>
-                                        <th>Eligivel</th>
+                                        <th>Exames executados</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -176,8 +176,6 @@ if ($count) {
                                     while ($linha = mysqli_fetch_assoc($consulta_sql)) {
                                         $nome = $linha['nome'];
 
-
-                                        $covid = $linha['covid'];
                                     ?>
                                         <tr>
                                             <th>
@@ -196,19 +194,23 @@ if ($count) {
                                                 <div class="type">
                                                 </div>
                                                 <div class="centered">
-                                                    <button class="details">Marcar Consulta</button>
+                                                    <button class="details text-medium">Marcar uma Consulta</button>
                                                     <div>
                                                         <p class="bold">
                                                         </p>
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td style="color:#06A689">
-                                                Covid
+                                            <td>
+                                                <div class="exams text-medium " style="padding-left: 0px">
+                                                    <p>Consulta bem estar</p>
+                                                    <p>RCP</p>
+                                                    <p>CCM</p>
+                                                </div>
                                             </td>
                                             <td class="actions">
                                             </td>
-                                            <td>
+                                            <td class="last-td">
                                                 <button class="details">
                                                     <div class="img">
                                                         <img src="../Images/icons/document.svg" />
