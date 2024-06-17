@@ -244,28 +244,30 @@ if ($count) {
                     <h2>Criar novo cliente</h2>
                 </div>
                 <div class="card-form">
-                    <label>Nome</label>
-                    <input class="inputs" name="name" type="text" required />
-                    <label>Data de nascimento</label>
-                    <input class="inputs" name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" required />
-                    <label>Morada</label>
-                    <input class="inputs" name="address" type="text" value="" required />
-                    <label>Código postal</label>
-                    <input class="inputs" name="postal-code" type="text" value="" required />
-                    <label>Localidade</label>
-                    <input class="inputs" name="location" type="text" value="" required />
-                    <label>Contacto</label>
-                    <input class="inputs" name="contact" type="tel" value="" />
-                    <label>Email</label>
-                    <input class="inputs" name="email" type="email" required />
-                    <div class="submit-section">
-                        <button class="btn-cancel text-medium">
-                            Cancelar
-                        </button>
-                        <button class="btn-accept text-medium ">
-                            Criar novo cliente
-                        </button>
-                    </div>
+                    <form action="func-add-client.php" method="post">
+                        <label>Nome</label>
+                        <input class="inputs" name="name" type="text" required />
+                        <label>Data de nascimento</label>
+                        <input class="inputs" name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" required />
+                        <label>Morada</label>
+                        <input class="inputs" name="address" type="text" value="" required />
+                        <label>Código postal</label>
+                        <input class="inputs" name="postal-code" type="text" value="" required />
+                        <label>Localidade</label>
+                        <input class="inputs" name="location" type="text" value="" required />
+                        <label>Contacto</label>
+                        <input class="inputs" name="contact" type="tel" value="" />
+                        <label>Email</label>
+                        <input class="inputs" name="email" type="email" required />
+                        <div class="submit-section">
+                            <button id="close-modal" class="btn-cancel text-medium">
+                                Cancelar
+                            </button>
+                            <button class="btn-accept text-medium ">
+                                Criar novo cliente
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </dialog>
