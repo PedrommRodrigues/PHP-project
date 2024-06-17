@@ -28,7 +28,7 @@ if ($count) {
     <title>Connected</title>
 
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="modal-create-client.css">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../UI/header.css">
     <link rel="stylesheet" href="../UI/sidebar.css">
@@ -239,51 +239,35 @@ if ($count) {
 
         <dialog id="dialog1">
 
-            <label style="margin-top: 15px">Name </label>
-            <div class="select-wrapper">
-                <input class="input" name="name" type="text" required />
-            </div>
-            <label>Birthday</label>
-            <input class="input" name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" required />
-            <label>Address</label>
-            <input class="input" name="address" type="text" value="" required />
-            <label>Contact</label>
-            <input class="input" name="contact" type="tel" value="" />
-
-
-            <label>Email</label>
-            <input class="input" name="email" type="email" required />
-            <label>Select provider</label>
-            <select class="selected" name="provider">
-                <option>Dr Margaret Lim</option>
-                <option>Dr Antoine Brown</option>
-                <option>Dr Arlene Brown</option>
-                <option>Dr Kristin Watson</option>
-                <option>Dr Eleanor Pena</option>
-            </select>
-            <div class="nc-checkbox">
-                <div class="pointer">
-                    <input class="input" type="checkbox" id="Wellness"></input>
-                    <label>Wellness Screen</label>
+            <div class="add-card">
+                <div class="card-header">
+                    <h2>Criar novo cliente</h2>
                 </div>
-                <div>
-                    <input class="input" type="checkbox" id="CCM"></input>
-                    <label htmlFor="CCM">CCM</label>
-                </div>
-                <div>
-                    <input class="input" type="checkbox" id="RPM"></input>
-                    <label htmlFor="RPM">RPM</label>
+                <div class="card-form">
+                    <label>Nome</label>
+                    <input class="inputs" name="name" type="text" required />
+                    <label>Data de nascimento</label>
+                    <input class="inputs" name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" required />
+                    <label>Morada</label>
+                    <input class="inputs" name="address" type="text" value="" required />
+                    <label>Código postal</label>
+                    <input class="inputs" name="postal-code" type="text" value="" required />
+                    <label>Localidade</label>
+                    <input class="inputs" name="location" type="text" value="" required />
+                    <label>Contacto</label>
+                    <input class="inputs" name="contact" type="tel" value="" />
+                    <label>Email</label>
+                    <input class="inputs" name="email" type="email" required />
+                    <div class="submit-section">
+                        <button class="btn-cancel text-medium">
+                            Cancelar
+                        </button>
+                        <button class="btn-accept text-medium ">
+                            Criar novo cliente
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div class="submit-section">
-                <button className="btn-cancel text-medium">
-                    Cancel
-                </button>
-                <button className="btn-accept text-medium ">
-                    Create new client
-                </button>
-            </div>
-
         </dialog>
 
 
