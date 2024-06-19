@@ -28,7 +28,8 @@ if ($count) {
     <title>Connected</title>
 
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="modal-create-client.css">
+    <link rel="stylesheet" href="menu-create-client.css">
+    <link rel="stylesheet" href="menu-create-appointment.css">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../UI/header.css">
     <link rel="stylesheet" href="../UI/sidebar.css">
@@ -163,7 +164,7 @@ if ($count) {
                                 <thead class="text-semibold">
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Médico</th>
+                                        <th>Médico de familia</th>
                                         <th>Marcar consulta</th>
                                         <th>Exames executados</th>
                                     </tr>
@@ -175,7 +176,7 @@ if ($count) {
                                     <?php
                                     while ($linha = mysqli_fetch_assoc($consulta_sql)) {
                                         $nome = $linha['nome'];
-
+                                        $id_pessoa = $linha['id_pessoa'];
                                     ?>
                                         <tr>
                                             <th>
@@ -194,11 +195,7 @@ if ($count) {
                                                 <div class="type">
                                                 </div>
                                                 <div class="centered">
-                                                    <button class="details text-medium">Marcar uma Consulta</button>
-                                                    <div>
-                                                        <p class="bold">
-                                                        </p>
-                                                    </div>
+                                                    <button class="details text-medium openDialog2" pessoa_id="<?php echo $id_pessoa; ?>">Marcar uma Consulta</button>
                                                 </div>
                                             </td>
                                             <td>
@@ -221,6 +218,25 @@ if ($count) {
                                                         <img src="../Images/icons/chat.svg" />
                                                     </div>
                                                 </button>
+                                                <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
+                                            </td>
+                                        </tr>
+                                        <tr class="hidden hide-row border">
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+
+                                            </td>
+                                            <td><a href="func-remove-patient.php?id_pessoa=<?php echo $id_pessoa; ?>" class="cancel-td hidden-buttons">
+                                                    <img class=" cancelar-round-btn" src="../images/icons/close.svg" alt="Apagar cliente" title="Apagar cliente">
+                                                    <p class="text-semibold">Editar cliente</p>
+                                                </a></td>
+                                            <td>
+                                                <a href="func-remove-patient.php?id_pessoa=<?php echo $id_pessoa; ?>" class="cancel-td hidden-buttons">
+                                                    <img class=" cancelar-round-btn" src="../images/icons/close.svg" alt="Apagar cliente" title="Apagar cliente">
+                                                    <p class="text-semibold">Apagar cliente</p>
+                                                </a>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -246,19 +262,19 @@ if ($count) {
                 <div class="card-form">
                     <form action="func-add-client.php" method="post">
                         <label>Nome</label>
-                        <input class="inputs" name="name" type="text" required />
+                        <input class="inputs" name="name" type="text" />
                         <label>Data de nascimento</label>
-                        <input class="inputs" name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" required />
+                        <input class="inputs" name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" />
                         <label>Morada</label>
-                        <input class="inputs" name="address" type="text" value="" required />
+                        <input class="inputs" name="address" type="text" value="" />
                         <label>Código postal</label>
-                        <input class="inputs" name="postal-code" type="text" value="" required />
+                        <input class="inputs" name="postal-code" type="text" value="" />
                         <label>Localidade</label>
-                        <input class="inputs" name="location" type="text" value="" required />
+                        <input class="inputs" name="location" type="text" value="" />
                         <label>Contacto</label>
                         <input class="inputs" name="contact" type="tel" value="" />
                         <label>Email</label>
-                        <input class="inputs" name="email" type="email" required />
+                        <input class="inputs" name="email" type="email" />
                         <div class="submit-section">
                             <button id="close-modal" class="btn-cancel text-medium">
                                 Cancelar
@@ -272,6 +288,59 @@ if ($count) {
             </div>
         </dialog>
 
+        <!--  ------------------------------- create appointment modal ------------------------------  -->
+
+        <dialog id="dialog2">
+            <div class="add-card">
+                <div class="card-header">
+                    <h2>Criar nova consulta</h2>
+                </div>
+                <div class="client-details">
+                    <p>Paciente</p>
+                    <p class="text-h4 php_nome"></p>
+                    <p class="text-medium text-gray php_nascimento"></p>
+                </div>
+                <div class="client-contacts">
+                    <div>
+                        <img src="../images/icons/phone.svg" alt="phone" title="telemovel">
+                        <p class="php_contacto"></p>
+                    </div>
+                    <div>
+                        <img src="../images/icons/email.svg" alt="envelope" title="envelope">
+                        <p class="php_email"></p>
+                    </div>
+                    <div>
+                        <img src="../images/icons/map.svg" alt="ponto no mapa" title="ponto no mapa">
+                        <p class="php_morada"></p>
+                    </div>
+
+                </div>
+                <div class="card-form">
+                    <form method="post" metod="post" action="func-add-appointment.php">
+                        <input class="php_id" name="id_pessoa" value=""></input>
+                        <label>Médico</label>
+                        <select name="medic" class="inputs">
+                            <option value="1">Medico 1</option>
+                            <option value="2">Medico 2</option>
+                        </select>
+                        <label>Data da consulta</label>
+                        <input class="inputs" name="date" type="date" value="" min="2000-01-01" max="2027-12-31" />
+                        <label>Horário</label>
+                        <input class="inputs" name="appt_time" type="text" value="" />
+                        <label>Motivo</label>
+                        <input class="inputs" name="motive" type="text" value="" />
+                        <div class="submit-section">
+                            <button class="btn-cancel text-medium close-modal">
+                                Cancelar
+                            </button>
+                            <button class="btn-accept text-medium ">
+                                Criar nova consulta
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </dialog>
 
         <script src="functions.js"></script>
 </body>

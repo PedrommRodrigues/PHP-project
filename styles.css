@@ -66,6 +66,9 @@ button {
   line-height: 24px;
 }
 
+.text-gray{
+  color: #70797E;
+}
 /* Buttons */
 
 .btn-cancel {
@@ -182,3 +185,23 @@ button {
   color: #1e824c;
   background-color: #abebc6;
 }
+
+.cancelar-round-btn{
+  background-color: #A1ACB1;
+  border-radius: 50%;
+}
+
+.cancel-td{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cancel-td p{
+  color: #A1ACB1 ;
+  font-size: 16px;
+}
+

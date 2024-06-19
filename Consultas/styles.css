@@ -12,8 +12,6 @@
   align-items: center;
 }
 
-
-
 /* ------------------------------ Covid styles ------------------------------ */
 
 .red-text {
@@ -24,23 +22,4 @@
   color: #06A689;
 }
 
-/* --------------------------------- Botoes --------------------------------- */
 
-.cancel-td{
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-}
-
-.cancel-td p{
-  color: #A1ACB1 ;
-  font-size: 16px;
-
-}
-
-.cancelar-round-btn{
-  background-color: #A1ACB1;
-  border-radius: 50%;
-}
