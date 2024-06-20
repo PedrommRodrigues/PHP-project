@@ -225,17 +225,17 @@ if ($count) {
                                             <td></td>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
                                             <td>
-
+                                                <div pessoa_id="<?php echo $id_pessoa; ?>" class=" hidden-buttons edit cancel-td">
+                                                    <img src="../images/icons/edit.svg" alt="Apagar cliente" title="Apagar cliente">
+                                                    <p class="text-semibold edit-patient">Editar cliente</p>
+                                                </div>
                                             </td>
-                                            <td><a href="func-remove-patient.php?id_pessoa=<?php echo $id_pessoa; ?>" class="cancel-td hidden-buttons">
-                                                    <img class=" cancelar-round-btn" src="../images/icons/close.svg" alt="Apagar cliente" title="Apagar cliente">
-                                                    <p class="text-semibold">Editar cliente</p>
-                                                </a></td>
                                             <td>
-                                                <a href="func-remove-patient.php?id_pessoa=<?php echo $id_pessoa; ?>" class="cancel-td hidden-buttons">
-                                                    <img class=" cancelar-round-btn" src="../images/icons/close.svg" alt="Apagar cliente" title="Apagar cliente">
-                                                    <p class="text-semibold">Apagar cliente</p>
+                                                <a href="func-remove-client.php?id_pessoa=<?php echo $id_pessoa; ?>" class="cancel-td hidden-buttons delete-patient">
+                                                    <img class="cancelar-round-btn-red delete-patient" src="../images/icons/close.svg" alt="Apagar cliente" title="Apagar cliente">
+                                                    <p class="text-semibold delete-patient">Apagar cliente</p>
                                                 </a>
                                             </td>
                                         </tr>
@@ -257,29 +257,30 @@ if ($count) {
         <dialog id="dialog1">
             <div class="add-card">
                 <div class="card-header">
-                    <h2>Criar novo cliente</h2>
+                    <h2 id="form-title">Criar novo cliente</h2>
                 </div>
                 <div class="card-form">
-                    <form action="func-add-client.php" method="post">
+                    <form action="func-add-client.php" method="post" id="create-edit">
+                        <input id="php_id" class="php_id" name="id_pessoa" value=""></input>
                         <label>Nome</label>
-                        <input class="inputs" name="name" type="text" />
+                        <input id="php_nome" class="inputs " name="name" type="text" />
                         <label>Data de nascimento</label>
-                        <input class="inputs" name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" />
+                        <input id="php_nascimento" class="inputs " name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" />
                         <label>Morada</label>
-                        <input class="inputs" name="address" type="text" value="" />
+                        <input id="php_morada" class="inputs " name="address" type="text" value="" />
                         <label>Código postal</label>
-                        <input class="inputs" name="postal-code" type="text" value="" />
+                        <input id="php_postal" class="inputs" name="postal-code" type="text" value="" />
                         <label>Localidade</label>
-                        <input class="inputs" name="location" type="text" value="" />
+                        <input id="php_localidade" class="inputs " name="location" type="text" value="" />
                         <label>Contacto</label>
-                        <input class="inputs" name="contact" type="tel" value="" />
+                        <input id="php_contacto" class="inputs " name="contact" type="tel" value="" />
                         <label>Email</label>
-                        <input class="inputs" name="email" type="email" />
+                        <input id="php_email" class="inputs " name="email" type="email" />
                         <div class="submit-section">
-                            <button id="close-modal" class="btn-cancel text-medium">
+                            <button type="button" class="btn-cancel text-medium close-modal">
                                 Cancelar
                             </button>
-                            <button class="btn-accept text-medium ">
+                            <button id="form-btn" type="submit" class="btn-accept text-medium">
                                 Criar novo cliente
                             </button>
                         </div>
@@ -330,7 +331,7 @@ if ($count) {
                         <label>Motivo</label>
                         <input class="inputs" name="motive" type="text" value="" />
                         <div class="submit-section">
-                            <button class="btn-cancel text-medium close-modal">
+                            <button type="button" class="btn-cancel text-medium close-modal">
                                 Cancelar
                             </button>
                             <button class="btn-accept text-medium ">

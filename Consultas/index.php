@@ -6,6 +6,16 @@ verificarLogin();
 
 $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE pessoas.id_pessoa = consultas.id_pessoa;");
 
+$count = mysqli_query($conexao, "SELECT COUNT(*) AS count FROM consultas;");
+
+if ($count) {
+    // Fetch the result as an associative array
+    $row = mysqli_fetch_assoc($count);
+} else {
+    echo "Error: " . mysqli_error($conexao);
+}
+
+
 ?>
 
 
@@ -113,8 +123,8 @@ $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE p
                     <div class="card-section">
                         <div class="table-header">
                             <p class="counter text-h4">
-                                6 Consultas
-
+                                <?php echo $row['count'] ?>
+                                consultas
                             </p>
 
                             <!-- ------------------------- Trocar para select -------------------------- -->

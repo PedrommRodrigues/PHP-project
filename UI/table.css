@@ -5,6 +5,12 @@
   overflow: auto;
 }
 
+@media screen and (height <= 750px) {
+  .patient-list-container{
+    height: 450px;
+  }
+}
+
 .patient-list-container::-webkit-scrollbar {
   width: 10px;
 }

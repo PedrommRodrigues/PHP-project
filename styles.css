@@ -191,6 +191,11 @@ button {
   border-radius: 50%;
 }
 
+.cancelar-round-btn-red{
+  background-color: #DE2B13;
+  border-radius: 50%;
+}
+
 .cancel-td{
   display: flex;
   flex-direction: row;

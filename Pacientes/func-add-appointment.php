@@ -17,5 +17,5 @@ $inserir_consulta = mysqli_query($conn, $insert_appointment);
 if ($inserir_consulta) {
     header("Location: index.php");
 } else {
-    echo "<script> alert(\"Falha ao atualizar pessoa\")</script>";
+    echo "<script> alert(\"Falha ao adicionar consulta\")</script>";
 };

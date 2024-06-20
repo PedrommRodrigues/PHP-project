@@ -24,3 +24,8 @@ thead th:nth-child(3) {
 .hidden-buttons{
     width: 100%;
 }
+
+.delete-patient{
+    color: #DE2B13 !important;
+}
+

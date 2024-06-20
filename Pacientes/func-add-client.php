@@ -14,7 +14,6 @@ $email = $_POST['email'];
 $insert_pessoa = "INSERT INTO pessoas (nome, morada, localidade, cod_postal, telefone, email, data_nascimento)
  VALUES ('" . $name . "','" . $address . "','" . $location . "','" . $postal . "','" . $contact . "','" . $email . "','" . $birthday . "')";
 
-echo $insert_pessoa;
 
 $func_add_person = mysqli_query($conexao, $insert_pessoa);
 
