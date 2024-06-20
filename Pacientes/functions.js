@@ -12,15 +12,18 @@ expand.forEach((button) => {
   });
 });
 
-/* ---------------------------------- teste --------------------------------- */
-
 /* ---------------------- open create new client dialog --------------------- */
 
 const openDialog1 = document.getElementById("openDialog1"); // Vou buscar o botao
 const dialog1 = document.getElementById("dialog1");
 const closeModal = document.querySelectorAll(".close-modal");
+const dialogEdit = document.getElementById("dialog1");
+const formTitle = dialogEdit.querySelector("#form-title");
+const formBtn = dialogEdit.querySelector("#form-btn");
 
 openDialog1.addEventListener("click", () => {
+  formTitle.textContent = "Criar Cliente";
+  formBtn.textContent = "Criar novo cliente ";
   dialog1.showModal();
 });
 
@@ -64,11 +67,9 @@ openDialog2.forEach(function (button) {
 });
 
 /* ------------------------------- Edit Patient modal ------------------------------- */
-const dialogEdit = document.getElementById("dialog1");
+
 const formEdit = dialogEdit.querySelector("#create-edit");
 const editPacienteID = dialogEdit.querySelector("#php_id");
-const formTitle = dialogEdit.querySelector("#form-title");
-const formBtn = dialogEdit.querySelector("#form-btn");
 const editNome = dialogEdit.querySelector("#php_nome");
 const editNascimento = dialogEdit.querySelector("#php_nascimento");
 const editMorada = dialogEdit.querySelector("#php_morada");

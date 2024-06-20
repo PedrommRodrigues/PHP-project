@@ -19,6 +19,7 @@ echo $func_edit;
 $edita = mysqli_query($conn, $func_edit);
 
 if ($edita) {
+    $_SESSION['success'] = true;
     header("Location: index.php");
 } else {
     echo "barracada";

@@ -4,7 +4,7 @@ $conexao = conexao();
 
 verificarLogin();
 
-$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE pessoas.id_pessoa = consultas.id_pessoa;");
+$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE pessoas.id_pessoa = consultas.id_pessoa ORDER BY consultas.data;");
 
 $count = mysqli_query($conexao, "SELECT COUNT(*) AS count FROM consultas;");
 
