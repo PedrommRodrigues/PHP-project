@@ -12,6 +12,10 @@ button {
   cursor: pointer;
 }
 
+a{
+  text-decoration: none;
+}
+
 .container {
   background-color: #f7f8fc;
   position: absolute;
@@ -95,6 +99,17 @@ button {
   width: 200px;
   transition: background-color 0.3s ease;
 }
+
+.btn-red{
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  padding: 12px 60px;
+  color: #fff;
+  width: 200px;
+  transition: background-color 0.3s ease;
+  font-size: 14px;
+} 
 
 .btn-accept:hover {
   background-color: #1e63d8;
@@ -210,3 +225,99 @@ button {
   font-size: 16px;
 }
 
+
+select {
+  cursor: pointer;
+}
+
+
+/* ------------------------------- Notificação ------------------------------ */
+
+.notification-message {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(00, 00, 00, 0.80);
+  border-radius: 10px;
+  padding: 20px;
+  width: 384px;
+  display: flex;
+  color: #fff;
+  gap: 24px;
+  transition: all .3s ease;
+  }
+  
+  .circle {
+      width: 10px;
+      height: 10px;
+      background-color: #06A689;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #06A689;
+  }
+  
+  .notification-text {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+  }
+  
+  .text-atualizado{
+      font-size: 16px;
+      color: #fff;
+  }
+  
+  .text-nome{
+      font-size: 14px;
+      color: #E2EAEC;
+  }
+  
+  .cross-notification{
+      width: 12px;
+      margin-left: 60px;
+      cursor: pointer;   
+  }
+
+  /* --------------------------------- dialogs -------------------------------- */
+
+dialog {
+  background-color: transparent;
+  border: none;
+  padding: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#dialog3{
+  padding: 40px;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.dialog-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog3-top{
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.btn-red{
+  background-color: rgba(222, 43, 19, 0.8)
+}
+
+.btn-red:hover{
+  background-color: rgba(222, 43, 19, 1)
+}
+
+.dialog-gray-text{
+  font-size: 14px;
+  color: #A1ACB1;
+}

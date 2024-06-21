@@ -1,15 +1,15 @@
 /* ---------------------- Container onde fica a tabela ---------------------- */
 
 .patient-list-container {
-  height: 650px;
+  height: 1050px;
   overflow: auto;
 }
-
-@media screen and (height <= 750px) {
+ 
+ @media screen and (height < 750px) {
   .patient-list-container{
     height: 450px;
   }
-}
+} 
 
 .patient-list-container::-webkit-scrollbar {
   width: 10px;
@@ -84,6 +84,7 @@ tbody th:nth-child(1) {
 
 .table-header {
   display: flex;
+  padding-bottom: 15px;
   align-items: center;
 }
 

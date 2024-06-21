@@ -27,7 +27,7 @@ openDialog1.addEventListener("click", () => {
   dialog1.showModal();
 });
 
-/* ---------------------- open and close create appointment dialog with AJAX --------------------- */
+/* ---------------------- open create appointment dialog with AJAX --------------------- */
 
 const openDialog2 = document.querySelectorAll(".openDialog2");
 const dialog2 = document.getElementById("dialog2");
@@ -119,4 +119,44 @@ closeModal.forEach((button) => {
     dialog1.close();
     dialog2.close();
   });
+});
+
+/* -------------------------- Notification handler -------------------------- */
+
+// Função para remover a mensagem de sucesso após 5 segundos e com click na img
+function hideSuccessMessage() {
+  const successMessage = document.getElementById("success-message");
+  const closeNotification = document.getElementById("close-notification");
+
+  closeNotification.addEventListener("click", () => {
+    successMessage.remove();
+  });
+
+  if (successMessage) {
+    setTimeout(() => {
+      successMessage.style.opacity = "0";
+      setTimeout(() => {
+        successMessage.remove();
+      }, 500);
+    }, 5000);
+  }
+}
+
+// Chama a função quando a página é carregada
+window.onload = hideSuccessMessage;
+
+/* ------------------------- func to delete patient ------------------------- */
+
+const deleteBtn = document.querySelectorAll(".delete-patient");
+const dialog3 = document.getElementById("dialog3");
+const cancelDelete = document.getElementById("btn-close");
+
+deleteBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    dialog3.showModal();
+  });
+});
+
+cancelDelete.addEventListener("click", () => {
+  dialog3.close();
 });

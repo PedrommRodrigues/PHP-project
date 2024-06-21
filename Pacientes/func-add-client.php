@@ -18,6 +18,9 @@ $insert_pessoa = "INSERT INTO pessoas (nome, morada, localidade, cod_postal, tel
 $func_add_person = mysqli_query($conexao, $insert_pessoa);
 
 if ($func_add_person) {
+    $_SESSION['success'] = true;
+    $_SESSION['notification-type'] = "Paciente adicionado com sucesso!";
+    $_SESSION['nome'] = $name;
     header("Location: index.php");
 } else {
     header("Location: index.php");

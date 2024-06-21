@@ -4,7 +4,7 @@ $conexao = conexao();
 
 verificarLogin();
 
-$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE pessoas.id_pessoa = consultas.id_pessoa ORDER BY consultas.data;");
+$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas WHERE pessoas.id_pessoa = consultas.id_pessoa ORDER BY consultas.data, consultas.horario;");
 
 $count = mysqli_query($conexao, "SELECT COUNT(*) AS count FROM consultas;");
 
@@ -46,12 +46,11 @@ if ($count) {
             <div class="sb-menu text-medium">
                 <div class="clicked">
                     <span class="bar active"></span>
-
                     <img src="../images/icons/appointments.svg" alt="Marcações">
                     <p>Consultas</p>
                 </div>
                 <div>
-                    <a href="../Pacientes/">
+                    <a class="sb-a" href="../Pacientes/">
                         <span class="bar"></span>
 
                         <img src="../images/icons/patients.svg" alt="Pacientes">
@@ -61,7 +60,6 @@ if ($count) {
                 <div>
                     <span class="bar"></span>
                     <img src="../images/icons/dashboard.svg" alt="Dashboard">
-
                     <p>Dashboard</p>
                 </div>
                 <div>
@@ -72,7 +70,7 @@ if ($count) {
                 </div>
             </div>
             <div class="logout text-medium">
-                <a href="../logout.php">
+                <a class="sb-a" href="../logout.php">
                     <span class="bar"></span>
                     <img src="../images/icons/log-out.svg" alt="">
                     <p>Log Out</p>
@@ -176,7 +174,9 @@ if ($count) {
                                         $assunto = $linha['assunto'];
                                         $data = $linha['data'];
                                         $covid = $linha['covid'];
-
+                                        $id_consulta = $linha['id_consulta'];
+                                        $time = $linha['horario'];
+                                        $type = $linha['tipo_consulta'];
                                     ?>
                                         <tr class=" click-event">
                                             <th>
@@ -194,13 +194,13 @@ if ($count) {
                                             </th>
                                             <td><?php echo $assunto ?></td>
                                             <td class="center">
-                                                <div class="type">
-                                                </div>
-                                                <div class="centered">
-                                                    <div><?php echo $data; ?></div>
+                                                <div class="date-cell">
+                                                    <div class="type">
+                                                        <img src="../images/icons/<?php echo $type ?>.svg" alt="">
+                                                    </div>
                                                     <div>
-                                                        <p class="bold">
-                                                        </p>
+                                                        <p class="php_date"><?php echo $data; ?></p>
+                                                        <strong> <?php echo $time; ?>h</strong>
                                                     </div>
                                                 </div>
                                             </td>
@@ -242,9 +242,9 @@ if ($count) {
                                             <td></td>
                                             <td></td>
                                             <td>
-                                                <div class="cancel-td">
+                                                <div class="delete-appointment delete_appt cancel-td">
                                                     <img class="cancelar-round-btn" src="../images/icons/close.svg" alt="Calcelar consulta" title="Cancelar consulta">
-                                                    <p class="text-semibold">Cancelar consulta</p>
+                                                    <p class="text-semibold testep">Cancelar consulta</p>
                                                 </div>
                                             </td>
                                         </tr>
@@ -259,7 +259,45 @@ if ($count) {
 
         </div>
 
-        <script src="func-styles.js"></script>
+
+        <dialog id="dialog3">
+            <div class="">
+                <div class="dialog3-top">
+                    <img src="../images/icons/atencao.svg" alt="" style="width: 50px;">
+                    <div>
+                        <p class="text-h4">Pretende cancelar esta consulta?</p>
+                        <p class="dialog-gray-text">Não é possivel reverter esta ação!</p>
+                    </div>
+                </div>
+                <div>
+                    <button class="btn-cancel">Cancelar</button>
+                    <a class="btn-red" href="func-remove-appointment.php?id_consulta= <?php echo $id_consulta; ?>">Confirmar</a>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- ---------------------------- Notificação ----------------------------- -->
+
+        <?php
+        if (isset($_SESSION['success'])) {
+            echo '<div id="success-message" class="notification-message">
+                                            <div class="circle">
+                                            </div>
+                                            <div class="notification-text">
+                                                <p class="text-atualizado">' . $_SESSION['notification-type'] . '</p>
+                                                <p class="text-nome">' . $_SESSION['nome'] . '</p>
+                                            </div>
+                                            <div>
+                                                <img id="close-notification" class="cross-notification" src="../images/icons/cross.svg" alt="">
+                                            </div>
+                                        </div>';
+            unset($_SESSION['success']);
+            unset($_SESSION['notification-type']);
+            unset($_SESSION['nome']);
+        }
+        ?>
+
+        <script src="functions.js"></script>
 </body>
 
 </html>

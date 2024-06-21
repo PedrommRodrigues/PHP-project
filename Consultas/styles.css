@@ -23,3 +23,25 @@
 }
 
 
+.delete-appointment{
+  width: 100%;
+}  dialog {
+  border: none;
+  padding: 10px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+/* ------------------------------- date styles ------------------------------ */
+
+.date-cell{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+

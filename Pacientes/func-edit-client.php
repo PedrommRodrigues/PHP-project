@@ -20,6 +20,8 @@ $edita = mysqli_query($conn, $func_edit);
 
 if ($edita) {
     $_SESSION['success'] = true;
+    $_SESSION['notification-type'] = "Pessoa editada com sucesso!";
+    $_SESSION['nome'] = $name;
     header("Location: index.php");
 } else {
     echo "barracada";
