@@ -68,9 +68,10 @@ if ($count) {
                     </a>
                 </div>
                 <div>
-                    <span class="bar"></span>
-                    <img src="../images/icons/dashboard.svg" alt="Dashboard">
-                    <p>Dashboard</p>
+                    <a href="Consulta/"><span class="bar"></span>
+                        <img src="../images/icons/dashboard.svg" alt="Dashboard">
+                        <p>Dashboard</p>
+                    </a>
                 </div>
 
             </div>
@@ -217,7 +218,7 @@ if ($count) {
                                                     Check In
                                                 </button>
                                                 <button onclick="chamar(this)" title="Chamar para consulta" class="call-green text-medium double-btn" nomePessoa="<?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?>"> Chamar </button>
-                                                <a href="#" class="call-orange text-medium consulta hide">Consulta</a>
+                                                <a href="Consulta/index.php?id_pessoa=<?php echo $id_pessoa; ?>" class="call-orange text-medium consulta hide">Consulta</a>
                                             </td>
                                             <td>
                                                 <div class=" cancel-td">

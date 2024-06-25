@@ -15,6 +15,7 @@
     background-color: #fff;
     border-radius: 10px;
     padding: 26px;
+    box-shadow: 0px 4px 4px 0px rgba(100, 100, 100, 0.2);
 }
 
 .detalhes{
@@ -61,22 +62,19 @@
 
 .contentor-inferior{
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     flex: 1;
 }
 
 /* ------------------------- contentor infetior esq ------------------------- */
 
-.contentor-inferior-esq{
-    width: 60%;
-}
-
 .detalhes-consulta{
     display: flex;
-    justify-content: space-between;
-    cursor: pointer;
-     margin-bottom: 25px;
-}
+    flex-direction: column;
+    flex: 1;
+    margin-bottom: 25px;
+    width: 100%;
+} 
 
 .active-appt{
     box-shadow: 0 1px 3px rgba(6, 166, 137, 0.5);
@@ -87,7 +85,6 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    
 }
 
 .date-text{
@@ -103,26 +100,35 @@
     margin-right: 30px;
 }
 
-/* ---------------------------- contentor inferior direito --------------------------- */
-
-.contentor-inferior-drt{
-    width: 35%;
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 26px;
-    box-shadow: 0 2px 3px rgba(6, 166, 137, 0.5);
-    height: auto;
-}
-
-.inferior-drt-header{
+.conteudo-consulta{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px ;
 }
 
-.inferior-drt-header > h5 {
-    font-size: 16px;
-
+.exams-section{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
+
+.form-consulta{
+    display: flex;
+    flex-direction: column;
+}
+
+.consulta-input{
+    width: 100% !important;
+}
+
+textarea {
+    margin-top: 10px;
+    outline: none;
+    border: 1px solid gray;
+    border-radius: 10px;
+    flex: 1;
+    padding: 17px;
+    font-size: 18px;
+}
+
 

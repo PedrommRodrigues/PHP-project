@@ -1,21 +1,17 @@
 <?php
 include('../../funcoes.php');
-$conexao = conexao();
+$conn = conexao();
 
 verificarLogin();
 
 $consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas ORDER BY nome_pessoa;");
 
-// Calculating the number of lines on patients table 
+$id_pessoa = $_GET['id_pessoa'];
 
-$count = mysqli_query($conexao, "SELECT COUNT(*) AS count FROM pessoas;");
+$sql = "SELECT * from pessoas where id_pessoa = $id_pessoa";
 
-if ($count) {
-    // Fetch the result as an associative array
-    $row = mysqli_fetch_assoc($count);
-} else {
-    echo "Error: " . mysqli_error($conexao);
-}
+$query = mysqli_query($conn, $sql);
+
 
 ?>
 
@@ -57,7 +53,7 @@ if ($count) {
                     <a class="sb-a" href="../Pacientes/">
                         <span class="bar"></span>
                         <i class="fa-solid fa-xl fa-user" style="margin: 10px 0px;"></i>
-                        <p style="font-weight: 600;">Pacientes</p>
+                        <p>Pacientes</p>
                     </a>
                 </div>
                 <div>
@@ -85,7 +81,6 @@ if ($count) {
 
         <!-- --------------------------- Fim de Sidebar ---------------------------- -->
 
-
         <!-- ------------------------------- Header -------------------------------- -->
         <div class="right-part">
             <div class="header">
@@ -106,10 +101,11 @@ if ($count) {
             <!-- ---------------------------- Fim de header ---------------------------- -->
 
             <!-- ---------------------------- Patients ----------------------------- -->
+
             <div class="bottom-right parte-baixo">
                 <div class="section section-test">
                     <div class=" nome-section">
-                        <p class="blue">Paciente </p>
+                        <p class="blue">Consulta</p>
                         <p class="text-gray">></p>
                         <p class="text-gray">Pedro Rodrigues</p>
                     </div>
@@ -150,14 +146,13 @@ if ($count) {
                         </div>
                     </div>
 
-                    <h4 class="subtitulo">Consultas</h4>
+                    <h4 class="subtitulo">Anotações</h4>
+
+                    <!-- bottom  -->
 
                     <div class="contentor-inferior">
-
-                        <!-- bottom left -->
-
-                        <div class="contentor-inferior-esq">
-                            <div class="contentor-detalhes detalhes-consulta active-appt">
+                        <div class="contentor-detalhes detalhes-consulta">
+                            <div class="conteudo-consulta">
                                 <div class="coluna-detalhes">
                                     <i class="fa-regular fa-xl fa-calendar blue"></i>
                                     <div>
@@ -165,6 +160,7 @@ if ($count) {
                                         <p class="text-gray">15:30</p>
                                     </div>
                                 </div>
+
                                 <div>
                                     <p class="text-gray">Assunto</p>
                                     <p>Aumento de peso</p>
@@ -177,40 +173,16 @@ if ($count) {
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="contentor-detalhes detalhes-consulta active-appt">
-                                <div class="coluna-detalhes">
-                                    <i class="fa-regular fa-xl fa-calendar blue"></i>
-                                    <div>
-                                        <p class="date-text blue">21 Jan 2021</p>
-                                        <p class="text-gray">15:30</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="text-gray">Assunto</p>
-                                    <p>Aumento de peso</p>
-                                </div>
-                                <div class="coluna-detalhes coluna-ultima">
-                                    <img src="../../images/icons/patient.svg" alt="">
-                                    <div>
-                                        <p class="text-gray">Médico</p>
-                                        <p>Dr Joao costa</p>
-                                    </div>
-                                </div>
+                            <div class="exams-section">
+                                <form action="" class="form-consulta">
+                                    <label for="">RCPM</label>
+                                    <input class="inputs consulta-input" type="text">
+                                    <label for="">CCM</label>
+                                    <input class="inputs consulta-input " type="text">
+                                    <label for="">Exame de estado geral</label>
+                                    <textarea class="consulta-text-area" name="" id=""></textarea>
+                                </form>
                             </div>
-                        </div>
-
-
-
-
-                        <!-- bottom right -->
-
-                        <div class="contentor-inferior-drt">
-                            <div class="inferior-drt-header">
-                                <h5>Notas de consulta</h5>
-                                <img src="../../images/icons/edit.svg" alt="">
-                            </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                         </div>
                     </div>
                 </div>
