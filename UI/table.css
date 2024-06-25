@@ -1,13 +1,13 @@
 /* ---------------------- Container onde fica a tabela ---------------------- */
 
 .patient-list-container {
-  height: 1050px;
+  height: 650px;
   overflow: auto;
 }
  
- @media screen and (height < 750px) {
+ @media screen and (height <= 650px) {
   .patient-list-container{
-    height: 450px;
+    height: 350px;
   }
 } 
 

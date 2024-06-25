@@ -12,7 +12,7 @@ expand.forEach((button) => {
   });
 });
 
-/* ---------------------- open create new client dialog --------------------- */
+/* ---------------------- open create new medic dialog --------------------- */
 
 const openDialog1 = document.getElementById("openDialog1"); // Vou buscar o botao
 const dialog1 = document.getElementById("dialog1");
@@ -22,67 +22,29 @@ const formTitle = dialogEdit.querySelector("#form-title");
 const formBtn = dialogEdit.querySelector("#form-btn");
 
 openDialog1.addEventListener("click", () => {
-  formTitle.textContent = "Criar Cliente";
-  formBtn.textContent = "Criar novo cliente ";
+  formTitle.textContent = "Criar Médico";
+  formBtn.textContent = "Criar novo médico";
   dialog1.showModal();
 });
 
-/* ---------------------- open create appointment dialog with AJAX --------------------- */
-
-const openDialog2 = document.querySelectorAll(".openDialog2");
-const dialog2 = document.getElementById("dialog2");
-const nomePaciente = dialog2.querySelector(".php_nome");
-const moradaPaciente = dialog2.querySelector(".php_morada");
-const contactoPaciente = dialog2.querySelector(".php_contacto");
-const emailPaciente = dialog2.querySelector(".php_email");
-const nascimentoPaciente = dialog2.querySelector(".php_nascimento");
-const idPaciente = dialog2.querySelector(".php_id");
-
-openDialog2.forEach(function (button) {
-  button.addEventListener("click", function () {
-    let pessoaId = this.getAttribute("pessoa_id");
-
-    let xhr = new XMLHttpRequest();
-    xhr.open("POST", "func-processa_consulta.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    xhr.onload = function () {
-      if (xhr.status === 200) {
-        let data = JSON.parse(xhr.responseText);
-
-        idPaciente.value = data.id_pessoa;
-        nomePaciente.textContent = data.nome_pessoa;
-        nascimentoPaciente.textContent = data.data_nascimento;
-        moradaPaciente.textContent = data.morada;
-        emailPaciente.textContent = data.email;
-        contactoPaciente.textContent = data.telefone;
-
-        dialog2.showModal();
-      } else {
-        alert("Erro ao processar solicitação.");
-      }
-    };
-    xhr.send("id=" + pessoaId);
-  });
-});
-
-/* ------------------------------- Edit Patient modal ------------------------------- */
+/* ------------------------------- Edit medic modal ------------------------------- */
 
 const formEdit = dialogEdit.querySelector("#create-edit");
-const editPacienteID = dialogEdit.querySelector("#php_id");
+const editMedicoID = dialogEdit.querySelector("#php_id");
 const editNome = dialogEdit.querySelector("#php_nome");
-const editNascimento = dialogEdit.querySelector("#php_nascimento");
+const editPassword = dialogEdit.querySelector("#php_nascimento");
 const editMorada = dialogEdit.querySelector("#php_morada");
 const editPostal = dialogEdit.querySelector("#php_postal");
 const editLocalidade = dialogEdit.querySelector("#php_localidade");
 const editContacto = dialogEdit.querySelector("#php_contacto");
 const editEmail = dialogEdit.querySelector("#php_email");
+const editEspec = dialogEdit.querySelector("#php_espec");
 
 const editBtn = document.querySelectorAll(".edit");
 
 editBtn.forEach((button) => {
   button.addEventListener("click", function () {
-    let pessoaId = this.getAttribute("pessoa_id"); // Vamos buscar o atributo "pessoa_id", que estamos a passar no botão
+    let medicoId = this.getAttribute("id_medico"); // Vamos buscar o atributo "pessoa_id", que estamos a passar no botão
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "func-processa_consulta.php", true);
@@ -92,15 +54,16 @@ editBtn.forEach((button) => {
       if (xhr.status === 200) {
         let data = JSON.parse(xhr.responseText);
 
-        formEdit.action = "func-edit-client.php";
-        formTitle.textContent = "Editar cliente";
-        editPacienteID.value = data.id_pessoa;
-        editNome.value = data.nome_pessoa;
-        editNascimento.value = data.data_nascimento;
+        formEdit.action = "func-edit-medic.php";
+        formTitle.textContent = "Editar médico";
+        editMedicoID.value = data.id_medico;
+        editNome.value = data.nome;
+        // editPassword.value = data.password;
+        editEspec.value = data.especializacao;
         editMorada.value = data.morada;
         editPostal.value = data.cod_postal;
         editLocalidade.value = data.localidade;
-        editContacto.value = data.telefone;
+        editContacto.value = data.contacto;
         editEmail.value = data.email;
         formBtn.textContent = "Guardar alterações";
 
@@ -109,15 +72,7 @@ editBtn.forEach((button) => {
         alert("Erro ao processar solicitação.");
       }
     };
-    xhr.send("id=" + pessoaId);
-  });
-});
-/* ------------------------------- Close modal ------------------------------ */
-
-closeModal.forEach((button) => {
-  button.addEventListener("click", () => {
-    dialog1.close();
-    dialog2.close();
+    xhr.send("id=" + medicoId);
   });
 });
 
@@ -145,26 +100,6 @@ function hideSuccessMessage() {
 // Chama a função quando a página é carregada
 window.onload = hideSuccessMessage;
 
-/* ------------------------- func to delete patient ------------------------- */
-
-const deleteBtn = document.querySelectorAll(".delete-patient");
-const dialog3 = document.getElementById("dialog3");
-const cancelDelete = document.getElementById("btn-close");
-const removeLink = document.getElementById("remove-link");
-
-deleteBtn.forEach((btn) => {
-  const id_pessoa = btn.getAttribute("id_pessoa");
-
-  btn.addEventListener("click", () => {
-    removeLink.href = `func-remove-patient.php?id_pessoa=${id_pessoa}`;
-    dialog3.showModal();
-  });
-});
-
-cancelDelete.addEventListener("click", () => {
-  dialog3.close();
-});
-
 /* ------------------------- func to filter by name ------------------------- */
 
 const searchInput = document.getElementById("pesquisa");
@@ -181,5 +116,34 @@ searchInput.addEventListener("input", (e) => {
     } else {
       row.style.display = "none";
     }
+  });
+});
+
+/* ------------------------- func to delete patient ------------------------- */
+
+const deleteBtn = document.querySelectorAll(".delete-patient");
+const dialog3 = document.getElementById("dialog3");
+const cancelDelete = document.getElementById("btn-close");
+const removeLink = document.getElementById("remove-link");
+
+deleteBtn.forEach((btn) => {
+  const id_medico = btn.getAttribute("id_medico");
+
+  btn.addEventListener("click", () => {
+    removeLink.href = `func-remove-medic.php?id_medico=${id_medico}`;
+    dialog3.showModal();
+  });
+});
+
+cancelDelete.addEventListener("click", () => {
+  dialog3.close();
+});
+
+/* ------------------------------- Close modal ------------------------------ */
+
+closeModal.forEach((button) => {
+  button.addEventListener("click", () => {
+    dialog1.close();
+    dialog2.close();
   });
 });

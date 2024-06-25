@@ -42,7 +42,7 @@
   opacity: 1;
 }
 
-.sb-menu div:hover,
+.sb-menu a:hover,
 .logout:hover a {
   background: rgba(55, 131, 245, 7%);
   opacity: 1;

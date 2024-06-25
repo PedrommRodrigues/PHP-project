@@ -7,12 +7,12 @@ $id_consulta = $_GET['id_consulta'];
 
 
 // Para se ir buscar o nome para mostrar no erro
-$nome = "SELECT nome FROM pessoas, consultas WHERE id_consulta = $id_consulta AND pessoas.id_pessoa = consultas.id_pessoa";
+$nome = "SELECT nome_pessoa FROM pessoas, consultas WHERE id_consulta = $id_consulta AND pessoas.id_pessoa = consultas.id_pessoa";
 
 $pesquisa = mysqli_query($conn, $nome);
 
 while ($linha = mysqli_fetch_assoc($pesquisa)) {
-    $nomePessoa = $linha['nome'];
+    $nomePessoa = $linha['nome_pessoa'];
 }
 
 $del = "DELETE FROM consultas WHERE id_consulta = $id_consulta";

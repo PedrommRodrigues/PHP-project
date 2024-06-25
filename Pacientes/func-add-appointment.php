@@ -11,16 +11,18 @@ $time = $_POST['appt_time'];
 $motive = $_POST['motive'];
 $type = $_POST['type_appt'];
 
-$get_name_command = "SELECT nome FROM pessoas WHERE id_pessoa = '" . $id . "'";
+$get_name_command = "SELECT nome_pessoa FROM pessoas WHERE id_pessoa = '" . $id . "'";
 
 $get_name = mysqli_query($conn, $get_name_command);
 
 if ($get_name) {
     $linha = mysqli_fetch_assoc($get_name);
-    $nome = $linha['nome'];
+    $nome = $linha['nome_pessoa'];
 }
 
 $insert_appointment = "INSERT INTO consultas (id_pessoa, id_medico, assunto, horario, data, tipo_consulta) VALUES ('" . $id . "','" . $medic . "','" . $motive . "','" . $time . "','" . $date . "', '" . $type . "')";
+
+
 
 $inserir_consulta = mysqli_query($conn, $insert_appointment);
 

@@ -3,7 +3,7 @@
 include('../funcoes.php');
 $conexao = conexao();
 
-$name = $_POST['name'];
+$name = $_POST['name_pessoa'];
 $birthday = $_POST['birthday'];
 $address = $_POST['address'];
 $location = $_POST['location'];
@@ -11,7 +11,7 @@ $postal = $_POST['postal-code'];
 $contact = $_POST['contact'];
 $email = $_POST['email'];
 
-$insert_pessoa = "INSERT INTO pessoas (nome, morada, localidade, cod_postal, telefone, email, data_nascimento)
+$insert_pessoa = "INSERT INTO pessoas (nome_pessoa, morada, localidade, cod_postal, telefone, email, data_nascimento)
  VALUES ('" . $name . "','" . $address . "','" . $location . "','" . $postal . "','" . $contact . "','" . $email . "','" . $birthday . "')";
 
 

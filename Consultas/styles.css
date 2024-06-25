@@ -45,3 +45,7 @@
   gap: 10px;
 }
 
+
+.notification-message{
+  opacity: 0;
+}

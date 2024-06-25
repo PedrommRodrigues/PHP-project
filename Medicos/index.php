@@ -4,11 +4,11 @@ $conexao = conexao();
 
 verificarLogin();
 
-$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas ORDER BY nome_pessoa;");
+$consulta_sql = mysqli_query($conexao, "SELECT * FROM medicos ORDER BY nome;");
 
 // Calculating the number of lines on patients table 
 
-$count = mysqli_query($conexao, "SELECT COUNT(*) AS count FROM pessoas;");
+$count = mysqli_query($conexao, "SELECT COUNT(*) AS count FROM medicos;");
 
 if ($count) {
     // Fetch the result as an associative array
@@ -53,25 +53,24 @@ if ($count) {
                         <p>Consultas</p>
                     </a>
                 </div>
+                <div>
+                    <a class="sb-a" href="../Pacientes">
+                        <span></span>
+                        <i class="fa-solid fa-xl fa-user" style="margin: 10px 0px;"></i>
+                        <p>Pacientes</p>
+                    </a>
+                </div>
                 <div class="clicked">
-                    <span class="bar active"></span>
-                    <i class="fa-solid fa-xl fa-user" style="margin: 10px 0px;"></i>
-                    <p>Pacientes</p>
+                    <span class="bar"></span>
+                    <i class="bar active" class="bar"></i>
+                    <i class="fa-solid fa-xl fa-stethoscope" style="margin: 10px 0px;"></i>
+                    <p>Médicos</p>
                 </div>
                 <div>
-                    <a class="sb-a" href="../Medicos/">
-                        <span class="bar"></span>
-                        <i class="fa-solid fa-xl fa-stethoscope" style="margin: 10px 0px;"></i>
-                        <p>Médicos</p>
-                    </a>
-                </div>
-                <div>
-                    <a href="../Pacientes/Detalhes/">
-                        <span class="bar"></span>
-                        <i class="bar"></i>
-                        <img src="../images/icons/requests.svg" alt="">
-                        <p>Detalhes</p>
-                    </a>
+                    <span class="bar"></span>
+                    <i class="bar"></i>
+                    <img src="../images/icons/requests.svg" alt="">
+                    <p>Requests</p>
                 </div>
             </div>
             <div class="logout text-medium">
@@ -92,9 +91,6 @@ if ($count) {
                 <div class="hospital text-main">
                     <img src="../images/icons/home.svg" alt="" style="color: #A1ACB1;">
                     <p>Kansas City Family Medical Care</p>
-                    <button>
-                        <img src="../images/icons/chevron.svg" alt="" />
-                    </button>
                 </div>
                 <div class="user">
                     <img src="../Images/icons/Bell.svg" alt="sino" />
@@ -115,10 +111,10 @@ if ($count) {
                     <!-- ----------------------- Content on top of table ----------------------- -->
 
                     <div class="section-header">
-                        <h1 class="text-h2">Pacientes</h1>
+                        <h1 class="text-h2">Médicos</h1>
                         <div id="openDialog1" class="add-menu">
-                            <img class="add-btn" src="../images/icons/add.svg" alt="Adicionar" title="adicionar novo paciente">
-                            <p class="add-text">Adicionar novo paciente</p>
+                            <img class="add-btn" src="../images//icons/add.svg" alt="Adicionar" title="adicionar novo médico">
+                            <p class="add-text">Adicionar novo médico</p>
                         </div>
                     </div>
 
@@ -128,7 +124,7 @@ if ($count) {
                         <div class="table-header">
                             <p class="counter text-h4">
                                 <?php echo $row['count'] ?>
-                                <span style="font-weight: 400;">pacientes no total</span>
+                                <span style="font-weight: 400;">Médicos no total</span>
 
                             </p>
 
@@ -144,10 +140,7 @@ if ($count) {
                                         <p class="text-main">Type: All</p>
                                         <img src="../images/icons/chevron.svg" />
                                     </div>
-                                    <div class="menu">
-                                        <p class="text-main">Médico: Todos</p>
-                                        <img src="../images/icons/chevron.svg" />
-                                    </div>
+
                                     <div class="menu">
                                         <input id="pesquisa" class="text-main search-input"" type=" text" placeholder="Pesquisa">
                                         <img src="../images/icons/lupe.svg" />
@@ -166,9 +159,9 @@ if ($count) {
                                 <thead class="text-semibold">
                                     <tr>
                                         <th>Nome</th>
-                                        <th>Médico de familia</th>
-                                        <th>Marcar consulta</th>
-                                        <th>Exames executados</th>
+                                        <th>Especialização</th>
+                                        <th>Email</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -178,49 +171,34 @@ if ($count) {
 
                                     <?php
                                     while ($linha = mysqli_fetch_assoc($consulta_sql)) {
-                                        $nome = $linha['nome_pessoa'];
-                                        $id_pessoa = $linha['id_pessoa'];
+                                        $nome = $linha['nome'];
+                                        $id_medico = $linha['id_medico'];
+                                        $spec = $linha['especializacao'];
+                                        $email = $linha['email'];
                                     ?>
                                         <tr class="linha-tabela">
                                             <th>
                                                 <div class="united">
                                                     <h4 class="text-h4 nome"><?php echo $nome; ?></h4>
                                                 </div>
-                                                <div class="united">
-                                                    <img src="../Images/icons/United.svg" />
-                                                    <p class="text-medium" style="color: #A1ACB1">
-                                                        United Healthcare
-                                                    </p>
-                                                </div>
+
                                             </th>
-                                            <td>Sem medico</td>
+                                            <td><?php echo $spec ?></td>
                                             <td class="center">
                                                 <div class="type">
                                                 </div>
                                                 <div class="centered">
-                                                    <button class="details text-medium openDialog2" pessoa_id="<?php echo $id_pessoa; ?>">Marcar uma Consulta</button>
+                                                    <?php echo  $email; ?>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="exams text-medium " style="padding-left: 0px">
-                                                    <p>Consulta bem estar</p>
-                                                    <p>RCP</p>
-                                                    <p>CCM</p>
                                                 </div>
                                             </td>
                                             <td class="actions">
                                             </td>
                                             <td class="last-td">
-                                                <button class="details">
-                                                    <div class="img">
-                                                        <img src="../Images/icons/document.svg" />
-                                                    </div>
-                                                </button>
-                                                <button class="message call-blue">
-                                                    <div class="img">
-                                                        <img src="../Images/icons/chat.svg" />
-                                                    </div>
-                                                </button>
+
                                                 <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
                                             </td>
                                         </tr>
@@ -230,15 +208,15 @@ if ($count) {
                                             <td></td>
                                             <td></td>
                                             <td>
-                                                <div pessoa_id="<?php echo $id_pessoa; ?>" class=" hidden-buttons edit cancel-td">
+                                                <div id_medico="<?php echo $id_medico; ?>" class=" hidden-buttons edit cancel-td">
                                                     <img src="../images/icons/edit.svg" alt="Apagar cliente" title="Apagar cliente">
-                                                    <p class="text-semibold edit-patient">Editar cliente</p>
+                                                    <p class="text-semibold edit-patient">Editar médico</p>
                                                 </div>
                                             </td>
                                             <td>
-                                                <div id_pessoa="<?php echo $id_pessoa; ?>" class="cancel-td hidden-buttons delete-patient">
+                                                <div id_medico="<?php echo $id_medico; ?>" class="cancel-td hidden-buttons delete-patient">
                                                     <img class="cancelar-round-btn-red delete-patient" src="../images/icons/close.svg" alt="Apagar cliente" title="Apagar cliente">
-                                                    <p class="text-semibold delete-patient">Apagar cliente</p>
+                                                    <p class="text-semibold delete-patient">Apagar médico</p>
                                                 </div>
                                             </td>
                                         </tr>
@@ -262,15 +240,13 @@ if ($count) {
         <dialog id="dialog1">
             <div class="add-card">
                 <div class="card-header">
-                    <h2 id="form-title">Criar novo cliente</h2>
+                    <h2 id="form-title">Criar novo médico</h2>
                 </div>
                 <div class="card-form">
                     <form action="func-add-client.php" method="post" id="create-edit">
-                        <input id="php_id" class="php_id" name="id_pessoa" value=""></input>
+                        <input id="php_id" class="php_id" name="id_medico" value=""></input>
                         <label>Nome</label>
                         <input id="php_nome" class="inputs " name="name" type="text" />
-                        <label>Data de nascimento</label>
-                        <input id="php_nascimento" class="inputs " name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" />
                         <label>Morada</label>
                         <input id="php_morada" class="inputs " name="address" type="text" value="" />
                         <label>Código postal</label>
@@ -281,6 +257,29 @@ if ($count) {
                         <input id="php_contacto" class="inputs " name="contact" type="tel" value="" />
                         <label>Email</label>
                         <input id="php_email" class="inputs " name="email" type="email" />
+                        <label>Especialização</label>
+                        <select id="php_espec" name="espec" class="inputs">
+                            <option value="Cardiologia">Cardiologia</option>
+                            <option value="Medicina Geral">Medicina Geral</option>
+                            <option value="Ortopedia">Ortopedia</option>
+                            <option value="Estomatologia">Estomatologia</option>
+                            <option value="Dermatologia">Dermatologia</option>
+                            <option value="Pediatria">Pediatria</option>
+                            <option value="Ginecologia">Ginecologia</option>
+                            <option value="Neurologia">Neurologia</option>
+                            <option value="Psiquiatria">Psiquiatria</option>
+                            <option value="Oftalmologia">Oftalmologia</option>
+                            <option value="Oncologia">Oncologia</option>
+                            <option value="Endocrinologia">Endocrinologia</option>
+                            <option value="Urologia">Urologia</option>
+                            <option value="Gastroenterologia">Gastroenterologia</option>
+                            <option value="Nefrologia">Nefrologia</option>
+                            <option value="Hematologia">Hematologia</option>
+                            <option value="Reumatologia">Reumatologia</option>
+                            <option value="Infectologia">Infectologia</option>
+                            <option value="Pneumologia">Pneumologia</option>
+                            <option value="Radiologia">Radiologia</option>
+                        </select>
                         <div class="submit-section">
                             <button type="reset" class="btn-cancel text-medium close-modal">
                                 Cancelar
@@ -294,89 +293,15 @@ if ($count) {
             </div>
         </dialog>
 
-        <!--  ------------------------------- create appointment modal ------------------------------  -->
 
-        <dialog id="dialog2">
-            <div class="add-card">
-                <div class="card-header">
-                    <h2>Criar nova consulta</h2>
-                </div>
-                <div class="client-details">
-                    <p>Paciente</p>
-                    <p class="text-h4 php_nome"></p>
-                    <p class="text-medium text-gray php_nascimento"></p>
-                </div>
-                <div class="client-contacts">
-                    <div>
-                        <img src="../images/icons/phone.svg" alt="phone" title="telemovel">
-                        <p class="php_contacto"></p>
-                    </div>
-                    <div>
-                        <img src="../images/icons/email.svg" alt="envelope" title="envelope">
-                        <p class="php_email"></p>
-                    </div>
-                    <div>
-                        <img src="../images/icons/map.svg" alt="ponto no mapa" title="ponto no mapa">
-                        <p class="php_morada"></p>
-                    </div>
-                </div>
-                <div class="card-form">
-                    <form method="post" metod="post" action="func-add-appointment.php">
-                        <input class="php_id" name="id_pessoa" value=""></input>
-                        <label for="medic">Médico</label>
-                        <select name="medic" class="inputs" value="">
-                            <?php
-                            $sql = "SELECT * FROM medicos ";
-                            $consulta_sql = mysqli_query($conexao, $sql);
-
-
-                            while ($linha = mysqli_fetch_assoc($consulta_sql)) {
-                                $nome = $linha['nome'];
-                                $id_medico = $linha['id_medico'];
-                                $spec = $linha['especializacao'];
-
-                            ?>
-                                <option value="<?php if (isset($id_medico)) {
-                                                    echo $id_medico;
-                                                } ?>"><?php if (isset($nome)) {
-                                                            echo $nome;
-                                                        } ?> - <?php if (isset($nome)) {
-                                                                    echo $spec;
-                                                                } ?> </option>
-                            <?php } ?>
-                        </select>
-                        <label for="date">Data da consulta</label>
-                        <input class="inputs" name="date" type="date" value="" min="2000-01-01" max="2027-12-31" />
-                        <label for="appt_time">Horário</label>
-                        <input class="inputs" name="appt_time" type="time" value="" />
-                        <label>Motivo</label>
-                        <input class="inputs" name="motive" type="text" value="" />
-                        <label for="type_appt">Tipo de consulta</label>
-                        <select name="type_appt" id="" class="inputs">
-                            <option value="presencial">Presencial</option>
-                            <option value="teleconsulta">Teleconsulta</option>
-                        </select>
-                        <div class="submit-section">
-                            <button type="reset" class="btn-cancel text-medium close-modal">
-                                Cancelar
-                            </button>
-                            <button class="btn-accept text-medium ">
-                                Criar nova consulta
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </dialog>
-
-        <!-- ------------------------- delete patient  -------------------------- -->
+        <!-- ------------------------- delete medic  -------------------------- -->
 
         <dialog id="dialog3">
             <div class="">
                 <div class="dialog3-top">
                     <img src="../images/icons/atencao.svg" alt="" style="width: 50px;">
                     <div>
-                        <p class="text-h4">Pretende elimintar este paciente?</p>
+                        <p class="text-h4">Pretende elimintar este médico?</p>
                         <p class="dialog-gray-text">Não é possivel reverter esta ação!</p>
                     </div>
                 </div>

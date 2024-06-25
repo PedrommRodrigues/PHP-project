@@ -1,0 +1,127 @@
+/* ---------------------------------- topo ---------------------------------- */
+
+.nome-section {
+    display: flex;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.nome-section p{
+    margin:15px 14px 26px 0;
+}
+
+
+.contentor-detalhes{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 26px;
+}
+
+.detalhes{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.parte-baixo{
+    display: flex;
+    flex: 1;
+}
+
+.section-test{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    
+}
+
+.detalhes-section{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.detalhes-section p{
+    margin-top: 5px;
+}
+
+.detalhes-img{
+    width: 20px;
+    margin-top: 5px;
+}
+
+/* ----------------------------- meio de secção ----------------------------- */
+
+.subtitulo{
+    margin: 24px 0px;
+    color: #3783f5;
+}
+
+/* ---------------------------- conteudo inferior --------------------------- */
+
+.contentor-inferior{
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+
+/* ------------------------- contentor infetior esq ------------------------- */
+
+.contentor-inferior-esq{
+    width: 60%;
+}
+
+.detalhes-consulta{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+.active-appt{
+    box-shadow: 0 1px 3px rgba(6, 166, 137, 0.5);
+    border-left: 3px solid #3783F5;
+}
+
+.coluna-detalhes{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    
+}
+
+.date-text{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.blue{
+    color: #3783F5;
+}
+
+.coluna-ultima{
+    margin-right: 30px;
+}
+
+/* ---------------------------- contentor inferior direito --------------------------- */
+
+.contentor-inferior-drt{
+    width: 35%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 26px;
+    box-shadow: 0 2px 3px rgba(6, 166, 137, 0.5);
+    height: auto;
+}
+
+.inferior-drt-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px ;
+}
+
+.inferior-drt-header > h5 {
+    font-size: 16px;
+
+}
+

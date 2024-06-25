@@ -1,0 +1,101 @@
+.nc-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: space-between !important;
+    width: 85% !important;
+  }
+  
+  .nc-checkbox div {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .nc-checkbox input {
+    margin: 0 10px 0px 0 !important;
+    cursor: pointer;
+    width: auto !important;
+  }
+  
+  .nc-checkbox label {
+    cursor: pointer;
+  }
+  
+  .details {
+    background-color: rgba(6, 166, 137, 0.07);
+    border: none;
+    padding: 12px 15px;
+    border-radius: 10px;
+    color: #06a689;
+    margin-right: 18px;
+  }
+  
+  .submit-section {
+    padding-top: 25px;
+    width: 405px;
+    margin: 8px 0px 15px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .inputs {
+    width: 95%;
+    border: 1px solid #a1acb1;
+    border-radius: 12px;
+    box-sizing: border-box;
+    padding: 15px 24px 15px 26px ;
+    outline: none;
+    margin: 5px 0px 15px 0px;
+  }
+  
+  
+  @media screen and (min-height: 831px) and (max-height: 1000px) {
+    .submit-section {
+      margin: 18px 0px 45px 0;
+      margin-bottom: 24px;
+    }
+  
+    .input {
+      padding: 15px 24px 15px 26px;
+      margin-bottom: 10px;
+    }
+  
+    .selected {
+      padding: 15px 24px 15px 26px;
+    }
+  }
+
+
+.btn-accept {
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  background: #3783f5;
+  padding: 12px 19px;
+  color: #fff;
+  width: 200px;
+  transition: background-color 0.3s ease;
+}
+
+.add-card {
+  width: 455px;
+  background: #fff;
+  box-shadow: 0px 2px 13px rgba(32, 47, 61, 0.13);
+  border-radius: 10px;
+  z-index: 200;
+}
+
+.card-form{
+  padding: 20px 0px 30px 20px;
+}
+
+.card-header {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 26px 0 0 26px;
+  height: 75px;
+  border-radius: 10px 10px 0 0;
+  background: rgba(55, 131, 245, 7%);
+  z-index: 200;
+}
+
