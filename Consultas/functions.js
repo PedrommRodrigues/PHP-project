@@ -96,6 +96,22 @@ dateDisplayed.forEach((date) => {
   console.log(formatedDate);
 });
 
+/* ---------------------------- Edit appointment ---------------------------- */
+
+const editAppointment = document.querySelectorAll(".edit");
+const dialog2 = document.getElementById("dialog2");
+const closeModal = document.getElementById("close-modal");
+
+editAppointment.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    dialog2.showModal();
+  });
+});
+
+closeModal.addEventListener("click", () => {
+  dialog2.close();
+});
+
 /* --------------------------- Delete appointment --------------------------- */
 
 const deleteAppt = document.querySelectorAll(".delete_appt");

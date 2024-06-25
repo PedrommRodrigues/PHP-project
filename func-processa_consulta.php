@@ -1,5 +1,5 @@
 <?php
-include("../funcoes.php");
+include("funcoes.php");
 
 if (isset($_POST['id'])) {
     $id_pessoa = $_POST['id'];

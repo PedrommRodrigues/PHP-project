@@ -27,260 +27,329 @@ if ($count) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connected</title>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../UI/header.css">
     <link rel="stylesheet" href="../UI/sidebar.css">
     <link rel="stylesheet" href="../UI/content-card.css">
     <link rel="stylesheet" href="../UI/table.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../UI/modal-create-client.css">
+    <link rel="stylesheet" href="../UI/menu-create-appointment.css">
+
     <!-- <link rel="stylesheet" href="../UI/search-menu.css"> -->
 
 
 </head>
 
-<body>
-    <div class="container">
-        <!-- ------------------------------- Sidebar ------------------------------- -->
-        <div class="side-bar">
-            <img src="../Images/logo-icon-trans 1.svg" alt="connected clinic" class="logo" />
-            <div class="sb-menu text-medium">
-                <div class="clicked">
-                    <span class="bar active"></span>
-                    <img src="../images/icons/appointments.svg" alt="Marcações">
-                    <p>Consultas</p>
-                </div>
-                <div>
-                    <a class="sb-a" href="../Pacientes/">
-                        <span class="bar"></span>
 
-                        <img src="../images/icons/patients.svg" alt="Pacientes">
-                        <p>Pacientes</p>
-                    </a>
-                </div>
-                <div>
-                    <span class="bar"></span>
-                    <img src="../images/icons/dashboard.svg" alt="Dashboard">
-                    <p>Dashboard</p>
-                </div>
-                <div>
-                    <span class="bar"></span>
-                    <i class="bar"></i>
-                    <img src="../images/icons/requests.svg" alt="">
-                    <p>Definições</p>
-                </div>
+
+
+<body>
+    <div class="side-bar">
+        <img src="../Images/logo-icon-trans 1.svg" alt="connected clinic" class="logo" />
+        <div class="sb-menu text-medium">
+            <div class="clicked">
+                <span class="bar active"></span>
+                <img src="../images/icons/appointments.svg" alt="Marcações">
+                <p>Consultas</p>
             </div>
-            <div class="logout text-medium">
-                <a class="sb-a" href="../logout.php">
+            <div>
+                <a class="sb-a" href="../Pacientes/">
                     <span class="bar"></span>
-                    <img src="../images/icons/log-out.svg" alt="">
-                    <p>Log Out</p>
+
+                    <img src="../images/icons/patients.svg" alt="Pacientes">
+                    <p>Pacientes</p>
                 </a>
             </div>
+            <div>
+                <span class="bar"></span>
+                <img src="../images/icons/dashboard.svg" alt="Dashboard">
+                <p>Dashboard</p>
+            </div>
+            <div>
+                <span class="bar"></span>
+                <i class="bar"></i>
+                <img src="../images/icons/requests.svg" alt="">
+                <p>Definições</p>
+            </div>
         </div>
+        <div class="logout text-medium">
+            <a class="sb-a" href="../logout.php">
+                <span class="bar"></span>
+                <img src="../images/icons/log-out.svg" alt="">
+                <p>Log Out</p>
+            </a>
+        </div>
+    </div>
 
-        <!-- --------------------------- Fim de Sidebar ---------------------------- -->
+    <!-- --------------------------- Fim de Sidebar ---------------------------- -->
 
 
-        <!-- ------------------------------- Header -------------------------------- -->
-        <div class="right-part">
-            <div class="header">
-                <div class="hospital text-main">
-                    <img src="../images/icons/home.svg" alt="" style="color: #A1ACB1;">
-                    <p>Kansas City Family Medical Care</p>
-                    <button>
-                        <img src="../images/icons/chevron.svg" alt="" />
-                    </button>
-                </div>
-                <div class="user">
-                    <img src="../Images/icons/Bell.svg" alt="sino" />
-                    <img class="picture" src="../Images/doctor.svg" alt="imagem do utilizador" />
-                    <div class="user-info">
-                        <p class="text-main">Margaret Lim</p>
-                        <p class="spec">Cardiologist</p>
-                    </div>
+    <!-- ------------------------------- Header -------------------------------- -->
+    <div class="right-part">
+        <div class="header">
+            <div class="hospital text-main">
+                <img src="../images/icons/home.svg" alt="" style="color: #A1ACB1;">
+                <p>Kansas City Family Medical Care</p>
+                <button>
+                    <img src="../images/icons/chevron.svg" alt="" />
+                </button>
+            </div>
+            <div class="user">
+                <img src="../Images/icons/Bell.svg" alt="sino" />
+                <img class="picture" src="../Images/doctor.svg" alt="imagem do utilizador" />
+                <div class="user-info">
+                    <p class="text-main">Margaret Lim</p>
+                    <p class="spec">Cardiologist</p>
                 </div>
             </div>
+        </div>
 
-            <!-- ---------------------------- Fim de header ---------------------------- -->
+        <!-- ---------------------------- Fim de header ---------------------------- -->
 
-            <!-- ---------------------------- Appointments ----------------------------- -->
-            <div class="bottom-right">
-                <div class="section">
+        <!-- ---------------------------- Appointments ----------------------------- -->
+        <div class="bottom-right">
+            <div class="section">
 
-                    <!-- ----------------------- Content on top of table ----------------------- -->
+                <!-- ----------------------- Content on top of table ----------------------- -->
 
-                    <div class="section-header">
-                        <h1 class="text-h2">Consultas</h1>
-                        <div class="menu">
+                <div class="section-header">
+                    <h1 class="text-h2">Consultas</h1>
+                    <div class="menu">
 
-                        </div>
                     </div>
+                </div>
 
 
-                    <!-- ------------------------------ container ------------------------------ -->
-                    <div class="card-section">
-                        <div class="table-header">
-                            <p class="counter text-h4">
-                                <?php echo $row['count'] ?>
-                                consultas
-                            </p>
+                <!-- ------------------------------ container ------------------------------ -->
+                <div class="card-section">
+                    <div class="table-header">
+                        <p class="counter text-h4">
+                            <?php echo $row['count'] ?>
+                            consultas
+                        </p>
 
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <div class="header-container">
-                                <div class="header-menu">
-                                    <div class="menu">
-                                        <p class="text-main">Type: All</p>
-                                        <img src="../images/icons/chevron.svg" />
-                                    </div>
-                                    <div class="menu">
-                                        <p class="text-main">Legivel para: Tudo</p>
-                                        <img src="../images/icons/chevron.svg" />
-                                    </div>
-                                    <div class="menu">
-                                        <input class="text-main search-input"" type=" text" placeholder="Pesquisa">
-                                        <img src="../images/icons/lupe.svg" />
-                                    </div>
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <div class="header-container">
+                            <div class="header-menu">
+                                <div class="menu">
+                                    <p class="text-main">Type: All</p>
+                                    <img src="../images/icons/chevron.svg" />
+                                </div>
+                                <div class="menu">
+                                    <p class="text-main">Legivel para: Tudo</p>
+                                    <img src="../images/icons/chevron.svg" />
+                                </div>
+                                <div class="menu">
+                                    <input class="text-main search-input"" type=" text" placeholder="Pesquisa">
+                                    <img src="../images/icons/lupe.svg" />
                                 </div>
                             </div>
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
                         </div>
-                        <div class="patient-list-container">
-                            <table>
-                                <thead class="text-semibold">
-                                    <tr>
-                                        <th>Paciente</th>
-                                        <th>Assunto</th>
-                                        <th>Data</th>
-                                        <th>Estado de COVID</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                        <!-- ------------------------- Trocar para select -------------------------- -->
+                    </div>
+                    <div class="patient-list-container">
+                        <table>
+                            <thead class="text-semibold">
+                                <tr>
+                                    <th>Paciente</th>
+                                    <th>Assunto</th>
+                                    <th>Data</th>
+                                    <th>Estado de COVID</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                                    <!--  ----------------- Line with each line of data on the list ----------------  -->
+                                <!--  ----------------- Line with each line of data on the list ----------------  -->
 
-                                    <?php
-                                    while ($linha = mysqli_fetch_assoc($consulta_sql)) {
-                                        $nome = $linha['nome'];
-                                        $assunto = $linha['assunto'];
-                                        $data = $linha['data'];
-                                        $covid = $linha['covid'];
-                                        $id_consulta = $linha['id_consulta'];
-                                        $time = $linha['horario'];
-                                        $type = $linha['tipo_consulta'];
-                                    ?>
-                                        <tr class=" click-event">
-                                            <th>
-                                                <div class="united">
-                                                    <h4 class="text-h4"><?php echo $nome; ?></h4>
-                                                    <img class="hide check" src="../Images/icons/check-one.svg" />
-                                                    <img class="hide double" src="../Images/icons/check-double.svg" />
+                                <?php
+                                while ($linha = mysqli_fetch_assoc($consulta_sql)) {
+                                    $nome = $linha['nome'];
+                                    $assunto = $linha['assunto'];
+                                    $data = $linha['data'];
+                                    $covid = $linha['covid'];
+                                    $id_consulta = $linha['id_consulta'];
+                                    $time = $linha['horario'];
+                                    $type = $linha['tipo_consulta'];
+                                ?>
+                                    <tr class=" click-event">
+                                        <th>
+                                            <div class="united">
+                                                <h4 class="text-h4"><?php echo $nome; ?></h4>
+                                                <img class="hide check" src="../Images/icons/check-one.svg" />
+                                                <img class="hide double" src="../Images/icons/check-double.svg" />
+                                            </div>
+                                            <div class="united">
+                                                <img src="../Images/icons/United.svg" />
+                                                <p class="text-medium" style="color: #A1ACB1">
+                                                    United Healthcare
+                                                </p>
+                                            </div>
+                                        </th>
+                                        <td><?php echo $assunto ?></td>
+                                        <td class="center">
+                                            <div class="date-cell">
+                                                <div class="type">
+                                                    <img src="../images/icons/<?php echo $type ?>.svg" alt="">
                                                 </div>
-                                                <div class="united">
-                                                    <img src="../Images/icons/United.svg" />
-                                                    <p class="text-medium" style="color: #A1ACB1">
-                                                        United Healthcare
-                                                    </p>
+                                                <div>
+                                                    <p class="php_date"><?php echo $data; ?></p>
+                                                    <strong> <?php echo $time; ?>h</strong>
                                                 </div>
-                                            </th>
-                                            <td><?php echo $assunto ?></td>
-                                            <td class="center">
-                                                <div class="date-cell">
-                                                    <div class="type">
-                                                        <img src="../images/icons/<?php echo $type ?>.svg" alt="">
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <p class="covid"><?php echo $covid; ?></p>
+                                        </td>
+                                        <td class="actions">
+                                            <button onclick="checkIn(this)" class="call-blue text-medium check-btn">
+                                                Check In
+                                            </button>
+                                            <button onclick="chamar(this)" class="call-green text-medium double-btn"> Chamar </button>
+                                        </td>
+                                        <td>
+                                            <div class="cancel-td">
+                                                <button class="details">
+                                                    <div class="img">
+                                                        <img src="../Images/icons/document.svg" />
                                                     </div>
-                                                    <div>
-                                                        <p class="php_date"><?php echo $data; ?></p>
-                                                        <strong> <?php echo $time; ?>h</strong>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="covid"><?php echo $covid; ?></p>
-                                            </td>
-                                            <td class="actions">
-                                                <button onclick="checkIn(this)" class="call-blue text-medium check-btn">
-                                                    Check In
                                                 </button>
-                                                <button onclick="chamar(this)" class="call-green text-medium double-btn"> Chamar </button>
-                                            </td>
-                                            <td>
-                                                <div class="cancel-td">
-                                                    <button class="details">
-                                                        <div class="img">
-                                                            <img src="../Images/icons/document.svg" />
-                                                        </div>
-                                                    </button>
-                                                    <button class="message call-blue">
-                                                        <div class="img">
-                                                            <img src="../Images/icons/chat.svg" />
-                                                        </div>
-                                                    </button>
-                                                    <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="hidden hide-row  border">
-                                            <td class="hidden-line">
-                                                <div class="exams">
-                                                    <p>Consulta bem estar</p>
-                                                    <p>RCP</p>
-                                                    <p>CCM</p>
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <div class="delete-appointment delete_appt cancel-td">
-                                                    <img class="cancelar-round-btn" src="../images/icons/close.svg" alt="Calcelar consulta" title="Cancelar consulta">
-                                                    <p class="text-semibold testep">Cancelar consulta</p>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                </tbody>
-                            </table>
-                        </div>
+                                                <button class="message call-blue">
+                                                    <div class="img">
+                                                        <img src="../Images/icons/chat.svg" />
+                                                    </div>
+                                                </button>
+                                                <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="hidden hide-row  border">
+                                        <td class="hidden-line">
+                                            <div class="exams">
+                                                <p>Consulta bem estar</p>
+                                                <p>RCP</p>
+                                                <p>CCM</p>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <div pessoa_id="<?php echo $id_pessoa; ?>" class=" hidden-buttons edit cancel-td">
+                                                <img src="../images/icons/edit.svg" alt="Apagar cliente" title="Apagar cliente">
+                                                <p class="text-semibold edit-patient">Editar consulta</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="delete-appointment delete_appt cancel-td">
+                                                <img class="cancelar-round-btn" src="../images/icons/close.svg" alt="Calcelar consulta" title="Cancelar consulta">
+                                                <p class="text-semibold testep">Cancelar consulta</p>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <!-- ---------------------------- Fim de Appointments ----------------------------- -->
-
         </div>
+        <!-- ---------------------------- Fim de Appointments ----------------------------- -->
 
+    </div>
 
-        <dialog id="dialog3">
-            <div class="">
-                <div class="dialog3-top">
-                    <img src="../images/icons/atencao.svg" alt="" style="width: 50px;">
-                    <div>
-                        <p class="text-h4">Pretende cancelar esta consulta?</p>
-                        <p class="dialog-gray-text">Não é possivel reverter esta ação!</p>
-                    </div>
+    <!--  ------------------------------- edit appointment modal ------------------------------  -->
+
+    <dialog id="dialog2">
+        <div class="add-card">
+            <div class="card-header">
+                <h2>Editar consulta</h2>
+            </div>
+            <div class="client-details">
+                <p>Paciente</p>
+                <p class="text-h4 php_nome"></p>
+                <p class="text-medium text-gray php_nascimento"></p>
+            </div>
+            <div class="client-contacts">
+                <div>
+                    <img src="../images/icons/phone.svg" alt="phone" title="telemovel">
+                    <p class="php_contacto"></p>
                 </div>
                 <div>
-                    <button class="btn-cancel">Cancelar</button>
-                    <a class="btn-red" href="func-remove-appointment.php?id_consulta= <?php echo $id_consulta; ?>">Confirmar</a>
+                    <img src="../images/icons/email.svg" alt="envelope" title="envelope">
+                    <p class="php_email"></p>
+                </div>
+                <div>
+                    <img src="../images/icons/map.svg" alt="ponto no mapa" title="ponto no mapa">
+                    <p class="php_morada"></p>
                 </div>
             </div>
-        </dialog>
+            <div class="card-form">
+                <form method="post" metod="post" action="func-add-appointment.php">
+                    <input class="php_id" name="id_pessoa" value=""></input>
+                    <label for="medic">Médico</label>
+                    <select name="medic" class="inputs">
+                        <option value="1">Medico 1</option>
+                        <option value="2">Medico 2</option>
+                    </select>
+                    <label for="date">Data da consulta</label>
+                    <input class="inputs" name="date" type="date" value="" min="2000-01-01" max="2027-12-31" />
+                    <label for="appt_time">Horário</label>
+                    <input class="inputs" name="appt_time" type="time" value="" />
+                    <label>Motivo</label>
+                    <input class="inputs" name="motive" type="text" value="" />
+                    <label for="type_appt">Tipo de consulta</label>
+                    <select name="type_appt" id="" class="inputs">
+                        <option value="presencial">Presencial</option>
+                        <option value="teleconsulta">Teleconsulta</option>
+                    </select>
+                    <div class="submit-section">
+                        <button type="reset" id="close-modal" class="btn-cancel text-medium ">
+                            Cancelar
+                        </button>
+                        <button class="btn-accept text-medium ">
+                            Criar nova consulta
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </dialog>
 
-        <!-- ---------------------------- Notificação ----------------------------- -->
+    <!--  ------------------------------- delete appointment modal ------------------------------  -->
 
-        <?php
-        if (isset($_SESSION['success'])) {
-            echo '<div id="success-message" class="notification-message">
+    <dialog id="dialog3">
+        <div class="">
+            <div class="dialog3-top">
+                <img src="../images/icons/atencao.svg" alt="" style="width: 50px;">
+                <div>
+                    <p class="text-h4">Pretende cancelar esta consulta?</p>
+                    <p class="dialog-gray-text">Não é possivel reverter esta ação!</p>
+                </div>
+            </div>
+            <div>
+                <button class="btn-cancel">Cancelar</button>
+                <a class="btn-red" href="func-remove-appointment.php?id_consulta= <?php echo $id_consulta; ?>">Confirmar</a>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- ---------------------------- Notificação ----------------------------- -->
+
+    <?php
+    if (isset($_SESSION['success'])) {
+        echo '<div id="success-message" class="notification-message">
                                             <div class="circle">
                                             </div>
                                             <div class="notification-text">
@@ -291,13 +360,13 @@ if ($count) {
                                                 <img id="close-notification" class="cross-notification" src="../images/icons/cross.svg" alt="">
                                             </div>
                                         </div>';
-            unset($_SESSION['success']);
-            unset($_SESSION['notification-type']);
-            unset($_SESSION['nome']);
-        }
-        ?>
+        unset($_SESSION['success']);
+        unset($_SESSION['notification-type']);
+        unset($_SESSION['nome']);
+    }
+    ?>
 
-        <script src="functions.js"></script>
+    <script src="functions.js"></script>
 </body>
 
 </html>
