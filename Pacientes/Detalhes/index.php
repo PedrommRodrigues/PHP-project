@@ -4,18 +4,29 @@ $conexao = conexao();
 
 verificarLogin();
 
-$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas ORDER BY nome_pessoa;");
+$id_pessoa = $_GET['id_pessoa'];
 
-// Calculating the number of lines on patients table 
+$sql = "SELECT * FROM pessoas, consultas, medicos WHERE pessoas.id_pessoa = consultas.id_pessoa AND consultas.id_medico = medicos.id_medico AND pessoas.id_pessoa = $id_pessoa";
 
-$count = mysqli_query($conexao, "SELECT COUNT(*) AS count FROM pessoas;");
+$query_sql = mysqli_query($conexao, $sql);
 
-if ($count) {
-    // Fetch the result as an associative array
-    $row = mysqli_fetch_assoc($count);
-} else {
-    echo "Error: " . mysqli_error($conexao);
+if ($query_sql) {
+    $linha = mysqli_fetch_assoc($query_sql);
+    $nome_pessoa = $linha['nome_pessoa'];
+    $nascimento = $linha['data_nascimento'];
+    $contacto = $linha['telefone'];
+    $morada = $linha['morada'];
+    $localidade = $linha['localidade'];
+    $email = $linha['email'];
+    $medico = $linha['nome'];
+    $assunto = $linha['assunto'];
+    $data = $linha['data'];
+    $horario = $linha['horario'];
+    $medico = $linha['nome'];
 }
+
+$nome_utilizador = $_SESSION['nome_utilizador'];
+$spec_utilizador = $_SESSION['spec'];
 
 ?>
 
@@ -25,7 +36,7 @@ if ($count) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connected</title>
+    <title>Detalhes</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../../UI/menu-create-client.css">
@@ -54,7 +65,7 @@ if ($count) {
                     </a>
                 </div>
                 <div class="clicked">
-                    <a class="sb-a" href="../Pacientes/">
+                    <a class="sb-a" href="../../Pacientes/">
                         <span class="bar"></span>
                         <i class="fa-solid fa-xl fa-user" style="margin: 10px 0px;"></i>
                         <p style="font-weight: 600;">Pacientes</p>
@@ -67,12 +78,12 @@ if ($count) {
                         <p>Médicos</p>
                     </a>
                 </div>
-                <div>
+                <!-- <div>
                     <span class="bar"></span>
                     <i class="bar"></i>
                     <img src="../../images/icons/requests.svg" alt="">
                     <p>Requests</p>
-                </div>
+                </div> -->
             </div>
             <div class="logout text-medium">
                 <a class="sb-a" href="../logout.php">
@@ -95,10 +106,10 @@ if ($count) {
                 </div>
                 <div class="user">
                     <img src="../../Images/icons/Bell.svg" alt="sino" />
-                    <img class="picture" src="../../Images/doctor.svg" alt="imagem do utilizador" />
+                    <img class="picture" src="../../Images/icons/patient.svg" alt="imagem do utilizador" />
                     <div class="user-info">
-                        <p class="text-main">Margaret Lim</p>
-                        <p class="spec">Cardiologist</p>
+                        <p class="text-main"><?php echo $nome_utilizador; ?></p>
+                        <p class="spec"><?php echo $spec_utilizador; ?></p>
                     </div>
                 </div>
             </div>
@@ -111,7 +122,7 @@ if ($count) {
                     <div class=" nome-section">
                         <p class="blue">Paciente </p>
                         <p class="text-gray">></p>
-                        <p class="text-gray">Pedro Rodrigues</p>
+                        <p class="text-gray"><?php echo $nome_pessoa; ?></p>
                     </div>
 
                     <div class="contentor-detalhes">
@@ -119,28 +130,28 @@ if ($count) {
                             <div class="detalhes-section">
                                 <img src="../../images/icons/patient.svg" alt="">
                                 <div>
-                                    <strong>Pedro Rodrigues</strong>
-                                    <p class="text-gray">data nasimento</p>
+                                    <strong><?php echo $nome_pessoa; ?></strong>
+                                    <p class="text-gray"><?php echo $nascimento; ?></p>
                                 </div>
                             </div>
                             <div>
                                 <div class="detalhes-section">
                                     <img class="detalhes-img" src="../../images/icons/phone.svg" alt="">
-                                    <p>939101129</p>
+                                    <p><?php echo $contacto; ?></p>
                                 </div>
                                 <div class="detalhes-section">
                                     <img class="detalhes-img" src="../../images/icons/email.svg" alt="">
-                                    <p>pedro@gmail.com</p>
+                                    <p><?php echo $email; ?></p>
                                 </div>
                             </div>
                             <div class="detalhes-section">
                                 <img class="detalhes-img" src="../../images/icons/map.svg" alt="">
-                                <p>Avenida Conde D.Henrique<br> lote 173 cave direita</p>
+                                <p><?php echo $morada; ?>, <?php echo $localidade; ?></p>
                             </div>
                             <div>
                                 <div class="detalhes-section">
                                     <img src="../../images/icons/patients.svg" alt="">
-                                    <p>Dr. Pedro Rodrigues</p>
+                                    <p><?php echo $medico; ?></p>
                                 </div>
                                 <div class="detalhes-section">
                                     <img class="detalhes-img" src="../../images/icons/United.svg" alt="">
@@ -152,53 +163,51 @@ if ($count) {
 
                     <h4 class="subtitulo">Consultas</h4>
 
+
+
+                    <!-- bottom left -->
                     <div class="contentor-inferior">
-
-                        <!-- bottom left -->
-
                         <div class="contentor-inferior-esq">
-                            <div class="contentor-detalhes detalhes-consulta active-appt">
-                                <div class="coluna-detalhes">
-                                    <i class="fa-regular fa-xl fa-calendar blue"></i>
-                                    <div>
-                                        <p class="date-text blue">21 Jan 2021</p>
-                                        <p class="text-gray">15:30</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="text-gray">Assunto</p>
-                                    <p>Aumento de peso</p>
-                                </div>
-                                <div class="coluna-detalhes coluna-ultima">
-                                    <img src="../../images/icons/patient.svg" alt="">
-                                    <div>
-                                        <p class="text-gray">Médico</p>
-                                        <p>Dr Joao costa</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <?php
+                            $consultas = mysqli_query($conexao, "SELECT * FROM consultas, medicos, pessoas WHERE pessoas.id_pessoa = consultas.id_pessoa AND consultas.id_medico = medicos.id_medico AND pessoas.id_pessoa = $id_pessoa");
 
-                            <div class="contentor-detalhes detalhes-consulta active-appt">
-                                <div class="coluna-detalhes">
-                                    <i class="fa-regular fa-xl fa-calendar blue"></i>
+                            while ($consulta = mysqli_fetch_assoc($consultas)) {
+                                // $notas = $consulta['notas'];
+                                // $exames = $consulta['exames'];
+                                // $eeg = $consulta['eeg'];
+                                $pressao = $consulta['pressao'];
+                                $data_consulta = $consulta['data'];
+                                $hora_consulta = $consulta['horario'];
+                                $medico_consulta = $consulta['nome'];
+                                $assunto = $consulta['assunto'];
+                                $id_consulta = $consulta['id_consulta'];
+                            ?>
+
+
+                                <div class="contentor-detalhes detalhes-consulta " id_consulta="<?php echo $id_consulta; ?>">
+                                    <div class="coluna-detalhes">
+                                        <i class="fa-regular fa-xl fa-calendar blue"></i>
+                                        <div>
+                                            <p class="date-text blue"><?php echo $data_consulta; ?></p>
+                                            <p class="text-gray"><?php echo $hora_consulta; ?></p>
+                                        </div>
+                                    </div>
                                     <div>
-                                        <p class="date-text blue">21 Jan 2021</p>
-                                        <p class="text-gray">15:30</p>
+                                        <p class="text-gray">Assunto</p>
+                                        <p><?php echo $assunto; ?></p>
+                                    </div>
+                                    <div class="coluna-detalhes coluna-ultima">
+                                        <img src="../../images/icons/patient.svg" alt="">
+                                        <div>
+                                            <p class="text-gray">Médico</p>
+                                            <p>Dr(a) <?php echo $medico_consulta; ?></p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div>
-                                    <p class="text-gray">Assunto</p>
-                                    <p>Aumento de peso</p>
-                                </div>
-                                <div class="coluna-detalhes coluna-ultima">
-                                    <img src="../../images/icons/patient.svg" alt="">
-                                    <div>
-                                        <p class="text-gray">Médico</p>
-                                        <p>Dr Joao costa</p>
-                                    </div>
-                                </div>
-                            </div>
+
+                            <?php } ?>
                         </div>
+
 
 
 
@@ -206,11 +215,19 @@ if ($count) {
                         <!-- bottom right -->
 
                         <div class="contentor-inferior-drt">
+
                             <div class="inferior-drt-header">
-                                <h5>Notas de consulta</h5>
+                                <h5 class="text-blue">Notas de consulta</h5>
                                 <img src="../../images/icons/edit.svg" alt="">
                             </div>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                            <strong>Pressão arterial média</strong>
+                            <p id="pa" class="space-bottom"></p>
+                            <strong>Resultado de Exames</strong>
+                            <p id="exames" class="space-bottom"></p>
+                            <strong>Exame de estado geral</strong>
+                            <p id="eeg" class="space-bottom"></p>
+                            <strong> Notas</strong>
+                            <p id="notas"></p>
                         </div>
                     </div>
                 </div>

@@ -4,13 +4,30 @@ $conn = conexao();
 
 verificarLogin();
 
-$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas ORDER BY nome_pessoa;");
+$id_consulta = $_GET['id_consulta'];
 
-$id_pessoa = $_GET['id_pessoa'];
+$consulta_dados = "SELECT * FROM consultas, pessoas, medicos WHERE consultas.id_pessoa = pessoas.id_pessoa AND consultas.id_medico = medicos.id_medico AND id_consulta = '" . $id_consulta . "'";
 
-$sql = "SELECT * from pessoas where id_pessoa = $id_pessoa";
 
-$query = mysqli_query($conn, $sql);
+$pesquisa = mysqli_query($conn, $consulta_dados);
+
+if ($pesquisa) {
+    $linha = mysqli_fetch_assoc($pesquisa);
+    $nome_pessoa = $linha['nome_pessoa'];
+    $nascimento = $linha['data_nascimento'];
+    $contacto = $linha['telefone'];
+    $morada = $linha['morada'];
+    $localidade = $linha['localidade'];
+    $email = $linha['email'];
+    $medico = $linha['nome'];
+    $assunto = $linha['assunto'];
+    $data = $linha['data'];
+    $horario = $linha['horario'];
+    $medico = $linha['nome'];
+}
+
+$nome_utilizador = $_SESSION['nome_utilizador'];
+$spec_utilizador = $_SESSION['spec'];
 
 
 ?>
@@ -40,16 +57,16 @@ $query = mysqli_query($conn, $sql);
     <div class="container">
         <!-- ------------------------------- Sidebar ------------------------------- -->
         <div class="side-bar">
-            <img src="../../Images/logo-icon-trans 1.svg" alt="connected clinic" class="logo" />
+            <img src="../../images/logotipo.svg" alt="connected clinic" class="logo" />
             <div class="sb-menu text-medium">
-                <div>
+                <div class="clicked">
                     <a class="sb-a" href="../../Consultas/">
-                        <span class="bar "></span>
+                        <span class="bar active"></span>
                         <i class="fa-solid fa-xl fa-calendar-days" style="margin: 10px 0px;"></i>
                         <p>Consultas</p>
                     </a>
                 </div>
-                <div class="clicked">
+                <div>
                     <a class="sb-a" href="../Pacientes/">
                         <span class="bar"></span>
                         <i class="fa-solid fa-xl fa-user" style="margin: 10px 0px;"></i>
@@ -63,12 +80,12 @@ $query = mysqli_query($conn, $sql);
                         <p>Médicos</p>
                     </a>
                 </div>
-                <div>
+                <!-- <div>
                     <span class="bar"></span>
                     <i class="bar"></i>
                     <img src="../../images/icons/requests.svg" alt="">
                     <p>Requests</p>
-                </div>
+                </div> -->
             </div>
             <div class="logout text-medium">
                 <a class="sb-a" href="../logout.php">
@@ -89,11 +106,11 @@ $query = mysqli_query($conn, $sql);
                     <p>Kansas City Family Medical Care</p>
                 </div>
                 <div class="user">
-                    <img src="../../Images/icons/Bell.svg" alt="sino" />
-                    <img class="picture" src="../../Images/doctor.svg" alt="imagem do utilizador" />
+                    <img src="../../images/icons/Bell.svg" alt="sino" />
+                    <img class="picture" src="../../images/icons/patient.svg" alt="imagem do utilizador" />
                     <div class="user-info">
-                        <p class="text-main">Margaret Lim</p>
-                        <p class="spec">Cardiologist</p>
+                        <p class="text-main"><?php echo $nome_utilizador; ?></p>
+                        <p class="spec"><?php echo $spec_utilizador; ?></p>
                     </div>
                 </div>
             </div>
@@ -107,7 +124,7 @@ $query = mysqli_query($conn, $sql);
                     <div class=" nome-section">
                         <p class="blue">Consulta</p>
                         <p class="text-gray">></p>
-                        <p class="text-gray">Pedro Rodrigues</p>
+                        <p class="text-gray"><?php echo $nome_pessoa; ?></p>
                     </div>
 
                     <div class="contentor-detalhes">
@@ -115,28 +132,28 @@ $query = mysqli_query($conn, $sql);
                             <div class="detalhes-section">
                                 <img src="../../images/icons/patient.svg" alt="">
                                 <div>
-                                    <strong>Pedro Rodrigues</strong>
-                                    <p class="text-gray">data nasimento</p>
+                                    <strong><?php echo $nome_pessoa; ?> </strong>
+                                    <p class="text-gray"><?php echo $nascimento; ?></p>
                                 </div>
                             </div>
                             <div>
                                 <div class="detalhes-section">
                                     <img class="detalhes-img" src="../../images/icons/phone.svg" alt="">
-                                    <p>939101129</p>
+                                    <p><?php echo $contacto; ?></p>
                                 </div>
                                 <div class="detalhes-section">
                                     <img class="detalhes-img" src="../../images/icons/email.svg" alt="">
-                                    <p>pedro@gmail.com</p>
+                                    <p><?php echo $email; ?></p>
                                 </div>
                             </div>
                             <div class="detalhes-section">
                                 <img class="detalhes-img" src="../../images/icons/map.svg" alt="">
-                                <p>Avenida Conde D.Henrique<br> lote 173 cave direita</p>
+                                <p><?php echo $morada; ?>, <?php echo $localidade; ?> </p>
                             </div>
                             <div>
                                 <div class="detalhes-section">
                                     <img src="../../images/icons/patients.svg" alt="">
-                                    <p>Dr. Pedro Rodrigues</p>
+                                    <p><?php echo $medico; ?></p>
                                 </div>
                                 <div class="detalhes-section">
                                     <img class="detalhes-img" src="../../images/icons/United.svg" alt="">
@@ -156,31 +173,35 @@ $query = mysqli_query($conn, $sql);
                                 <div class="coluna-detalhes">
                                     <i class="fa-regular fa-xl fa-calendar blue"></i>
                                     <div>
-                                        <p class="date-text blue">21 Jan 2021</p>
-                                        <p class="text-gray">15:30</p>
+                                        <p class="date-text blue"><?php echo $data; ?></p>
+                                        <p class="text-gray"><?php echo $horario; ?></p>
                                     </div>
                                 </div>
 
                                 <div>
                                     <p class="text-gray">Assunto</p>
-                                    <p>Aumento de peso</p>
+                                    <p><?php echo $assunto; ?></p>
                                 </div>
                                 <div class="coluna-detalhes coluna-ultima">
                                     <img src="../../images/icons/patient.svg" alt="">
                                     <div>
                                         <p class="text-gray">Médico</p>
-                                        <p>Dr Joao costa</p>
+                                        <p>Dr(a) <?php echo $medico; ?></p>
                                     </div>
                                 </div>
                             </div>
                             <div class="exams-section">
-                                <form action="" class="form-consulta">
-                                    <label for="">RCPM</label>
-                                    <input class="inputs consulta-input" type="text">
-                                    <label for="">CCM</label>
-                                    <input class="inputs consulta-input " type="text">
+                                <form action="func-edit-consulta.php" method="POST" class="form-consulta">
+                                    <input name="id_consulta" type="text" style="display: none" value="<?php echo $id_consulta; ?>">
                                     <label for="">Exame de estado geral</label>
-                                    <textarea class="consulta-text-area" name="" id=""></textarea>
+                                    <input name="eeg" class="inputs consulta-input" type="text">
+                                    <label for="">Pressão arterial média</label>
+                                    <input name="pam" class="inputs consulta-input " type="text">
+                                    <label for="">Resultado de exames</label>
+                                    <input name="re" class="inputs consulta-input " type="text">
+                                    <label for="">Notas de consulta</label>
+                                    <textarea class="consulta-text-area" name="notas" id=""></textarea>
+                                    <button type="submit" class="call-blue btn-consulta">Guardar</button>
                                 </form>
                             </div>
                         </div>
@@ -188,7 +209,6 @@ $query = mysqli_query($conn, $sql);
                 </div>
             </div>
         </div>
-
 
         <script src="functions.js"></script>
 </body>

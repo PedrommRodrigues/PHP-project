@@ -1,6 +1,6 @@
 /* ------------- Notification handler for check in and call btn ------------- */
 const notification = document.querySelector("#success-message");
-const checkInBtn = document.querySelectorAll(".call-blue");
+const checkInBtn = document.querySelectorAll(".check-btn");
 const texto = document.querySelector(".texto-topo");
 const mostraNome = document.querySelector(".texto-nome");
 
@@ -15,7 +15,7 @@ checkInBtn.forEach((btn) => {
   });
 });
 
-const callBtn = document.querySelectorAll(".call-green");
+const callBtn = document.querySelectorAll(".double-btn");
 
 callBtn.forEach((btn) => {
   const nome = btn.getAttribute("nomePessoa");
@@ -113,6 +113,40 @@ expand.forEach((button) => {
     const hiddenRow = this.closest("tr").nextElementSibling;
     hiddenRow.classList.toggle("show-row");
     hiddenRow.classList.toggle("hide-row");
+
+    /* ---------------------------------- change text to green and add img --------------------------------- */
+
+    const id = button.getAttribute("id_pessoa");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "func-processa_consulta.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        let data = JSON.parse(xhr.responseText);
+
+        const eeg = data.eeg;
+        const exames = data.exames;
+        const pa = data.pressao;
+        const eegElement = hiddenRow.querySelector(".eeg");
+        const eegImg = hiddenRow.querySelector(".eeg-img");
+        const examesElement = hiddenRow.querySelector(".re");
+        const examesImg = hiddenRow.querySelector(".re-img");
+        const paElement = hiddenRow.querySelector(".pam");
+        const paImg = hiddenRow.querySelector(".pam-img");
+
+        eegElement.classList.toggle("green-text", eeg != "");
+        eegImg.classList.toggle("escondido", eeg === "");
+        examesElement.classList.toggle("green-text", exames != "");
+        examesImg.classList.toggle("escondido", exames === "");
+        paElement.classList.toggle("green-text", pa != "");
+        paImg.classList.toggle("escondido", pa === "");
+      } else {
+        alert("Erro ao processar solicitação.");
+      }
+    };
+    xhr.send("id=" + id);
   });
 });
 

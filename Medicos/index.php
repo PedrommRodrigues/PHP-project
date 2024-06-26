@@ -17,6 +17,9 @@ if ($count) {
     echo "Error: " . mysqli_error($conexao);
 }
 
+$nome_utilizador = $_SESSION['nome_utilizador'];
+$spec_utilizador = $_SESSION['spec'];
+
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +47,7 @@ if ($count) {
     <div class="container">
         <!-- ------------------------------- Sidebar ------------------------------- -->
         <div class="side-bar">
-            <img src="../Images/logo-icon-trans 1.svg" alt="connected clinic" class="logo" />
+            <img src="../images/logotipo.svg" alt="connected clinic" class="logo" />
             <div class="sb-menu text-medium">
                 <div>
                     <a class="sb-a" href="../Consultas/">
@@ -66,12 +69,12 @@ if ($count) {
                     <i class="fa-solid fa-xl fa-stethoscope" style="margin: 10px 0px;"></i>
                     <p>Médicos</p>
                 </div>
-                <div>
+                <!-- <div>
                     <span class="bar"></span>
                     <i class="bar"></i>
                     <img src="../images/icons/requests.svg" alt="">
                     <p>Requests</p>
-                </div>
+                </div> -->
             </div>
             <div class="logout text-medium">
                 <a class="sb-a" href="../logout.php">
@@ -93,11 +96,11 @@ if ($count) {
                     <p>Kansas City Family Medical Care</p>
                 </div>
                 <div class="user">
-                    <img src="../Images/icons/Bell.svg" alt="sino" />
-                    <img class="picture" src="../Images/doctor.svg" alt="imagem do utilizador" />
+                    <img src="../images/icons/Bell.svg" alt="sino" />
+                    <img class="picture" src="../images/icons/patient.svg" alt="imagem do utilizador" />
                     <div class="user-info">
-                        <p class="text-main">Margaret Lim</p>
-                        <p class="spec">Cardiologist</p>
+                        <p class="text-main"><?php echo $nome_utilizador; ?></p>
+                        <p class="spec"><?php echo $spec_utilizador; ?></p>
                     </div>
                 </div>
             </div>
@@ -199,7 +202,7 @@ if ($count) {
                                             </td>
                                             <td class="last-td">
 
-                                                <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
+                                                <img class="expand" src="../images/icons/chevron.svg" alt="expand" />
                                             </td>
                                         </tr>
                                         <tr class="hidden hide-row border">

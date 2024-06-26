@@ -4,9 +4,9 @@ $conexao = conexao();
 
 verificarLogin();
 
-$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas, medicos WHERE pessoas.id_pessoa = consultas.id_pessoa AND consultas.id_medico = medicos.id_medico ORDER BY consultas.data, consultas.horario;");
+$consulta_sql = mysqli_query($conexao, "SELECT * FROM pessoas, consultas, medicos WHERE pessoas.id_pessoa = consultas.id_pessoa AND consultas.id_medico = medicos.id_medico AND consultas.consultado = 0 ORDER BY consultas.data, consultas.horario;");
 
-$count = mysqli_query($conexao, "SELECT COUNT(*) AS count FROM consultas;");
+$count = mysqli_query($conexao, "SELECT COUNT(*) AS count FROM consultas WHERE consultado = 0;");
 
 if ($count) {
     // Fetch the result as an associative array
@@ -15,6 +15,11 @@ if ($count) {
     echo "Error: " . mysqli_error($conexao);
 }
 
+
+/* ---------------------------------- Dados do usuario --------------------------------- */
+
+$nome_utilizador = $_SESSION['nome_utilizador'];
+$spec_utilizador = $_SESSION['spec'];
 
 ?>
 
@@ -46,7 +51,7 @@ if ($count) {
     <div class="container">
         <!-- ------------------------------- Sidebar ------------------------------- -->
         <div class="side-bar">
-            <img src="../Images/logo-icon-trans 1.svg" alt="connected clinic" class="logo" />
+            <img src="../images/logotipo.svg" alt="connected clinic" class="logo" />
             <div class="sb-menu text-medium">
                 <div class="clicked">
                     <span class="bar active"></span>
@@ -67,13 +72,12 @@ if ($count) {
                         <p>Médicos</p>
                     </a>
                 </div>
-                <div>
+                <!-- <div>
                     <a href="Consulta/"><span class="bar"></span>
                         <img src="../images/icons/dashboard.svg" alt="Dashboard">
                         <p>Dashboard</p>
                     </a>
-                </div>
-
+                </div> -->
             </div>
             <div class="logout text-medium">
                 <a class="sb-a" href="../logout.php">
@@ -95,11 +99,11 @@ if ($count) {
                     <p>Kansas City Family Medical Care</p>
                 </div>
                 <div class="user">
-                    <img src="../Images/icons/Bell.svg" alt="sino" />
-                    <img class="picture" src="../Images/doctor.svg" alt="imagem do utilizador" />
+                    <img src="../images/icons/Bell.svg" alt="sino" />
+                    <img class="picture" src="../images/icons/patient.svg" alt="imagem do utilizador" />
                     <div class="user-info">
-                        <p class="text-main">Margaret Lim</p>
-                        <p class="spec">Cardiologist</p>
+                        <p class="text-main"><?php echo $nome_utilizador; ?></p>
+                        <p class="spec"><?php echo $spec_utilizador; ?></p>
                     </div>
                 </div>
             </div>
@@ -115,7 +119,6 @@ if ($count) {
                     <div class="section-header">
                         <h1 class="text-h2">Consultas</h1>
                         <div class="menu">
-
                         </div>
                     </div>
 
@@ -127,12 +130,6 @@ if ($count) {
                                 <?php echo $row['count'] ?>
                                 consultas
                             </p>
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
                             <div class="header-container">
                                 <div class="header-menu">
                                     <div class="menu">
@@ -149,12 +146,6 @@ if ($count) {
                                     </div>
                                 </div>
                             </div>
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
                         </div>
                         <div class="patient-list-container">
                             <table>
@@ -175,23 +166,23 @@ if ($count) {
                                         $nome = $linha['nome_pessoa'];
                                         $assunto = $linha['assunto'];
                                         $data = $linha['data'];
-                                        $covid = $linha['covid'];
                                         $id_consulta = $linha['id_consulta'];
                                         $time = $linha['horario'];
                                         $type = $linha['tipo_consulta'];
                                         $id_pessoa = $linha['id_pessoa'];
                                         $medico = $linha['nome'];
                                         $espec = $linha['especializacao'];
+                                        $email = $linha['email'];
                                     ?>
                                         <tr class=" click-event">
                                             <th>
                                                 <div class="united">
                                                     <h4 class="text-h4 nome"><?php echo $nome; ?></h4>
-                                                    <img class="hide check" src="../Images/icons/check-one.svg" />
-                                                    <img class="hide double" src="../Images/icons/check-double.svg" />
+                                                    <img class="hide check" src="../images/icons/check-one.svg" />
+                                                    <img class="hide double" src="../images/icons/check-double.svg" />
                                                 </div>
                                                 <div class="united">
-                                                    <img src="../Images/icons/United.svg" />
+                                                    <img src="../images/icons/United.svg" />
                                                     <p class="text-medium" style="color: #A1ACB1">
                                                         United Healthcare
                                                     </p>
@@ -218,30 +209,40 @@ if ($count) {
                                                     Check In
                                                 </button>
                                                 <button onclick="chamar(this)" title="Chamar para consulta" class="call-green text-medium double-btn" nomePessoa="<?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?>"> Chamar </button>
-                                                <a href="Consulta/index.php?id_pessoa=<?php echo $id_pessoa; ?>" class="call-orange text-medium consulta hide">Consulta</a>
+                                                <a href="Consulta/index.php?id_consulta=<?php echo $id_consulta; ?>" class="call-orange text-medium consulta hide">Consulta</a>
                                             </td>
                                             <td>
-                                                <div class=" cancel-td">
-                                                    <button class="details">
+                                                <div class="cancel-td-specific cancel-td">
+                                                    <a href="../Pacientes/Detalhes?id_pessoa=<?php echo $id_pessoa; ?>" class="details">
                                                         <div class="img">
-                                                            <img src="../Images/icons/document.svg" />
+                                                            <img src="../images/icons/document.svg" />
                                                         </div>
-                                                    </button>
-                                                    <button class="message call-blue">
+                                                    </a>
+                                                    <a href="mailto:<?php echo $email; ?>" class="message call-blue">
                                                         <div class="img">
-                                                            <img src="../Images/icons/chat.svg" />
+                                                            <img src="../images/icons/chat.svg" />
                                                         </div>
-                                                    </button>
-                                                    <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
+                                                    </a>
+                                                    <img id_pessoa="<?php echo $id_pessoa; ?>" class="expand" src="../images/icons/chevron.svg" alt="expand" />
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr class="hidden hide-row  border">
                                             <td class="hidden-line">
                                                 <div class="exams">
-                                                    <p>Consulta bem estar</p>
-                                                    <p>RCP</p>
-                                                    <p>CCM</p>
+                                                    <div class="check">
+                                                        <img class="eeg-img escondido" src="../images/icons/check-one.svg" alt="">
+                                                        <p class="eeg">Consulta bem estar</p>
+                                                    </div>
+                                                    <div class="check">
+                                                        <img class="pam-img escondido" src="../images/icons/check-one.svg" alt="">
+                                                        <p class="pam" title="Pressao arterial média">PAM</p>
+                                                    </div>
+                                                    <div class="check">
+                                                        <img class="re-img escondido" src="../images/icons/check-one.svg" alt="">
+                                                        <p class="re" title="Resultados de exames">RE</p>
+                                                    </div>
+
                                                 </div>
                                             </td>
                                             <td></td>

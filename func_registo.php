@@ -26,6 +26,7 @@ if ($resultado) {
     $comando_registo = "INSERT INTO medicos (email, password) VALUES ('" . $email . "', '" . $password . "')";
 
     $inserir_registo = mysqli_query($conexao, $comando_registo);
+
     if ($inserir_registo) {
         redireciona("index.php", "", 0);
     } else {

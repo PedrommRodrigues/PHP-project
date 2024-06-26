@@ -17,6 +17,10 @@ if ($count) {
     echo "Error: " . mysqli_error($conexao);
 }
 
+$nome_utilizador = $_SESSION['nome_utilizador'];
+$spec_utilizador = $_SESSION['spec'];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +48,7 @@ if ($count) {
     <div class="container">
         <!-- ------------------------------- Sidebar ------------------------------- -->
         <div class="side-bar">
-            <img src="../Images/logo-icon-trans 1.svg" alt="connected clinic" class="logo" />
+            <img src="../images/logotipo.svg" alt="connected clinic" class="logo" />
             <div class="sb-menu text-medium">
                 <div>
                     <a class="sb-a" href="../Consultas/">
@@ -65,14 +69,14 @@ if ($count) {
                         <p>Médicos</p>
                     </a>
                 </div>
-                <div>
+                <!-- <div>
                     <a href="../Pacientes/Detalhes/">
                         <span class="bar"></span>
                         <i class="bar"></i>
                         <img src="../images/icons/requests.svg" alt="">
                         <p>Detalhes</p>
                     </a>
-                </div>
+                </div> -->
             </div>
             <div class="logout text-medium">
                 <a class="sb-a" href="../logout.php">
@@ -92,16 +96,13 @@ if ($count) {
                 <div class="hospital text-main">
                     <img src="../images/icons/home.svg" alt="" style="color: #A1ACB1;">
                     <p>Kansas City Family Medical Care</p>
-                    <button>
-                        <img src="../images/icons/chevron.svg" alt="" />
-                    </button>
                 </div>
                 <div class="user">
-                    <img src="../Images/icons/Bell.svg" alt="sino" />
-                    <img class="picture" src="../Images/doctor.svg" alt="imagem do utilizador" />
+                    <img src="../images/icons/Bell.svg" alt="sino" />
+                    <img class="picture" src="../images/icons/patient.svg" alt="imagem do utilizador" />
                     <div class="user-info">
-                        <p class="text-main">Margaret Lim</p>
-                        <p class="spec">Cardiologist</p>
+                        <p class="text-main"><?php echo $nome_utilizador; ?></p>
+                        <p class="spec"><?php echo $spec_utilizador; ?></p>
                     </div>
                 </div>
             </div>
@@ -129,15 +130,7 @@ if ($count) {
                             <p class="counter text-h4">
                                 <?php echo $row['count'] ?>
                                 <span style="font-weight: 400;">pacientes no total</span>
-
                             </p>
-
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
                             <div class="header-container">
                                 <div class="header-menu">
                                     <div class="menu">
@@ -154,12 +147,7 @@ if ($count) {
                                     </div>
                                 </div>
                             </div>
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
+
                         </div>
                         <div class="patient-list-container">
                             <table>
@@ -187,7 +175,7 @@ if ($count) {
                                                     <h4 class="text-h4 nome"><?php echo $nome; ?></h4>
                                                 </div>
                                                 <div class="united">
-                                                    <img src="../Images/icons/United.svg" />
+                                                    <img src="../images/icons/United.svg" />
                                                     <p class="text-medium" style="color: #A1ACB1">
                                                         United Healthcare
                                                     </p>
@@ -205,23 +193,25 @@ if ($count) {
                                                 <div class="exams text-medium " style="padding-left: 0px">
                                                     <p>Consulta bem estar</p>
                                                     <p>RCP</p>
-                                                    <p>CCM</p>
+                                                    <p>RE</p>
                                                 </div>
                                             </td>
                                             <td class="actions">
                                             </td>
-                                            <td class="last-td">
-                                                <button class="details">
-                                                    <div class="img">
-                                                        <img src="../Images/icons/document.svg" />
-                                                    </div>
-                                                </button>
-                                                <button class="message call-blue">
-                                                    <div class="img">
-                                                        <img src="../Images/icons/chat.svg" />
-                                                    </div>
-                                                </button>
-                                                <img class="expand" src="../Images/icons/chevron.svg" alt="expand" />
+                                            <td>
+                                                <div class="cancel-td-specific cancel-td">
+                                                    <a href="../Pacientes/Detalhes?id_pessoa=<?php echo $id_pessoa; ?>" class="details">
+                                                        <div class="img">
+                                                            <img src="../images/icons/document.svg" />
+                                                        </div>
+                                                    </a>
+                                                    <a href="mailto:<?php echo $email; ?>" class="message call-blue">
+                                                        <div class="img">
+                                                            <img src="../images/icons/chat.svg" />
+                                                        </div>
+                                                    </a>
+                                                    <img id_pessoa="<?php echo $id_pessoa; ?>" class="expand" src="../images/icons/chevron.svg" alt="expand" />
+                                                </div>
                                             </td>
                                         </tr>
                                         <tr class="hidden hide-row border">
@@ -268,7 +258,7 @@ if ($count) {
                     <form action="func-add-client.php" method="post" id="create-edit">
                         <input id="php_id" class="php_id" name="id_pessoa" value=""></input>
                         <label>Nome</label>
-                        <input id="php_nome" class="inputs " name="name" type="text" />
+                        <input id="php_nome" class="inputs " name="name_pessoa" type="text" />
                         <label>Data de nascimento</label>
                         <input id="php_nascimento" class="inputs " name="birthday" type="date" value="" min="1950-01-01" max="2027-12-31" />
                         <label>Morada</label>

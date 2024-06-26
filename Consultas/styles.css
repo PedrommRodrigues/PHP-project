@@ -49,3 +49,12 @@
 .notification-message{
   opacity: 0;
 }
+
+.check{
+  display: flex;
+  align-items: center;
+}
+
+.escondido{
+  opacity: 0;
+}

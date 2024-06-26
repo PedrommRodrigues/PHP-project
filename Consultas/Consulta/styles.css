@@ -132,3 +132,15 @@ textarea {
 }
 
 
+.form-consulta{
+    margin-top: 25px;
+    display: flex;
+    flex: 1
+    ;
+}
+
+.btn-consulta{
+    width: 20%;
+    margin-top: 10px;
+    align-self: flex-end;
+}
