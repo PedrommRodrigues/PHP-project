@@ -23,6 +23,12 @@ a{
   display: flex;
 }
 
+.section{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
 /* Text */
 
 .text-main {
@@ -169,7 +175,9 @@ a{
 
 .bottom-right {
   padding: 30px;
-  /* width: 100%; */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .call-blue {

@@ -178,8 +178,8 @@ $spec_utilizador = $_SESSION['spec'];
                                             <th>
                                                 <div class="united">
                                                     <h4 class="text-h4 nome"><?php echo $nome; ?></h4>
-                                                    <img class="hide check" src="../images/icons/check-one.svg" />
-                                                    <img class="hide double" src="../images/icons/check-double.svg" />
+                                                    <img class="hide check-img" src="../images/icons/check-one.svg" />
+                                                    <img class="hide double-img" src="../images/icons/check-double.svg" />
                                                 </div>
                                                 <div class="united">
                                                     <img src="../images/icons/United.svg" />
@@ -205,10 +205,10 @@ $spec_utilizador = $_SESSION['spec'];
                                                 <p class="text-gray"><?php echo $espec ?></p>
                                             </td>
                                             <td class="actions">
-                                                <button onclick="checkIn(this)" title="Cliente chegou" class="call-blue text-medium check-btn" nomePessoa="<?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?>">
+                                                <button title="Cliente chegou" class="call-blue text-medium check-btn" nomePessoa="<?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?>">
                                                     Check In
                                                 </button>
-                                                <button onclick="chamar(this)" title="Chamar para consulta" class="call-green text-medium double-btn" nomePessoa="<?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?>"> Chamar </button>
+                                                <button title="Chamar para consulta" class="call-green text-medium double-btn" nomePessoa="<?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?>"> Chamar </button>
                                                 <a href="Consulta/index.php?id_consulta=<?php echo $id_consulta; ?>" class="call-orange text-medium consulta hide">Consulta</a>
                                             </td>
                                             <td>

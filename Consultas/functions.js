@@ -6,10 +6,21 @@ const mostraNome = document.querySelector(".texto-nome");
 
 checkInBtn.forEach((btn) => {
   const nome = btn.getAttribute("nomePessoa");
+
   btn.addEventListener("click", () => {
     texto.textContent = "Check In efectuado com sucesso";
     mostraNome.textContent = nome;
     notification.style.opacity = "100 ";
+
+    // Selecionar o elemento <tr> pai do botão clicado
+    const parentTr = btn.closest("tr");
+
+    // Encontrar o elemento checkImg dentro do <tr> pai e remover a classe 'hide'
+    const checkImg = parentTr.querySelector(".check-img");
+    if (checkImg) {
+      checkImg.classList.remove("hide");
+      btn.style.display = "none";
+    }
 
     hideSuccessMessage();
   });
@@ -25,81 +36,99 @@ callBtn.forEach((btn) => {
     mostraNome.textContent = nome;
     notification.style.opacity = "100 ";
 
+    // Selecionar o elemento <tr> pai do botão clicado
+    const parentTr = btn.closest("tr");
+
+    const callOrangeBtn = parentTr.querySelector(".call-orange");
+
+    const checkImg = parentTr.querySelector(".check-img");
+
+    if (checkImg) {
+      checkImg.classList.add("hide");
+    }
+    // Encontrar o elemento checkImg dentro do <tr> pai e remover a classe 'hide'
+    const chamarImg = parentTr.querySelector(".double-img");
+    if (chamarImg) {
+      chamarImg.classList.remove("hide");
+      btn.style.display = "none";
+      callOrangeBtn.classList.remove("hide");
+    }
+
     hideSuccessMessage();
   });
 });
 
 /* ------------------- Func to validate call and check in ------------------- */
 
-const check = document.querySelectorAll(".check");
-const double = document.querySelectorAll(".double");
-const doubleBtn = document.querySelectorAll(".double-btn");
-const checkBtn = document.querySelectorAll(".check-btn");
-const consulta = document.querySelectorAll(".consulta");
+// const check = document.querySelectorAll(".check");
+// const double = document.querySelectorAll(".double");
+// const doubleBtn = document.querySelectorAll(".double-btn");
+// const checkBtn = document.querySelectorAll(".check-btn");
+// const consulta = document.querySelectorAll(".consulta");
 
-const checkIn = (clickedElement) => {
-  clickedElement.classList.add("hide");
-  const siblingImage = clickedElement
-    .closest(".actions")
-    .querySelector(".check");
+// const checkIn = (clickedElement) => {
+//   clickedElement.classList.add("hide");
+//   const siblingImage = clickedElement
+//     .closest(".actions")
+//     .querySelector(".check-btn");
 
-  if (siblingImage) {
-    siblingImage.classList.remove("hide");
-  }
+//   if (siblingImage) {
+//     siblingImage.classList.remove("hide");
+//   }
 
-  // Enable the "Chamar" button after "Check In" is hidden
-  const chamarButton = clickedElement
-    .closest(".actions")
-    .querySelector(".double-btn");
-  if (chamarButton) {
-    chamarButton.disabled = false; // Ensure the chamar button is enabled
-  }
-};
+//   // Enable the "Chamar" button after "Check In" is hidden
+//   const chamarButton = clickedElement
+//     .closest(".actions")
+//     .querySelector(".double-btn");
+//   if (chamarButton) {
+//     chamarButton.disabled = false; // Ensure the chamar button is enabled
+//   }
+// };
 
-const chamar = (clickedElement) => {
-  const checkInButton = clickedElement
-    .closest(".actions")
-    .querySelector(".check-btn");
+// const chamar = (clickedElement) => {
+//   const checkInButton = clickedElement
+//     .closest(".actions")
+//     .querySelector(".check-btn");
 
-  // Check if "Check In" button is hidden
-  if (!checkInButton.classList.contains("hide")) {
-    alert("Please check in first");
-    return;
-  }
+//   // Check if "Check In" button is hidden
+//   if (!checkInButton.classList.contains("hide")) {
+//     alert("Please check in first");
+//     return;
+//   }
 
-  clickedElement.classList.add("hide");
+//   clickedElement.classList.add("hide");
 
-  // Find the parent container of the button
-  const parentContainer = clickedElement.closest(".actions");
+//   // Find the parent container of the button
+//   const parentContainer = clickedElement.closest(".actions");
 
-  if (parentContainer) {
-    // Find the check and double images within the parent container
-    const siblingCheckImage = parentContainer.querySelector(".check");
-    const siblingChamarImage = parentContainer.querySelector(".double");
+//   if (parentContainer) {
+//     // Find the check and double images within the parent container
+//     const siblingCheckImage = parentContainer.querySelector(".check");
+//     const siblingChamarImage = parentContainer.querySelector(".double");
 
-    if (siblingCheckImage) {
-      siblingCheckImage.classList.add("hide");
-    }
-    if (siblingChamarImage) {
-      siblingChamarImage.classList.remove("hide");
-    }
+//     if (siblingCheckImage) {
+//       siblingCheckImage.classList.add("hide");
+//     }
+//     if (siblingChamarImage) {
+//       siblingChamarImage.classList.remove("hide");
+//     }
 
-    // Remove class "hide" from <a> element when "chamar" button has class "hide"
-    const consultaLink = parentContainer.querySelector(".consulta");
-    if (consultaLink) {
-      consultaLink.classList.remove("hide");
-    }
-  }
-};
+//     // Remove class "hide" from <a> element when "chamar" button has class "hide"
+//     const consultaLink = parentContainer.querySelector(".consulta");
+//     if (consultaLink) {
+//       consultaLink.classList.remove("hide");
+//     }
+//   }
+// };
 
-// Initially disable the "Chamar" button if "Check In" button is not hidden
-document.querySelectorAll(".actions").forEach((action) => {
-  const checkInButton = action.querySelector(".check-btn");
-  const chamarButton = action.querySelector(".double-btn");
-  if (checkInButton && !checkInButton.classList.contains("hide")) {
-    chamarButton.disabled = true;
-  }
-});
+// // Initially disable the "Chamar" button if "Check In" button is not hidden
+// document.querySelectorAll(".actions").forEach((action) => {
+//   const checkInButton = action.querySelector(".check-btn");
+//   const chamarButton = action.querySelector(".double-btn");
+//   if (checkInButton && !checkInButton.classList.contains("hide")) {
+//     chamarButton.disabled = true;
+//   }
+// });
 
 /* ----------------- Func to open details on clicked person ----------------- */
 
