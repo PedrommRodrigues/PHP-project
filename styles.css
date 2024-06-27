@@ -509,3 +509,10 @@
     color: #fff;
     background-color: #1e824c !important;
   }
+
+ @media screen and (height > 1200px){
+  .patient-list-container {
+  height: 950px !important; 
+  overflow: auto;
+ }
+ }

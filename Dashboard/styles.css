@@ -1,0 +1,97 @@
+.dashboard-section {
+    background-color: transparent;
+    box-shadow: none;
+}
+.card-section {
+    padding: 20px;
+}
+
+.cartoes-top {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.cartao {
+    align-items: center; 
+    display: flex;
+    gap: 25px; 
+    padding: 84px 24px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.cartao-img {
+    width: 64px;
+    height: auto;
+}
+
+.cartao-big-text{
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.cartao-small-text {
+    font-size: 16px;
+    color: #70797E;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+} 
+
+
+/* ---------------------------------- baixo --------------------------------- */
+.cartoes-bottom{
+    margin-top: 40px;
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.cartao-baixo{
+    align-items: center; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+    padding: 84px 24px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    color: #fff;
+}
+
+.one {
+    background-color: #4AE2A1;
+}
+
+.two {
+    background-color: #0DD7BE;
+}
+
+.three {
+    background-color: #20ACFB;  
+}
+
+.four{
+    background-color: #1284C5; 
+}
+
+.bottom-big-text{
+    font-size: 36px;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+.bottom-small-text{
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .cartoes-top,
+    .cartoes-bottom {
+        grid-template-columns: 1fr;
+    }
+}

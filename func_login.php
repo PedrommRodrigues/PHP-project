@@ -17,7 +17,7 @@ if ($result) { // iff the search works and we get something as return
 
     if ($result_data != 0) { // iff we get data its because the email and password match with a user
         $_SESSION['user'] = $email;
-        redireciona('Consultas/', "", 0);
+        redireciona('Dashboard/', "", 0);
     } else {
         echo "<script> alert(\" Falha ao fazer login!\")</script>";
         redireciona("index.php", "", 0);

@@ -93,7 +93,7 @@ expand.forEach((button) => {
         const paElement = hiddenRow.querySelector(".pam");
         const paImg = hiddenRow.querySelector(".pam-img");
 
-        eegElement.classList.toggle("green-text", eeg != "");
+        eegElement.classList.toggle("green-text", eeg === "");
         eegImg.classList.toggle("escondido", eeg === "");
         examesElement.classList.toggle("green-text", exames != "");
         examesImg.classList.toggle("escondido", exames === "");

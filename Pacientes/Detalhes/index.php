@@ -58,6 +58,13 @@ $spec_utilizador = $_SESSION['spec'];
             <img src="../../images/logotipo.svg" alt="connected clinic" class="logo" />
             <i id="close-sb" class="fa-solid fa-xl fa-x close"></i>
             <div class="sb-menu text-medium">
+                <div class=" phone-menu-item">
+                    <a class="sb-a " href="../../Dashboard">
+                        <span class="bar "></span>
+                        <i class="fa-solid fa-xl fa-table" style="margin: 10px 0px"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </div>
                 <div class="phone-menu-item">
                     <a class="sb-a" href="../../Consultas/">
                         <span class="bar "></span>

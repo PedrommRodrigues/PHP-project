@@ -54,6 +54,13 @@ $spec_utilizador = $_SESSION['spec'];
             <img src="../images/logotipo.svg" alt="connected clinic" class="logo" />
             <i id="close-sb" class="fa-solid fa-xl fa-x close"></i>
             <div class="sb-menu text-medium">
+                <div class=" phone-menu-item">
+                    <a class="sb-a " href="../Dashboard">
+                        <span class="bar "></span>
+                        <i class="fa-solid fa-xl fa-table" style="margin: 10px 0px"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </div>
                 <div class="clicked phone-menu-item">
                     <span class="bar active"></span>
                     <i class="fa-solid fa-xl fa-calendar-days" style="margin: 10px 0px;"></i>
@@ -73,6 +80,7 @@ $spec_utilizador = $_SESSION['spec'];
                         <p>Médicos</p>
                     </a>
                 </div>
+
             </div>
             <div class="logout text-medium">
                 <a class="sb-a" href="../logout.php">

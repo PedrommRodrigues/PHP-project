@@ -188,11 +188,48 @@ searchInput.addEventListener("input", (e) => {
 
 /* ------------------------ exames executados a cores ----------------------- */
 
+// document.addEventListener("DOMContentLoaded", function () {
+//   let rows = document.querySelectorAll(".linha-tabela");
+
+//   rows.forEach(function (row) {
+//     let id = row.getAttribute("data-pessoa-id");
+
+//     let xhr = new XMLHttpRequest();
+//     xhr.open("POST", "func-processa_consulta_appt.php", true);
+//     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+//     xhr.onload = function () {
+//       if (xhr.status === 200) {
+//         let data = JSON.parse(xhr.responseText);
+//         console.log(xhr.responseText);
+//         const eeg = data.eeg;
+//         const exames = data.exames;
+//         const pa = data.pressao;
+
+//         const eegElement = row.querySelector(".eeg");
+//         const examesElement = row.querySelector(".re");
+//         const paElement = row.querySelector(".pa");
+
+//         if (eegElement) eegElement.classList.toggle("green-text", eeg !== "");
+//         if (examesElement)
+//           examesElement.classList.toggle("green-text", exames !== "");
+//         if (paElement) paElement.classList.toggle("green-text", pa !== "");
+//       } else {
+//         console.error("Erro ao processar solicitação.");
+//       }
+//     };
+
+//     xhr.send("id=" + id);
+//   });
+// });
+
 document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM totalmente carregado e analisado");
   let rows = document.querySelectorAll(".linha-tabela");
 
   rows.forEach(function (row) {
     let id = row.getAttribute("data-pessoa-id");
+    console.log("ID da pessoa:", id); // Adicione esta linha para depuração
 
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "func-processa_consulta_appt.php", true);
@@ -200,23 +237,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
     xhr.onload = function () {
       if (xhr.status === 200) {
-        let data = JSON.parse(xhr.responseText);
+        console.log("Resposta do servidor:", xhr.responseText); // Adicione esta linha para depuração
+        try {
+          let data = JSON.parse(xhr.responseText);
 
-        const eeg = data.eeg;
-        const exames = data.exames;
-        const pa = data.pressao;
+          const eeg = data.eeg;
+          const exames = data.exames;
+          const pa = data.pressao;
 
-        const eegElement = row.querySelector(".eeg");
-        const examesElement = row.querySelector(".re");
-        const paElement = row.querySelector(".pa");
+          const eegElement = row.querySelector(".eeg");
+          const examesElement = row.querySelector(".re");
+          const paElement = row.querySelector(".pa");
 
-        if (eegElement) eegElement.classList.toggle("green-text", eeg !== "");
-        if (examesElement)
-          examesElement.classList.toggle("green-text", exames !== "");
-        if (paElement) paElement.classList.toggle("green-text", pa !== "");
+          if (eegElement) {
+            eegElement.classList.toggle("green-text", eeg === null);
+            console.log(
+              "eegElement encontrado e classe aplicada:",
+              eegElement.classList.contains("green-text")
+            );
+          } else {
+            console.warn("eegElement não encontrado para ID:", id);
+          }
+
+          if (examesElement) {
+            examesElement.classList.toggle("green-text", exames === null);
+            console.log(
+              "examesElement encontrado e classe aplicada:",
+              examesElement.classList.contains("green-text")
+            );
+          } else {
+            console.warn("examesElement não encontrado para ID:", id);
+          }
+
+          if (paElement) {
+            paElement.classList.toggle("green-text", pa === null);
+            console.log(
+              "paElement encontrado e classe aplicada:",
+              paElement.classList.contains("green-text")
+            );
+          } else {
+            console.warn("paElement não encontrado para ID:", id);
+          }
+        } catch (e) {
+          console.error("Erro ao analisar JSON:", e);
+        }
       } else {
-        console.error("Erro ao processar solicitação.");
+        console.error("Erro ao processar solicitação. Status:", xhr.status);
       }
+    };
+
+    xhr.onerror = function () {
+      console.error("Erro na requisição AJAX");
     };
 
     xhr.send("id=" + id);
