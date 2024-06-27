@@ -56,36 +56,31 @@ $spec_utilizador = $_SESSION['spec'];
 <body>
     <div class="container">
         <!-- ------------------------------- Sidebar ------------------------------- -->
-        <div class="side-bar">
+        <div id="sb" class="side-bar phone">
             <img src="../../images/logotipo.svg" alt="connected clinic" class="logo" />
+            <i id="close-sb" class="fa-solid fa-xl fa-x close"></i>
             <div class="sb-menu text-medium">
-                <div class="clicked">
-                    <a class="sb-a" href="../../Consultas/">
+                <div class="clicked phone-menu-item">
+                    <a class="sb-a clicked" href="../../Consultas/">
                         <span class="bar active"></span>
                         <i class="fa-solid fa-xl fa-calendar-days" style="margin: 10px 0px;"></i>
                         <p>Consultas</p>
                     </a>
                 </div>
-                <div>
-                    <a class="sb-a" href="../Pacientes/">
+                <div class="phone-menu-item">
+                    <a class="sb-a" href="../../Pacientes/">
                         <span class="bar"></span>
                         <i class="fa-solid fa-xl fa-user" style="margin: 10px 0px;"></i>
                         <p>Pacientes</p>
                     </a>
                 </div>
-                <div>
+                <div class="phone-menu-item">
                     <a class="sb-a" href="../../Medicos/">
                         <span class="bar"></span>
                         <i class="fa-solid fa-xl fa-stethoscope" style="margin: 10px 0px;"></i>
                         <p>Médicos</p>
                     </a>
                 </div>
-                <!-- <div>
-                    <span class="bar"></span>
-                    <i class="bar"></i>
-                    <img src="../../images/icons/requests.svg" alt="">
-                    <p>Requests</p>
-                </div> -->
             </div>
             <div class="logout text-medium">
                 <a class="sb-a" href="../logout.php">
@@ -106,12 +101,13 @@ $spec_utilizador = $_SESSION['spec'];
                     <p>Kansas City Family Medical Care</p>
                 </div>
                 <div class="user">
-                    <img src="../../images/icons/Bell.svg" alt="sino" />
-                    <img class="picture" src="../../images/icons/patient.svg" alt="imagem do utilizador" />
+                    <img class="phone" src="../../images/icons/Bell.svg" alt="sino" />
+                    <img class="picture phone" src="../../images/icons/patient.svg" alt="imagem do utilizador" />
                     <div class="user-info">
                         <p class="text-main"><?php echo $nome_utilizador; ?></p>
                         <p class="spec"><?php echo $spec_utilizador; ?></p>
                     </div>
+                    <i id="open-sb" class="fa-solid fa-xl fa-bars hamburger"></i>
                 </div>
             </div>
 
@@ -130,7 +126,7 @@ $spec_utilizador = $_SESSION['spec'];
                     <div class="contentor-detalhes">
                         <div class="detalhes">
                             <div class="detalhes-section">
-                                <img src="../../images/icons/patient.svg" alt="">
+                                <img class="phone" src="../../images/icons/patient.svg" alt="">
                                 <div>
                                     <strong><?php echo $nome_pessoa; ?> </strong>
                                     <p class="text-gray"><?php echo $nascimento; ?></p>
@@ -146,11 +142,11 @@ $spec_utilizador = $_SESSION['spec'];
                                     <p><?php echo $email; ?></p>
                                 </div>
                             </div>
-                            <div class="detalhes-section">
+                            <div class="detalhes-section phone">
                                 <img class="detalhes-img" src="../../images/icons/map.svg" alt="">
                                 <p><?php echo $morada; ?>, <?php echo $localidade; ?> </p>
                             </div>
-                            <div>
+                            <div class="phone">
                                 <div class="detalhes-section">
                                     <img src="../../images/icons/patients.svg" alt="">
                                     <p><?php echo $medico; ?></p>
@@ -201,7 +197,7 @@ $spec_utilizador = $_SESSION['spec'];
                                     <input name="re" class="inputs consulta-input " type="text">
                                     <label for="">Notas de consulta</label>
                                     <textarea class="consulta-text-area" name="notas" id=""></textarea>
-                                    <button type="submit" class="call-blue btn-consulta">Guardar</button>
+                                    <button type="submit" class="call-orange  btn-consulta">Guardar</button>
                                 </form>
                             </div>
                         </div>

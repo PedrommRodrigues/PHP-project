@@ -9,10 +9,8 @@ function redireciona($url, $mgs = "", $delay = 0)
 
 function conexao()
 {
-    // $conexao = mysqli_connect("localhost", "Connecta", "Connecta2024!#?", "bdConnecta_pedro");
+    //$conexao = mysqli_connect("localhost", "Connecta", "Connecta2024!#?", "bdConnecta_pedro");
     $conexao = mysqli_connect("localhost", "root", "", "bd_connecta");
-
-
 
     if (!$conexao) {
         die("Falha na conexão: " . mysqli_connect_error());

@@ -29,3 +29,10 @@ thead th:nth-child(3) {
     color: #DE2B13 !important;
 }
 
+.details,
+.message {
+  padding: 12px 12px !important;
+  align-items: center;
+  background-color: transparent !important;
+}
+

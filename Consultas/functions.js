@@ -58,78 +58,6 @@ callBtn.forEach((btn) => {
   });
 });
 
-/* ------------------- Func to validate call and check in ------------------- */
-
-// const check = document.querySelectorAll(".check");
-// const double = document.querySelectorAll(".double");
-// const doubleBtn = document.querySelectorAll(".double-btn");
-// const checkBtn = document.querySelectorAll(".check-btn");
-// const consulta = document.querySelectorAll(".consulta");
-
-// const checkIn = (clickedElement) => {
-//   clickedElement.classList.add("hide");
-//   const siblingImage = clickedElement
-//     .closest(".actions")
-//     .querySelector(".check-btn");
-
-//   if (siblingImage) {
-//     siblingImage.classList.remove("hide");
-//   }
-
-//   // Enable the "Chamar" button after "Check In" is hidden
-//   const chamarButton = clickedElement
-//     .closest(".actions")
-//     .querySelector(".double-btn");
-//   if (chamarButton) {
-//     chamarButton.disabled = false; // Ensure the chamar button is enabled
-//   }
-// };
-
-// const chamar = (clickedElement) => {
-//   const checkInButton = clickedElement
-//     .closest(".actions")
-//     .querySelector(".check-btn");
-
-//   // Check if "Check In" button is hidden
-//   if (!checkInButton.classList.contains("hide")) {
-//     alert("Please check in first");
-//     return;
-//   }
-
-//   clickedElement.classList.add("hide");
-
-//   // Find the parent container of the button
-//   const parentContainer = clickedElement.closest(".actions");
-
-//   if (parentContainer) {
-//     // Find the check and double images within the parent container
-//     const siblingCheckImage = parentContainer.querySelector(".check");
-//     const siblingChamarImage = parentContainer.querySelector(".double");
-
-//     if (siblingCheckImage) {
-//       siblingCheckImage.classList.add("hide");
-//     }
-//     if (siblingChamarImage) {
-//       siblingChamarImage.classList.remove("hide");
-//     }
-
-//     // Remove class "hide" from <a> element when "chamar" button has class "hide"
-//     const consultaLink = parentContainer.querySelector(".consulta");
-//     if (consultaLink) {
-//       consultaLink.classList.remove("hide");
-//     }
-//   }
-// };
-
-// // Initially disable the "Chamar" button if "Check In" button is not hidden
-// document.querySelectorAll(".actions").forEach((action) => {
-//   const checkInButton = action.querySelector(".check-btn");
-//   const chamarButton = action.querySelector(".double-btn");
-//   if (checkInButton && !checkInButton.classList.contains("hide")) {
-//     chamarButton.disabled = true;
-//   }
-// });
-
 /* ----------------- Func to open details on clicked person ----------------- */
 
 const expand = document.querySelectorAll(".expand");
@@ -337,4 +265,18 @@ searchInput.addEventListener("input", (e) => {
       row.style.display = "none";
     }
   });
+});
+
+/* ---------------------------- open and close sb --------------------------- */
+
+const open = document.getElementById("open-sb");
+const close = document.getElementById("close-sb");
+const sidebar = document.getElementById("sb");
+
+open.addEventListener("click", () => {
+  sidebar.classList.remove("phone");
+});
+
+close.addEventListener("click", () => {
+  sidebar.classList.add("phone");
 });

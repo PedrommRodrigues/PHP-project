@@ -46,8 +46,9 @@ $spec_utilizador = $_SESSION['spec'];
 <body>
     <div class="container">
         <!-- ------------------------------- Sidebar ------------------------------- -->
-        <div class="side-bar">
+        <div id="sb" class="side-bar phone">
             <img src="../images/logotipo.svg" alt="connected clinic" class="logo" />
+            <i id="close-sb" class="fa-solid fa-xl fa-x close"></i>
             <div class="sb-menu text-medium">
                 <div>
                     <a class="sb-a" href="../Consultas/">
@@ -96,12 +97,13 @@ $spec_utilizador = $_SESSION['spec'];
                     <p>Kansas City Family Medical Care</p>
                 </div>
                 <div class="user">
-                    <img src="../images/icons/Bell.svg" alt="sino" />
-                    <img class="picture" src="../images/icons/patient.svg" alt="imagem do utilizador" />
+                    <img class="phone" src="../images/icons/Bell.svg" alt="sino" />
+                    <img class="picture phone" src="../images/icons/patient.svg" alt="imagem do utilizador" />
                     <div class="user-info">
                         <p class="text-main"><?php echo $nome_utilizador; ?></p>
                         <p class="spec"><?php echo $spec_utilizador; ?></p>
                     </div>
+                    <i id="open-sb" class="fa-solid fa-xl fa-bars hamburger"></i>
                 </div>
             </div>
 
@@ -128,19 +130,11 @@ $spec_utilizador = $_SESSION['spec'];
                             <p class="counter text-h4">
                                 <?php echo $row['count'] ?>
                                 <span style="font-weight: 400;">Médicos no total</span>
-
                             </p>
-
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
                             <div class="header-container">
                                 <div class="header-menu">
-                                    <div class="menu">
-                                        <p class="text-main">Type: All</p>
+                                    <div class="menu phone">
+                                        <p class="text-main phone">Type: All</p>
                                         <img src="../images/icons/chevron.svg" />
                                     </div>
 
@@ -150,12 +144,6 @@ $spec_utilizador = $_SESSION['spec'];
                                     </div>
                                 </div>
                             </div>
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
-                            <!-- ------------------------- Trocar para select -------------------------- -->
                         </div>
                         <div class="patient-list-container">
                             <table>
@@ -207,9 +195,9 @@ $spec_utilizador = $_SESSION['spec'];
                                         </tr>
                                         <tr class="hidden hide-row border">
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td class="phone"></td>
+                                            <td class="phone"></td>
+                                            <td class="phone"></td>
                                             <td>
                                                 <div id_medico="<?php echo $id_medico; ?>" class=" hidden-buttons edit cancel-td">
                                                     <img src="../images/icons/edit.svg" alt="Apagar cliente" title="Apagar cliente">

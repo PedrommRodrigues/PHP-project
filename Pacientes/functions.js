@@ -84,6 +84,8 @@ editBtn.forEach((button) => {
   button.addEventListener("click", function () {
     let pessoaId = this.getAttribute("pessoa_id"); // Vamos buscar o atributo "pessoa_id", que estamos a passar no botão
 
+    console.log(pessoaId);
+
     let xhr = new XMLHttpRequest();
     xhr.open("POST", "func-processa_consulta.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -93,7 +95,7 @@ editBtn.forEach((button) => {
         let data = JSON.parse(xhr.responseText);
 
         formEdit.action = "func-edit-client.php";
-        formTitle.textContent = "Editar cliente";
+        formTitle.textContent = "Editar paciente";
         editPacienteID.value = data.id_pessoa;
         editNome.value = data.nome_pessoa;
         editNascimento.value = data.data_nascimento;
@@ -181,5 +183,90 @@ searchInput.addEventListener("input", (e) => {
     } else {
       row.style.display = "none";
     }
+  });
+});
+
+/* ------------------------ exames executados a cores ----------------------- */
+
+document.addEventListener("DOMContentLoaded", function () {
+  let rows = document.querySelectorAll(".linha-tabela");
+
+  rows.forEach(function (row) {
+    let id = row.getAttribute("data-pessoa-id");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "func-processa_consulta_appt.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        let data = JSON.parse(xhr.responseText);
+
+        const eeg = data.eeg;
+        const exames = data.exames;
+        const pa = data.pressao;
+
+        const eegElement = row.querySelector(".eeg");
+        const examesElement = row.querySelector(".re");
+        const paElement = row.querySelector(".pa");
+
+        if (eegElement) eegElement.classList.toggle("green-text", eeg !== "");
+        if (examesElement)
+          examesElement.classList.toggle("green-text", exames !== "");
+        if (paElement) paElement.classList.toggle("green-text", pa !== "");
+      } else {
+        console.error("Erro ao processar solicitação.");
+      }
+    };
+
+    xhr.send("id=" + id);
+  });
+});
+
+/* ---------------------------- open and close sb --------------------------- */
+
+const open = document.getElementById("open-sb");
+const close = document.getElementById("close-sb");
+const sidebar = document.getElementById("sb");
+
+open.addEventListener("click", () => {
+  sidebar.classList.remove("phone");
+});
+
+close.addEventListener("click", () => {
+  sidebar.classList.add("phone");
+});
+
+/* ----------------------------- Ultima consulta ---------------------------- */
+
+document.addEventListener("DOMContentLoaded", function () {
+  let rows = document.querySelectorAll(".linha-tabela");
+  const ultimaConsulta = document.querySelectorAll(".ultima-consulta");
+
+  rows.forEach(function (row) {
+    let id = row.getAttribute("data-pessoa-id");
+
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", "func-processa_consulta_appt.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        let data = JSON.parse(xhr.responseText);
+
+        const ultimaData = data.data;
+        const text = row.querySelector(".ultima-consulta");
+
+        if (ultimaData) {
+          text.textContent = ultimaData;
+        } else {
+          text.textContent = "Ainda não passou por consulta";
+        }
+      } else {
+        console.error("Erro ao processar solicitação.");
+      }
+    };
+
+    xhr.send("id=" + id);
   });
 });

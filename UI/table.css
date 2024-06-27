@@ -100,7 +100,7 @@ tbody th:nth-child(1) {
 
 .details {
   color: #06a689;
-  background-color: rgba(6, 166, 137, 0.07);
+  /* background-color: rgba(6, 166, 137, 0.07); */
   border: none;
   padding: 11px;
   border-radius: 10px;
@@ -110,7 +110,7 @@ tbody th:nth-child(1) {
 
 .details:hover {
   color: #1e824c;
-  background-color: #abebc6;
+  background-color: #abebc6 !important;
 }
 
 /* ------------- border bottom quanto abrimos submenu numa linha ------------ */

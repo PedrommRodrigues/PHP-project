@@ -50,34 +50,29 @@ $spec_utilizador = $_SESSION['spec'];
 <body>
     <div class="container">
         <!-- ------------------------------- Sidebar ------------------------------- -->
-        <div class="side-bar">
+        <div id="sb" class="side-bar phone">
             <img src="../images/logotipo.svg" alt="connected clinic" class="logo" />
+            <i id="close-sb" class="fa-solid fa-xl fa-x close"></i>
             <div class="sb-menu text-medium">
-                <div class="clicked">
+                <div class="clicked phone-menu-item">
                     <span class="bar active"></span>
                     <i class="fa-solid fa-xl fa-calendar-days" style="margin: 10px 0px;"></i>
                     <p>Consultas</p>
                 </div>
-                <div>
+                <div class="phone-menu-item">
                     <a class="sb-a" href="../Pacientes/">
                         <span class="bar"></span>
                         <i class="fa-solid fa-xl fa-user" style="margin: 10px 0px;"></i>
                         <p>Pacientes</p>
                     </a>
                 </div>
-                <div>
+                <div class="phone-menu-item">
                     <a class="sb-a" href="../Medicos">
                         <span class="bar"></span>
                         <i class="fa-solid fa-xl fa-stethoscope" style="margin: 10px 0px;"></i>
                         <p>Médicos</p>
                     </a>
                 </div>
-                <!-- <div>
-                    <a href="Consulta/"><span class="bar"></span>
-                        <img src="../images/icons/dashboard.svg" alt="Dashboard">
-                        <p>Dashboard</p>
-                    </a>
-                </div> -->
             </div>
             <div class="logout text-medium">
                 <a class="sb-a" href="../logout.php">
@@ -99,12 +94,13 @@ $spec_utilizador = $_SESSION['spec'];
                     <p>Kansas City Family Medical Care</p>
                 </div>
                 <div class="user">
-                    <img src="../images/icons/Bell.svg" alt="sino" />
-                    <img class="picture" src="../images/icons/patient.svg" alt="imagem do utilizador" />
+                    <img class="phone" src="../images/icons/Bell.svg" alt="sino" />
+                    <img class="picture phone" src="../images/icons/patient.svg" alt="imagem do utilizador" />
                     <div class="user-info">
                         <p class="text-main"><?php echo $nome_utilizador; ?></p>
                         <p class="spec"><?php echo $spec_utilizador; ?></p>
                     </div>
+                    <i id="open-sb" class="fa-solid fa-xl fa-bars hamburger"></i>
                 </div>
             </div>
 
@@ -132,17 +128,17 @@ $spec_utilizador = $_SESSION['spec'];
                             </p>
                             <div class="header-container">
                                 <div class="header-menu">
-                                    <div class="menu">
-                                        <p class="text-main">Type: All</p>
-                                        <img src="../images/icons/chevron.svg" />
+                                    <div class="menu phone">
+                                        <p class="text-main phone">Type: All</p>
+                                        <img class="phone" src="../images/icons/chevron.svg" />
                                     </div>
-                                    <div class="menu">
-                                        <p class="text-main">Legivel para: Tudo</p>
+                                    <div class="menu phone">
+                                        <p class="text-main phone">Legivel para: Tudo</p>
                                         <img src="../images/icons/chevron.svg" />
                                     </div>
                                     <div class="menu">
                                         <input id="pesquisa" class="text-main search-input"" type=" text" placeholder="Pesquisa">
-                                        <img src="../images/icons/lupe.svg" />
+                                        <img class="phone" src="../images/icons/lupe.svg" />
                                     </div>
                                 </div>
                             </div>
@@ -152,9 +148,9 @@ $spec_utilizador = $_SESSION['spec'];
                                 <thead class="text-semibold">
                                     <tr>
                                         <th>Paciente</th>
-                                        <th>Assunto</th>
-                                        <th>Data</th>
-                                        <th>Médico</th>
+                                        <th class="padding-cell">Motivo</th>
+                                        <th class="padding-cell">Data</th>
+                                        <th class="padding-cell">Médico</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -181,18 +177,18 @@ $spec_utilizador = $_SESSION['spec'];
                                                     <img class="hide check-img" src="../images/icons/check-one.svg" />
                                                     <img class="hide double-img" src="../images/icons/check-double.svg" />
                                                 </div>
-                                                <div class="united">
-                                                    <img src="../images/icons/United.svg" />
-                                                    <p class="text-medium" style="color: #A1ACB1">
+                                                <div class="united phone">
+                                                    <img class="phone" src="../images/icons/United.svg" />
+                                                    <p class="text-medium phone" style="color: #A1ACB1">
                                                         United Healthcare
                                                     </p>
                                                 </div>
                                             </th>
-                                            <td><?php echo $assunto ?></td>
-                                            <td class="center">
+                                            <td class="padding-cell"><?php echo $assunto ?></td>
+                                            <td class="center padding-cell">
                                                 <div class="date-cell">
                                                     <div class="type">
-                                                        <img src="../images/icons/<?php echo $type ?>.svg" alt="">
+                                                        <img src="../images/icons/<?php echo $type ?>.svg" alt="tipo de consulta" title="Consulta presencial ou teleconsulta">
                                                     </div>
                                                     <div>
                                                         <p class="php_date"><?php echo $data; ?></p>
@@ -200,25 +196,25 @@ $spec_utilizador = $_SESSION['spec'];
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td class="padding-cell">
                                                 <p><?php echo $medico; ?></p>
                                                 <p class="text-gray"><?php echo $espec ?></p>
                                             </td>
-                                            <td class="actions">
+                                            <td class="actions padding-cell">
                                                 <button title="Cliente chegou" class="call-blue text-medium check-btn" nomePessoa="<?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?>">
                                                     Check In
                                                 </button>
-                                                <button title="Chamar para consulta" class="call-green text-medium double-btn" nomePessoa="<?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?>"> Chamar </button>
+                                                <button title="Chamar para consulta" class="call-green details-phone text-medium double-btn" nomePessoa="<?php echo htmlspecialchars($nome, ENT_QUOTES, 'UTF-8'); ?>"> Chamar </button>
                                                 <a href="Consulta/index.php?id_consulta=<?php echo $id_consulta; ?>" class="call-orange text-medium consulta hide">Consulta</a>
                                             </td>
                                             <td>
                                                 <div class="cancel-td-specific cancel-td">
-                                                    <a href="../Pacientes/Detalhes?id_pessoa=<?php echo $id_pessoa; ?>" class="details">
+                                                    <a title="Ver consultas" href="../Pacientes/Detalhes?id_pessoa=<?php echo $id_pessoa; ?>" class="details">
                                                         <div class="img">
                                                             <img src="../images/icons/document.svg" />
                                                         </div>
                                                     </a>
-                                                    <a href="mailto:<?php echo $email; ?>" class="message call-blue">
+                                                    <a title="Enviar email" href="mailto:<?php echo $email; ?>" class="message call-blue">
                                                         <div class="img">
                                                             <img src="../images/icons/chat.svg" />
                                                         </div>

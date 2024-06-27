@@ -14,7 +14,14 @@ $spec = $_POST['espec'];
 
 $func_edit = "UPDATE medicos SET nome = '" . $name . "', morada = '" . $address . "', cod_postal = '" . $postal . "', localidade = '" . $location . "', email = '" . $email . "', contacto = '" . $contact . "', especializacao = '" . $spec . "' WHERE id_medico = '" . $id_medico . "' ";
 
-echo $func_edit;
+$email = $_SESSION['user'];
+$sql_query = mysqli_query(conexao(), "SELECT nome, especializacao from medicos WHERE email = '" . $email . "'");
+
+if ($sql_query) {
+    $linha = mysqli_fetch_assoc($sql_query);
+    $_SESSION['nome_utilizador'] = $linha["nome"];
+    $_SESSION['spec'] = $linha['especializacao'];
+}
 
 $edita = mysqli_query($conn, $func_edit);
 

@@ -11,7 +11,8 @@ if (isset($_POST['id'])) {
     }
 
     // Consulta SQL
-    $sql = "SELECT * FROM pessoas WHERE id_pessoa = $id_pessoa";
+    // $sql = "SELECT * FROM pessoas, consultas WHERE id_pessoa = $id_pessoa";
+    $sql = "SELECT * FROM pessoas WHERE pessoas.id_pessoa = $id_pessoa";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
